@@ -34,14 +34,12 @@
           <!-- Sidebar component -->
           <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:bg-gray-900 px-6 pb-4">
             <div class="flex h-16 shrink-0 items-center">
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt="Your Company">
+              <img class="pl-2 h-8 w-auto" src="assets/logo.svg" alt="Pintree">
+              <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
             </div>
-            <!-- <div id="sidebar-2" class="mt-24 w-64 bg-gray-900 rounded-lg shadow-md p-4 mr-6 h-screen overflow-y-auto fixed">
-                <h2 class="text-2xl font-bold mb-4">Folders</h2>
-                <ul id="navigation-2" class="space-y-2">
-                </ul>
-              </div> -->
+            <div id="sidebar-2" class="flex flex-1 flex-col">
+                
+              </div>
           </div>
         </div>
       </div>
@@ -279,72 +277,94 @@
     }
 
     function renderNavigation(folders, container, isFirstRender = false, path = []) {
-      container.innerHTML = ''; // Clear previous content
-      folders.forEach((folder, index) => {
-        if (folder.type === 'folder') {
-          const navItem = document.createElement('li');
-          navItem.className = 'items-center group flex justify-between gap-x-3 rounded-md p-2 text-gray-700 dark:text-gray-400 hover:text-indigo-500 hover:bg-gray-50 dark:hover:bg-gray-800 bg-opacity-50';
+  container.innerHTML = ''; // Clear previous content
+  folders.forEach((folder, index) => {
+    if (folder.type === 'folder') {
+      const navItem = document.createElement('li');
+      navItem.className = 'items-center group flex justify-between gap-x-3 rounded-md p-2 text-gray-700 dark:text-gray-400 hover:text-indigo-500 hover:bg-gray-50 dark:hover:bg-gray-800 bg-opacity-50';
 
-          const navLinkContainer = document.createElement('div');
-          navLinkContainer.className = 'flex items-center space-x-2 truncate';
+      const navLinkContainer = document.createElement('div');
+      navLinkContainer.className = 'flex items-center space-x-2 truncate';
 
-          const folderIcon = document.createElement('span');
-          folderIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>';
+      const folderIcon = document.createElement('span');
+      folderIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>';
 
-          const navLink = document.createElement('a');
-          navLink.className = 'flex text-sm leading-6 font-semibold dark:text-gray-400';
-          navLink.innerText = folder.title;
+      const navLink = document.createElement('a');
+      navLink.className = 'flex text-sm leading-6 font-semibold dark:text-gray-400';
+      navLink.innerText = folder.title;
 
-          navLinkContainer.appendChild(folderIcon);
-          navLinkContainer.appendChild(navLink);
+      navLinkContainer.appendChild(folderIcon);
+      navLinkContainer.appendChild(navLink);
 
-          const toggleIcon = document.createElement('span');
-          toggleIcon.className = 'ml-2 transform transition-transform';
-          toggleIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>';
+      const toggleIcon = document.createElement('span');
+      toggleIcon.className = 'ml-2 transform transition-transform';
+      toggleIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>';
 
-          navItem.appendChild(navLinkContainer);
-          if (folder.children && folder.children.length > 0) {
-            navItem.appendChild(toggleIcon);
-          }
-          container.appendChild(navItem);
+      navItem.appendChild(navLinkContainer);
+      if (folder.children && folder.children.length > 0) {
+        navItem.appendChild(toggleIcon);
+      }
+      container.appendChild(navItem);
 
-          if (folder.children && folder.children.length > 0) {
-            const subList = document.createElement('ul');
-            subList.className = 'ml-4 space-y-2 hidden';
-            renderNavigation(folder.children, subList, false, path.concat({ title: folder.title, children: folder.children }));
-            container.appendChild(subList);
+      if (folder.children && folder.children.length > 0) {
+        const subList = document.createElement('ul');
+        subList.className = 'ml-4 space-y-2 hidden';
+        renderNavigation(folder.children, subList, false, path.concat({ title: folder.title, children: folder.children }));
+        container.appendChild(subList);
 
-            if (isFirstRender && index === 0) {
-              // Expand the first item on initial render
-              subList.classList.remove('hidden');
-              toggleIcon.classList.add('rotate-90');
-            }
-
-            navItem.onclick = (e) => {
-              e.stopPropagation();
-              // document.querySelectorAll('#navigation .sidebar-active-dark').forEach(el => el.classList.remove('dark:sidebar-active-dark'));
-              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
-              navItem.classList.add('sidebar-active');
-              // navItem.classList.add('dark:sidebar-active-dark');
-              subList.classList.toggle('hidden');
-              if (subList.children.length > 0) {
-                toggleIcon.classList.toggle('rotate-90');
-              }
-              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
-            };
-          } else {
-            navItem.onclick = (e) => {
-              e.stopPropagation();
-              // document.querySelectorAll('#navigation .sidebar-active-dark').forEach(el => el.classList.remove('dark:sidebar-active-dark'));
-              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
-              navItem.classList.add('sidebar-active');
-              // navItem.classList.add('dark:sidebar-active-dark');
-              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
-            };
-          }
+        if (isFirstRender && index === 0) {
+          // Expand the first item on initial render
+          subList.classList.remove('hidden');
+          toggleIcon.classList.add('rotate-90');
         }
-      });
+
+        navItem.onclick = (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
+          navItem.classList.add('sidebar-active');
+          subList.classList.toggle('hidden');
+          if (subList.children.length > 0) {
+            toggleIcon.classList.toggle('rotate-90');
+          }
+          renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+        };
+      } else {
+        navItem.onclick = (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
+          navItem.classList.add('sidebar-active');
+          renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+        };
+      }
     }
+  });
+}
+
+function renderNavigationForBoth(folders, isFirstRender = false, path = []) {
+  renderNavigation(folders, document.getElementById('navigation'), isFirstRender, path);
+  renderNavigation(folders, document.getElementById('sidebar-2'), isFirstRender, path);
+}
+
+// Replace calls to renderNavigation with renderNavigationForBoth
+fetch('json/pintree.json')
+  .then(response => response.json())
+  .then(data => {
+    const firstLayer = data;
+    renderNavigationForBoth(firstLayer, true);
+    renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
+
+    if (firstLayer.length > 0) {
+      const firstItem = firstLayer[0];
+      updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
+      renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
+    }
+  })
+  .catch(error => console.error('Error loading bookmarks:', error));
+
+document.getElementById('open-sidebar-button').addEventListener('click', function() {
+  var navigation = document.getElementById('navigation').cloneNode(true);
+  document.getElementById('sidebar-2').appendChild(navigation);
+});
 
     function renderBreadcrumbs(path) {
       const breadcrumbsPath = document.getElementById('breadcrumbs-path');
@@ -536,6 +556,13 @@
 
     // Event listener for the theme toggle button
     themeToggleButton.addEventListener('click', toggleTheme);
+
+
+    // 打开mobile菜单
+    document.getElementById('open-sidebar-button').addEventListener('click', function() {
+            var navigation = document.getElementById('navigation').cloneNode(true);
+            document.getElementById('sidebar-2').appendChild(navigation);
+        });
 
 
   </script>

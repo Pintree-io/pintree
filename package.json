@@ -1,0 +1,23 @@
+{
+  "name": "pintree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss build ./css/styles.css -o ./css/tailwind.css",
+    "watch:css": "nodemon -e html,css,js -x \"npm run build:css\"",
+    "dev": "concurrently \"npm run watch:css\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "tailwindcss": "^3.4.4",
+    "theme-change": "^2.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.3"
+  }
+}

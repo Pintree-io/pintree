@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bookmark Navigation</title>
   <link rel="stylesheet" href="css/tailwind.css">
-<style>
-</style>
+  <style>
+  </style>
+
 <body class="h-full dark:bg-gray-900 bg-white">
   <div>
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
@@ -38,8 +39,8 @@
               <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
             </div>
             <div id="sidebar-2" class="flex flex-1 flex-col">
-                
-              </div>
+
+            </div>
           </div>
         </div>
       </div>
@@ -48,14 +49,15 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-60 lg:flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col border-r border-gray-200 dark:border-gray-800 bg-white px-4 pb-4 h-full font-semibold dark:bg-gray-900">
+      <div
+        class="flex flex-col border-r border-gray-200 dark:border-gray-800 bg-white px-4 pb-4 h-full font-semibold dark:bg-gray-900">
         <div class="flex p-0 h-16 shrink-0 items-center">
           <img class="pl-2 h-8 w-auto" src="assets/logo.svg" alt="Pintree">
           <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
         </div>
         <div class="flex flex-1 flex-col overflow-y-auto no-scrollbar p-1 cursor-pointer">
           <div id="sidebar" class="flex flex-1 flex-col">
-            <ul id="navigation" class="-mx-2 space-y-1">
+            <ul id="navigation" class="space-y-1">
               <!-- Navigation items will be inserted here -->
             </ul>
           </div>
@@ -64,38 +66,55 @@
     </div>
 
     <div class="lg:pl-60 dark:bg-gray-900">
-      <div
-        class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-        <button id="open-sidebar-button" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+      <div class="items-center justify-between sticky top-0 z-40 flex h-16 shrink-0 gap-x-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+        <!-- <button id="open-sidebar-button" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
           <span class="sr-only">Open sidebar</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
-        </button>
+        </button> -->
 
         <!-- Separator -->
-        <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true"></div>
+        <!-- <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true"></div> -->
 
-        <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 items-center justify-between">
-          <div class="relative w-72 h-full items-center justify-between">
-            <button id="searchButton" class="absolute h-full text-gray-400 rounded">
-              <svg class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path>
-              </svg>
-            </button>
-            <input id="searchInput" type="search" class="text-sm text-gray-900 dark:text-gray-400 pl-8 h-full border-0 focus:outline-none focus:ring-0 dark:bg-gray-900" placeholder="Search...">
-            <button id="clearSearchButton" class="text-sm text-gray-500 mr-4 rounded hidden">Clear</button>
-            
+        <div class="h-ful items-center flex flex-1 gap-x-4 self-stretch lg:gap-x-6 justify-between">
+          <div class="flex gap-x-4 justify-between">
+            <img class="pl-2 h-8 w-auto lg:hidden" src="assets/logo.svg" alt="Pintree">
+            <div class="hidden lg:block relative w-72 h-full items-center justify-between">
+              <button id="searchButton" class="absolute h-full text-gray-400 rounded">
+                <svg class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400" viewBox="0 0 20 20"
+                  fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <input id="searchInput" type="search"
+                class="text-sm text-gray-900 dark:text-gray-400 pl-8 h-full border-0 focus:outline-none focus:ring-0 dark:bg-gray-900"
+                placeholder="Search...">
+              <button id="clearSearchButton" class="text-sm text-gray-500 mr-4 rounded hidden">Clear</button>
           </div>
+        </div>
+        <a href="" class="lg:hidden ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
           <div class="relative">
-            <button id="themeToggleButton" type="button" aria-label="Switch theme" class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-gray-900 dark:ring-white/10 dark:hover:ring-white/20">
-              <svg id="sunIcon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600">
-                <path d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z"></path>
-                <path d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061" fill="none"></path>
+            <button id="themeToggleButton" type="button" aria-label="Switch theme"
+              class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-gray-900 dark:ring-white/10 dark:hover:ring-white/20">
+              <svg id="sunIcon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true"
+                class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600">
+                <path
+                  d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z">
+                </path>
+                <path
+                  d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061"
+                  fill="none"></path>
               </svg>
-              <svg id="moonIcon" viewBox="0 0 24 24" aria-hidden="true" class="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500">
-                <path d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <svg id="moonIcon" viewBox="0 0 24 24" aria-hidden="true"
+                class="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500">
+                <path
+                  d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
           </div>
@@ -107,7 +126,7 @@
           <div id="breadcrumbs-path" class="">
             <!-- Breadcrumbs will be inserted here -->
           </div>
-          
+
         </div>
         <div id="bookmarks" class="grid gap-6 p-6">
           <!-- Bookmark cards will be inserted here -->
@@ -277,94 +296,72 @@
     }
 
     function renderNavigation(folders, container, isFirstRender = false, path = []) {
-  container.innerHTML = ''; // Clear previous content
-  folders.forEach((folder, index) => {
-    if (folder.type === 'folder') {
-      const navItem = document.createElement('li');
-      navItem.className = 'items-center group flex justify-between gap-x-3 rounded-md p-2 text-gray-700 dark:text-gray-400 hover:text-indigo-500 hover:bg-gray-50 dark:hover:bg-gray-800 bg-opacity-50';
+      container.innerHTML = ''; // Clear previous content
+      folders.forEach((folder, index) => {
+        if (folder.type === 'folder') {
+          const navItem = document.createElement('li');
+          navItem.className = 'items-center group flex justify-between gap-x-3 rounded-md p-2 text-gray-700 dark:text-gray-400 hover:text-indigo-500 hover:bg-gray-50 dark:hover:bg-gray-800 bg-opacity-50';
 
-      const navLinkContainer = document.createElement('div');
-      navLinkContainer.className = 'flex items-center space-x-2 truncate';
+          const navLinkContainer = document.createElement('div');
+          navLinkContainer.className = 'flex items-center space-x-2 truncate';
 
-      const folderIcon = document.createElement('span');
-      folderIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>';
+          const folderIcon = document.createElement('span');
+          folderIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>';
 
-      const navLink = document.createElement('a');
-      navLink.className = 'flex text-sm leading-6 font-semibold dark:text-gray-400';
-      navLink.innerText = folder.title;
+          const navLink = document.createElement('a');
+          navLink.className = 'flex text-sm leading-6 font-semibold dark:text-gray-400';
+          navLink.innerText = folder.title;
 
-      navLinkContainer.appendChild(folderIcon);
-      navLinkContainer.appendChild(navLink);
+          navLinkContainer.appendChild(folderIcon);
+          navLinkContainer.appendChild(navLink);
 
-      const toggleIcon = document.createElement('span');
-      toggleIcon.className = 'ml-2 transform transition-transform';
-      toggleIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>';
+          const toggleIcon = document.createElement('span');
+          toggleIcon.className = 'ml-2 transform transition-transform';
+          toggleIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>';
 
-      navItem.appendChild(navLinkContainer);
-      if (folder.children && folder.children.length > 0) {
-        navItem.appendChild(toggleIcon);
-      }
-      container.appendChild(navItem);
-
-      if (folder.children && folder.children.length > 0) {
-        const subList = document.createElement('ul');
-        subList.className = 'ml-4 space-y-2 hidden';
-        renderNavigation(folder.children, subList, false, path.concat({ title: folder.title, children: folder.children }));
-        container.appendChild(subList);
-
-        if (isFirstRender && index === 0) {
-          // Expand the first item on initial render
-          subList.classList.remove('hidden');
-          toggleIcon.classList.add('rotate-90');
-        }
-
-        navItem.onclick = (e) => {
-          e.stopPropagation();
-          document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
-          navItem.classList.add('sidebar-active');
-          subList.classList.toggle('hidden');
-          if (subList.children.length > 0) {
-            toggleIcon.classList.toggle('rotate-90');
+          navItem.appendChild(navLinkContainer);
+          if (folder.children && folder.children.length > 0) {
+            navItem.appendChild(toggleIcon);
           }
-          renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
-        };
-      } else {
-        navItem.onclick = (e) => {
-          e.stopPropagation();
-          document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
-          navItem.classList.add('sidebar-active');
-          renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
-        };
-      }
+          container.appendChild(navItem);
+
+          if (folder.children && folder.children.length > 0) {
+            const subList = document.createElement('ul');
+            subList.className = 'ml-4 space-y-2 hidden';
+            renderNavigation(folder.children, subList, false, path.concat({ title: folder.title, children: folder.children }));
+            container.appendChild(subList);
+
+            if (isFirstRender && index === 0) {
+              // Expand the first item on initial render
+              subList.classList.remove('hidden');
+              toggleIcon.classList.add('rotate-90');
+            }
+
+            navItem.onclick = (e) => {
+              e.stopPropagation();
+              // document.querySelectorAll('#navigation .sidebar-active-dark').forEach(el => el.classList.remove('dark:sidebar-active-dark'));
+              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
+              navItem.classList.add('sidebar-active');
+              // navItem.classList.add('dark:sidebar-active-dark');
+              subList.classList.toggle('hidden');
+              if (subList.children.length > 0) {
+                toggleIcon.classList.toggle('rotate-90');
+              }
+              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+            };
+          } else {
+            navItem.onclick = (e) => {
+              e.stopPropagation();
+              // document.querySelectorAll('#navigation .sidebar-active-dark').forEach(el => el.classList.remove('dark:sidebar-active-dark'));
+              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
+              navItem.classList.add('sidebar-active');
+              // navItem.classList.add('dark:sidebar-active-dark');
+              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+            };
+          }
+        }
+      });
     }
-  });
-}
-
-function renderNavigationForBoth(folders, isFirstRender = false, path = []) {
-  renderNavigation(folders, document.getElementById('navigation'), isFirstRender, path);
-  renderNavigation(folders, document.getElementById('sidebar-2'), isFirstRender, path);
-}
-
-// Replace calls to renderNavigation with renderNavigationForBoth
-fetch('json/pintree.json')
-  .then(response => response.json())
-  .then(data => {
-    const firstLayer = data;
-    renderNavigationForBoth(firstLayer, true);
-    renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
-
-    if (firstLayer.length > 0) {
-      const firstItem = firstLayer[0];
-      updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
-      renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
-    }
-  })
-  .catch(error => console.error('Error loading bookmarks:', error));
-
-document.getElementById('open-sidebar-button').addEventListener('click', function() {
-  var navigation = document.getElementById('navigation').cloneNode(true);
-  document.getElementById('sidebar-2').appendChild(navigation);
-});
 
     function renderBreadcrumbs(path) {
       const breadcrumbsPath = document.getElementById('breadcrumbs-path');
@@ -470,7 +467,7 @@ document.getElementById('open-sidebar-button').addEventListener('click', functio
       // Create folder section
       if (folders.length > 0) {
         const folderSection = document.createElement('div');
-        folderSection.className = 'grid grid-cols-2 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6'; 
+        folderSection.className = 'grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6';
         folders.forEach(folder => {
           const card = createFolderCard(folder.title, folder.children, path);
           folderSection.appendChild(card);
@@ -488,7 +485,7 @@ document.getElementById('open-sidebar-button').addEventListener('click', functio
       // Create link section
       if (links.length > 0) {
         const linkSection = document.createElement('div');
-        linkSection.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6'; 
+        linkSection.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6';
         links.forEach(link => {
           const card = createCard(link.title, link.url, link.icon);
           linkSection.appendChild(card);
@@ -559,10 +556,10 @@ document.getElementById('open-sidebar-button').addEventListener('click', functio
 
 
     // 打开mobile菜单
-    document.getElementById('open-sidebar-button').addEventListener('click', function() {
-            var navigation = document.getElementById('navigation').cloneNode(true);
-            document.getElementById('sidebar-2').appendChild(navigation);
-        });
+    document.getElementById('open-sidebar-button').addEventListener('click', function () {
+      var navigation = document.getElementById('navigation').cloneNode(true);
+      document.getElementById('sidebar-2').appendChild(navigation);
+    });
 
 
   </script>

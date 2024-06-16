@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark:bg-gray-900 bg-white">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark Navigation</title>
+  <link rel="stylesheet" href="css/tailwind.css">
+<style>
+</style>
+<body class="h-full dark:bg-gray-900 bg-white">
+  <div>
+    <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
+    <div id="off-canvas-menu" class="relative z-50 lg:hidden hidden" role="dialog" aria-modal="true">
+      <!-- Off-canvas menu backdrop -->
+      <div id="off-canvas-backdrop"
+        class="fixed inset-0 bg-gray-900/80 opacity-0 transition-opacity ease-linear duration-300"></div>
+
+      <div class="fixed inset-0 flex">
+        <!-- Off-canvas menu -->
+        <div id="off-canvas-content"
+          class="relative mr-16 flex w-full max-w-xs flex-1 -translate-x-full transition ease-in-out duration-300 transform">
+          <!-- Close button -->
+          <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
+            <button id="close-sidebar-button" type="button" class="-m-2.5 p-2.5">
+              <span class="sr-only">Close sidebar</span>
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Sidebar component -->
+          <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:bg-gray-900 px-6 pb-4">
+            <div class="flex h-16 shrink-0 items-center">
+              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt="Your Company">
+            </div>
+            <!-- <div id="sidebar-2" class="mt-24 w-64 bg-gray-900 rounded-lg shadow-md p-4 mr-6 h-screen overflow-y-auto fixed">
+                <h2 class="text-2xl font-bold mb-4">Folders</h2>
+                <ul id="navigation-2" class="space-y-2">
+                </ul>
+              </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Static sidebar for desktop -->
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-60 lg:flex-col">
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+      <div class="flex flex-col border-r border-gray-200 dark:border-gray-800 bg-white px-4 pb-4 h-full font-semibold dark:bg-gray-900">
+        <div class="flex p-0 h-16 shrink-0 items-center">
+          <img class="pl-2 h-8 w-auto" src="assets/logo.svg" alt="Pintree">
+          <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
+        </div>
+        <div class="flex flex-1 flex-col overflow-y-auto no-scrollbar p-1 cursor-pointer">
+          <div id="sidebar" class="flex flex-1 flex-col">
+            <ul id="navigation" class="-mx-2 space-y-1">
+              <!-- Navigation items will be inserted here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:pl-60 dark:bg-gray-900">
+      <div
+        class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+        <button id="open-sidebar-button" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+          <span class="sr-only">Open sidebar</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+
+        <!-- Separator -->
+        <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true"></div>
+
+        <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 items-center justify-between">
+          <div class="relative w-72 h-full items-center justify-between">
+            <button id="searchButton" class="absolute h-full text-gray-400 rounded">
+              <svg class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <input id="searchInput" type="search" class="text-sm text-gray-900 dark:text-gray-400 pl-8 h-full border-0 focus:outline-none focus:ring-0 dark:bg-gray-900" placeholder="Search...">
+            <button id="clearSearchButton" class="text-sm text-gray-500 mr-4 rounded hidden">Clear</button>
+            
+          </div>
+          <div class="relative">
+            <button id="themeToggleButton" type="button" aria-label="Switch theme" class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-gray-900 dark:ring-white/10 dark:hover:ring-white/20">
+              <svg id="sunIcon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600">
+                <path d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z"></path>
+                <path d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061" fill="none"></path>
+              </svg>
+              <svg id="moonIcon" viewBox="0 0 24 24" aria-hidden="true" class="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500">
+                <path d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <main class="mt-4 dark:bg-gray-900">
+        <div id="breadcrumbs" class="mt-2 px-6 text-sm text-gray-400 flex justify-between items-center">
+          <div id="breadcrumbs-path" class="">
+            <!-- Breadcrumbs will be inserted here -->
+          </div>
+          
+        </div>
+        <div id="bookmarks" class="grid gap-6 p-6">
+          <!-- Bookmark cards will be inserted here -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const openSidebarButton = document.getElementById('open-sidebar-button');
+      const closeSidebarButton = document.getElementById('close-sidebar-button');
+      const offCanvasMenu = document.getElementById('off-canvas-menu');
+      const offCanvasBackdrop = document.getElementById('off-canvas-backdrop');
+      const offCanvasContent = document.getElementById('off-canvas-content');
+
+      // Function to open the sidebar
+      const openSidebar = () => {
+        offCanvasMenu.classList.remove('hidden');
+        setTimeout(() => {
+          offCanvasBackdrop.classList.add('opacity-100');
+          offCanvasContent.classList.add('translate-x-0');
+        }, 10);
+      };
+
+      // Function to close the sidebar
+      const closeSidebar = () => {
+        offCanvasBackdrop.classList.remove('opacity-100');
+        offCanvasContent.classList.remove('translate-x-0');
+        setTimeout(() => {
+          offCanvasMenu.classList.add('hidden');
+        }, 300); // Match the duration of the transition
+      };
+
+      // Event listeners for open and close buttons
+      openSidebarButton.addEventListener('click', openSidebar);
+      closeSidebarButton.addEventListener('click', closeSidebar);
+      offCanvasBackdrop.addEventListener('click', closeSidebar); // Close sidebar when clicking on the backdrop
+    });
+
+
+
+    function searchBookmarks(query) {
+      fetch('json/pintree.json')
+        .then(response => response.json())
+        .then(data => {
+          const results = searchInData(data, query.toLowerCase());
+          renderBookmarks(results, [{ title: 'Search Results', children: results }]);
+        })
+        .catch(error => console.error('Error searching bookmarks:', error));
+    }
+
+    function searchInData(data, query) {
+      let results = [];
+      data.forEach(item => {
+        if (item.title.toLowerCase().includes(query)) {
+          results.push(item);
+        }
+        if (item.children) {
+          const childResults = searchInData(item.children, query);
+          if (childResults.length > 0) {
+            results = results.concat(childResults);
+          }
+        }
+      });
+      return results;
+    }
+
+    document.getElementById('searchButton').addEventListener('click', () => {
+      const query = document.getElementById('searchInput').value;
+      searchBookmarks(query);
+    });
+
+    function clearSearchResults() {
+      fetch('json/pintree.json')
+        .then(response => response.json())
+        .then(data => {
+          const secondLayer = data[0].children;
+          renderNavigation(secondLayer, document.getElementById('navigation'));
+          renderBookmarks(secondLayer, [{ title: 'Bookmark', children: secondLayer }]);
+          document.getElementById('searchInput').value = '';
+          document.getElementById('clearSearchButton').classList.add('hidden');
+        })
+        .catch(error => console.error('Error clearing search results:', error));
+    }
+
+    document.getElementById('clearSearchButton').addEventListener('click', clearSearchResults);
+
+    function searchBookmarks(query) {
+      fetch('json/pintree.json')
+        .then(response => response.json())
+        .then(data => {
+          const results = searchInData(data, query.toLowerCase());
+          renderBookmarks(results, [{ title: 'Search Results', children: results }]);
+          document.getElementById('clearSearchButton').classList.remove('hidden');
+        })
+        .catch(error => console.error('Error searching bookmarks:', error));
+    }
+
+
+    // Function to create a card element
+    function createCard(title, url, icon) {
+      const card = document.createElement('div');
+      card.className = 'cursor-pointer flex items-center hover:shadow-sm transition-shadow p-4 bg-white shadow-sm ring-1 ring-gray-900/5 dark:ring-gray-600/10 rounded-lg hover:bg-gray-100 dark:bg-gray-700/10 dark:hover:bg-gray-800';
+      card.onclick = () => window.open(url, '_blank'); // Make the whole card clickable
+
+      const cardIcon = document.createElement('img');
+      cardIcon.src = icon || 'assets/default-icon.svg'; // Use provided icon or default icon
+      cardIcon.alt = title;
+      cardIcon.className = 'w-5 h-5 mr-4 rounded-full flex-shrink-0'; // Smaller size and rounded
+
+      const cardContent = document.createElement('div');
+      cardContent.className = 'flex flex-col overflow-hidden'; // Ensure the content is hidden if too long
+
+      const cardTitle = document.createElement('h2');
+      cardTitle.className = 'text-sm font-semibold mb-1 truncate dark:text-gray-400';
+      cardTitle.innerText = title;
+
+      // Clean URL by removing http(s) and trailing slash
+      const cleanUrl = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+      const cardUrl = document.createElement('p');
+      cardUrl.className = 'text-xs text-gray-400 truncate';
+      cardUrl.innerText = cleanUrl; // Use cleaned URL
+
+      cardContent.appendChild(cardTitle);
+      cardContent.appendChild(cardUrl); // Add URL paragraph
+
+      card.appendChild(cardIcon);
+      card.appendChild(cardContent);
+
+      return card;
+    }
+
+    function createFolderCard(title, children, path) {
+      const card = document.createElement('div');
+      card.className = 'folder-card text-gray rounded-lg cursor-pointer flex flex-col items-center';
+      card.onclick = () => {
+        const newPath = path.concat({ title, children });
+        renderBookmarks(children, newPath);
+        updateSidebarActiveState(newPath); // Update sidebar active state
+      };
+
+      const cardIcon = document.createElement('div');
+      cardIcon.innerHTML = `
+    <svg viewBox="0 0 100 80" class="folder__svg">
+      <rect x="0" y="0" width="100" height="80" class="folder__back" />
+      <rect x="15" y="8" width="70" height="60" class="paper-1" />
+      <rect x="10" y="18" width="80" height="50" class="paper-2" />
+      <rect x="0" y="10" width="100" height="70" class="folder__front" />
+      <rect x="0" y="10" width="100" height="70" class="folder__front right" />
+    </svg>
+  `;
+      cardIcon.className = 'mb-2';
+
+      const cardTitle = document.createElement('h2');
+      cardTitle.className = 'text-xs font-normal text-center w-full truncate dark:text-gray-400';
+      cardTitle.innerText = title;
+
+      card.appendChild(cardIcon);
+      card.appendChild(cardTitle);
+
+      return card;
+    }
+
+    function renderNavigation(folders, container, isFirstRender = false, path = []) {
+      container.innerHTML = ''; // Clear previous content
+      folders.forEach((folder, index) => {
+        if (folder.type === 'folder') {
+          const navItem = document.createElement('li');
+          navItem.className = 'items-center group flex justify-between gap-x-3 rounded-md p-2 text-gray-700 dark:text-gray-400 hover:text-indigo-500 hover:bg-gray-50 dark:hover:bg-gray-800 bg-opacity-50';
+
+          const navLinkContainer = document.createElement('div');
+          navLinkContainer.className = 'flex items-center space-x-2 truncate';
+
+          const folderIcon = document.createElement('span');
+          folderIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>';
+
+          const navLink = document.createElement('a');
+          navLink.className = 'flex text-sm leading-6 font-semibold dark:text-gray-400';
+          navLink.innerText = folder.title;
+
+          navLinkContainer.appendChild(folderIcon);
+          navLinkContainer.appendChild(navLink);
+
+          const toggleIcon = document.createElement('span');
+          toggleIcon.className = 'ml-2 transform transition-transform';
+          toggleIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>';
+
+          navItem.appendChild(navLinkContainer);
+          if (folder.children && folder.children.length > 0) {
+            navItem.appendChild(toggleIcon);
+          }
+          container.appendChild(navItem);
+
+          if (folder.children && folder.children.length > 0) {
+            const subList = document.createElement('ul');
+            subList.className = 'ml-4 space-y-2 hidden';
+            renderNavigation(folder.children, subList, false, path.concat({ title: folder.title, children: folder.children }));
+            container.appendChild(subList);
+
+            if (isFirstRender && index === 0) {
+              // Expand the first item on initial render
+              subList.classList.remove('hidden');
+              toggleIcon.classList.add('rotate-90');
+            }
+
+            navItem.onclick = (e) => {
+              e.stopPropagation();
+              // document.querySelectorAll('#navigation .sidebar-active-dark').forEach(el => el.classList.remove('dark:sidebar-active-dark'));
+              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
+              navItem.classList.add('sidebar-active');
+              // navItem.classList.add('dark:sidebar-active-dark');
+              subList.classList.toggle('hidden');
+              if (subList.children.length > 0) {
+                toggleIcon.classList.toggle('rotate-90');
+              }
+              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+            };
+          } else {
+            navItem.onclick = (e) => {
+              e.stopPropagation();
+              // document.querySelectorAll('#navigation .sidebar-active-dark').forEach(el => el.classList.remove('dark:sidebar-active-dark'));
+              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
+              navItem.classList.add('sidebar-active');
+              // navItem.classList.add('dark:sidebar-active-dark');
+              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+            };
+          }
+        }
+      });
+    }
+
+    function renderBreadcrumbs(path) {
+      const breadcrumbsPath = document.getElementById('breadcrumbs-path');
+      breadcrumbsPath.innerHTML = ''; // Clear previous breadcrumbs
+
+      path.forEach((item, index) => {
+        const breadcrumb = document.createElement('span');
+        breadcrumb.className = 'cursor-pointer hover:underline';
+        breadcrumb.innerText = item.title;
+        breadcrumb.onclick = () => {
+          // Render bookmarks for the selected breadcrumb
+          const newPath = path.slice(0, index + 1);
+          renderBookmarks(item.children, newPath);
+          updateSidebarActiveState(newPath); // Update sidebar active state
+          document.getElementById('clearSearchButton').classList.add('hidden'); // Hide clear button when navigating through breadcrumbs
+        };
+
+        breadcrumbsPath.appendChild(breadcrumb);
+
+        if (index < path.length - 1) {
+          const separator = document.createElement('span');
+          separator.innerText = ' > ';
+          breadcrumbsPath.appendChild(separator);
+        }
+      });
+    }
+
+    function updateSidebarActiveState(path) {
+      document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
+      // document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('dark:sidebar-active-dark'));
+
+      let currentNav = document.getElementById('navigation');
+
+      path.forEach((item, index) => {
+        const items = currentNav.querySelectorAll('li');
+        items.forEach(navItem => {
+          const navLink = navItem.querySelector('a');
+          if (navLink && navLink.innerText === item.title) {
+            if (index === path.length - 1) {
+              navItem.classList.add('sidebar-active');
+              // navItem.classList.add('dark:sidebar-active-dark');
+
+            }
+
+            if (index < path.length - 1) {
+              const subList = navItem.querySelector('ul');
+              if (subList) {
+                subList.classList.remove('hidden');
+                currentNav = subList;
+              }
+            }
+          }
+        });
+      });
+    }
+
+    function showNoResultsMessage() {
+      const container = document.getElementById('bookmarks');
+      container.innerHTML = ''; // Clear previous content
+
+      const messageContainer = document.createElement('div');
+      messageContainer.className = 'flex flex-col items-center justify-center h-full';
+
+      const icon = document.createElement('svg');
+      icon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      icon.setAttribute('class', 'h-16 w-16 text-gray-500');
+      icon.setAttribute('fill', 'none');
+      icon.setAttribute('viewBox', '0 0 24 24');
+      icon.setAttribute('stroke', 'currentColor');
+      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />';
+
+      const title = document.createElement('h2');
+      title.className = 'text-xl font-semibold mt-4';
+      title.innerText = 'No Results Found';
+
+      const message = document.createElement('p');
+      message.className = 'text-gray-500 mt-2';
+      message.innerText = 'Please try a different search term or check back later.';
+
+      messageContainer.appendChild(icon);
+      messageContainer.appendChild(title);
+      messageContainer.appendChild(message);
+
+      container.appendChild(messageContainer);
+    }
+
+    function renderBookmarks(data, path) {
+      const container = document.getElementById('bookmarks');
+      container.innerHTML = ''; // Clear previous content
+
+      // Render breadcrumbs
+      renderBreadcrumbs(path);
+
+      // Separate folders and links
+      const folders = data.filter(item => item.type === 'folder');
+      const links = data.filter(item => item.type === 'link').sort((a, b) => b.addDate - a.addDate);
+
+      if (folders.length === 0 && links.length === 0) {
+        showNoResultsMessage();
+        return;
+      }
+
+      // Create folder section
+      if (folders.length > 0) {
+        const folderSection = document.createElement('div');
+        folderSection.className = 'grid grid-cols-2 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6'; 
+        folders.forEach(folder => {
+          const card = createFolderCard(folder.title, folder.children, path);
+          folderSection.appendChild(card);
+        });
+        container.appendChild(folderSection);
+      }
+
+      // Add separator line if there are links
+      if (folders.length > 0 && links.length > 0) {
+        const separator = document.createElement('hr');
+        separator.className = 'my-1 border-t-1 border-gray-200 dark:border-gray-800';
+        container.appendChild(separator);
+      }
+
+      // Create link section
+      if (links.length > 0) {
+        const linkSection = document.createElement('div');
+        linkSection.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6'; 
+        links.forEach(link => {
+          const card = createCard(link.title, link.url, link.icon);
+          linkSection.appendChild(card);
+        });
+        container.appendChild(linkSection);
+      }
+
+      // Update sidebar active state
+      updateSidebarActiveState(path);
+    }
+
+    // Fetch JSON data and render
+    fetch('json/pintree.json')
+      .then(response => response.json())
+      .then(data => {
+        // Use the first layer of the data directly
+        const firstLayer = data;
+        // Render navigation using the first layer of data
+        renderNavigation(firstLayer, document.getElementById('navigation'), true);
+        // Render bookmarks using the first layer of data, starting from the Bookmark
+        renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
+
+        // Automatically select and show the first item
+        if (firstLayer.length > 0) {
+          const firstItem = firstLayer[0];
+          updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
+          renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
+        }
+      })
+      .catch(error => console.error('Error loading bookmarks:', error));
+
+
+
+
+    document.getElementById('searchInput').addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        const query = event.target.value;
+        searchBookmarks(query);
+      }
+    });
+
+    document.getElementById('searchButton').addEventListener('click', function () {
+      const query = document.getElementById('searchInput').value;
+      searchBookmarks(query);
+    });
+
+
+    // 切换暗黑模式
+    const themeToggleButton = document.getElementById('themeToggleButton');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    // Function to toggle dark/light mode
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        document.documentElement.classList.add('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    // Event listener for the theme toggle button
+    themeToggleButton.addEventListener('click', toggleTheme);
+
+
+  </script>
+
+</body>
+</head>

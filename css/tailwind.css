@@ -1040,11 +1040,6 @@ select {
   margin: -0.625rem;
 }
 
-.-mx-2 {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1285,6 +1280,10 @@ select {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -2132,6 +2131,10 @@ select {
 
   .lg\:z-50 {
     z-index: 50;
+  }
+
+  .lg\:block {
+    display: block;
   }
 
   .lg\:flex {

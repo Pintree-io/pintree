@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-main-500{
+  --tw-text-opacity: 1;
+  color: rgba(11, 166, 101, var(--tw-text-opacity)) 
+}
 .dark{
     --tw-bg-opacity: 1;
     background-color: rgba(17, 24, 39, var(--tw-bg-opacity))
@@ -11,7 +15,7 @@
     /* background-color: rgba(243, 244, 246, var(--tw-bg-opacity)); bg-gray-100 */
     background-color: rgba(156, 163, 175, var(--tw-bg-opacity)); /* bg-gray-400 */
     --tw-text-opacity: 1;
-    color: rgba(99, 102, 241, var(--tw-text-opacity)) /* text-indigo-500 */
+    color: rgba(11, 166, 101, var(--tw-text-opacity)) /* text-indigo-500 */
 
   }
 
@@ -36,7 +40,7 @@
 
   
   :root {
-    --folderColor: #70a1ff;
+    --folderColor: #3CB884;
     --paperColor: #ffffff;
   }
   
@@ -50,7 +54,7 @@
   }
   
   .folder__back {
-    fill: #6493e6;
+    fill: #0BA665;
     rx: 10;
     ry: 10;
   }

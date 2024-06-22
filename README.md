@@ -6,11 +6,11 @@
 
 1.只单纯的输出转换后的「inftab 新标签页」书签。
 
-![inftab only](assets/screenshots/inftab-to-pintree.png)
+![inftab only](inftab-to-pintree/assets/screenshots/inftab-to-pintree.png)
 
 2.在原有的json-converter.js代码基础上，额外把 inftab书签 push进去。
 
-![inftab and browser](assets/screenshots/inftab-and-browser-to-pintree.png)
+![inftab and browser](inftab-to-pintree/assets/screenshots/inftab-and-browser-to-pintree.png)
 
 
 ### 制作背景：

@@ -1,0 +1,17 @@
+#inftabFileInputLabel {
+    gap: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    outline: none;
+    background-color: #16a34a;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#inftabFileInput {
+    display: none;
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark:bg-gray-900 bg-white">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pintree</title>
+  <meta name="keywords" content="Pintree Bookmarks link">
+  <meta name="description" content="Managing and Exporting your Bookmarks into a Website">
+
+  <Script async src="https://tally.so/widgets/embed.js"></script>
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://www.pintree.io">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pintree">
+  <meta property="og:description" content="Managing and Exporting your Bookmarks into a Website">
+  <meta property="og:image" content="https://www.pintree.io/assets/og.png">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="Pintree.io">
+  <meta property="twitter:url" content="https://www.pintree.io">
+  <meta name="twitter:title" content="Pintree">
+  <meta name="twitter:description" content="Managing and Exporting your Bookmarks into a Website">
+  <meta name="twitter:image" content="https://www.pintree.io/assets/og.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="mask-icon" href="assets/favicon/favicon-32x32.png" color="#0b0b0f">
+
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/json-converter.css">
+  <link rel="stylesheet" href="css/inftab-and-browser-to-pintree.css">
+  <style>
+  </style>
+
+<body>
+  <header class="">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="/" class="-m-1.5 p-1.5 flex">
+          <img class="h-8 w-auto" src="assets/logo.svg" alt="">
+          <div class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</div>
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button id="menu-toggle" type="button"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+
+        <a href="https://app.pintree.io/" target="_blank"
+          class="-mx-3 block rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5">Online
+          Demo</a>
+        <a href="https://github.com/Pintree-io/pintree" target="_blank"
+          class="-mx-3 flex rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5 items-center gap-1"><svg
+            class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              clip-rule="evenodd" />
+          </svg>Github</a>
+        <a href="inftab-to-pintree.html"
+          class="-mx-3 block rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5">Inftab To Pintree
+        </a>
+        <a href="inftab-and-browser-to-pintree.html"
+          class="-mx-3 block rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5">Browser To Pintree</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a class="group gap-2 inline-flex items-center justify-center rounded-full py-4 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-green-600 text-white hover:text-white hover:bg-green-700 active:bg-green-700 active:text-green-100 focus-visible:outline-green-600"
+          color="blue" variant="solid"
+          href="#tally-open=3XGyBY&amp;tally-layout=modal&amp;tally-emoji-text=%F0%9F%9B%B0%EF%B8%8F&amp;tally-emoji-animation=wave"><span>Join
+            Waitlist</span>
+          <div class="relative right-0 group-hover:translate-x-1 w-5 duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="arrow-right">
+              <path class="opacity-0 group-hover:opacity-100 duration-200" d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </nav>
+    <!-- Mobile menu, initially hidden -->
+    <div id="mobile-menu" class="hidden lg:hidden" role="dialog" aria-modal="true">
+      <!-- Background backdrop, show/hide based on slide-over state. -->
+      <div class="fixed inset-0 z-10"></div>
+      <div
+        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div class="flex items-center justify-between">
+          <a href="/" class="-m-1.5 p-1.5 flex">
+            <img class="h-8 w-auto" src="assets/logo.svg" alt="">
+            <div class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</div>
+          </a>
+          <button id="menu-close" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+            <span class="sr-only">Close menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <div class="space-y-2 py-6">
+
+              <a href="https://app.pintree.io/" target="_blank"
+                class="-mx-3 block rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5">Online
+                Demo</a>
+              <a href="https://github.com/Pintree-io/pintree" target="_blank"
+                class="-mx-3 flex rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5 items-center gap-1"><svg
+                  class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                    clip-rule="evenodd" />
+                </svg>Github</a>
+                <a href="/json-converter.html"
+                    class="-mx-3 block rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5">Json Converter</a>
+              <a href="https://pintree.canny.io/" target="_blank"
+                class="-mx-3 block rounded-full px-6 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-black/5">Roadmap</a>
+            </div>
+            <div class="py-6">
+              <a class="group gap-2 inline-flex items-center justify-center rounded-full py-4 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-green-600 text-white hover:text-white hover:bg-green-700 active:bg-green-700 active:text-green-100 focus-visible:outline-green-600"
+                color="blue" variant="solid"
+                href="#tally-open=3XGyBY&amp;tally-layout=modal&amp;tally-emoji-text=%F0%9F%9B%B0%EF%B8%8F&amp;tally-emoji-animation=wave"><span>Join
+                  Waitlist</span>
+                <div class="relative right-0 group-hover:translate-x-1 w-5 duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                    class="arrow-right">
+                    <path class="opacity-0 group-hover:opacity-100 duration-200" d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+    <div
+      class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#b5ff80] to-[#89fcdd] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+      style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+    </div>
+  </div>
+
+  <!-- Converter -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-16">
+    <div class="mx-auto max-w-3xl">
+      <div class="text-center p-8">
+        <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-black sm:text-4xl">Bookmark Converter</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-700">Turn your browser and inftab bookmarks into beautiful
+          navigation sites in minutes!</p>
+      </div>
+      <div id="additionalSupplement" class="flex rounded-2xl p-4 border-2 border-gray-100 bg-white/50" style="display: flex;">
+        <label id="inftabFileInputLabel" for="inftabFileInput" class="group gap-2 inline-flex items-center justify-center rounded-full py-2 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-green-600 text-white hover:text-white hover:bg-green-700 active:bg-green-700 active:text-green-100 focus-visible:outline-green-600">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+            Inftab
+        </label>
+        <input type="file" id="inftabFileInput" accept=".infinity">
+      </div>
+      <div id="dropZone" class="rounded-2xl p-4 sm:p-16 border-2 border-gray-100 bg-white/50 text-center mt-4 mb-4">
+        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          aria-hidden="true">
+          <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        </svg>
+        <h3 class="mt-2 text-sm font-semibold text-gray-900">Upload your bookmark file</h3>
+        <p class="mt-1 text-sm text-gray-500">Start by uploading your bookmark file.</p>
+        <div class="mt-6">
+          <div id="fileInputWrapper">
+            <label id="fileInputLabel" for="fileInput"
+              class="group gap-2 inline-flex items-center justify-center rounded-full py-4 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-green-600 text-white hover:text-white hover:bg-green-700 active:bg-green-700 active:text-green-100 focus-visible:outline-green-600">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 4v16m8-8H4" />
+              </svg>
+              Choose File
+            </label>
+            <input type="file" id="fileInput" accept=".html">
+          </div>
+        </div>
+      </div>
+
+      <div id="fileDetails" class="flex justify-between rounded-2xl p-4 border-2 border-gray-100 bg-white/50"
+        style="display: none;">
+        <div class="">
+          <div id="fileName" class="text-md font-semibold text-gray-900">Choose file</div>
+          <div id="fileSize" class="text-sm text-gray-500" style="display: none;"></div>
+        </div>
+        <button type="button" id="uploadButton"
+          class="group gap-2 inline-flex items-center justify-center rounded-full py-2 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-green-600 text-white hover:text-white hover:bg-green-700 active:bg-green-700 active:text-green-100 focus-visible:outline-green-600"
+          style="display: none;">
+          Convert
+        </button>
+        <div id="status" class="status mt-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- timeline -->
+  <!-- <div class="bg-white py-8 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4">
+        <div>
+          <time datetime="2021-08" class="flex items-center text-sm font-semibold leading-6 text-indigo-600">
+            <svg viewBox="0 0 4 4" class="mr-4 h-1 w-1 flex-none" aria-hidden="true">
+              <circle cx="2" cy="2" r="2" fill="currentColor" />
+            </svg>
+            Aug 2021
+            <div
+              class="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
+              aria-hidden="true"></div>
+          </time>
+          <p class="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">Founded company</p>
+          <p class="mt-1 text-base leading-7 text-gray-600">Nihil aut nam. Dignissimos a pariatur et quos omnis.
+            Aspernatur asperiores et dolorem dolorem optio voluptate repudiandae.</p>
+        </div>
+        <div>
+          <time datetime="2021-12" class="flex items-center text-sm font-semibold leading-6 text-indigo-600">
+            <svg viewBox="0 0 4 4" class="mr-4 h-1 w-1 flex-none" aria-hidden="true">
+              <circle cx="2" cy="2" r="2" fill="currentColor" />
+            </svg>
+            Dec 2021
+            <div
+              class="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
+              aria-hidden="true"></div>
+          </time>
+          <p class="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">Secured $65m in funding</p>
+          <p class="mt-1 text-base leading-7 text-gray-600">Provident quia ut esse. Vero vel eos repudiandae aspernatur.
+            Cumque minima impedit sapiente a architecto nihil.</p>
+        </div>
+        <div>
+          <time datetime="2022-02" class="flex items-center text-sm font-semibold leading-6 text-indigo-600">
+            <svg viewBox="0 0 4 4" class="mr-4 h-1 w-1 flex-none" aria-hidden="true">
+              <circle cx="2" cy="2" r="2" fill="currentColor" />
+            </svg>
+            Feb 2022
+            <div
+              class="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
+              aria-hidden="true"></div>
+          </time>
+          <p class="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">Released beta</p>
+          <p class="mt-1 text-base leading-7 text-gray-600">Sunt perspiciatis incidunt. Non necessitatibus aliquid.
+            Consequatur ut officiis earum eum quia facilis. Hic deleniti dolorem quia et.</p>
+        </div>
+        <div>
+          <time datetime="2022-12" class="flex items-center text-sm font-semibold leading-6 text-indigo-600">
+            <svg viewBox="0 0 4 4" class="mr-4 h-1 w-1 flex-none" aria-hidden="true">
+              <circle cx="2" cy="2" r="2" fill="currentColor" />
+            </svg>
+            Dec 2022
+            <div
+              class="absolute -ml-2 h-px w-screen -translate-x-full bg-gray-900/10 sm:-ml-4 lg:static lg:-mr-6 lg:ml-8 lg:w-auto lg:flex-auto lg:translate-x-0"
+              aria-hidden="true"></div>
+          </time>
+          <p class="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">Global launch of product</p>
+          <p class="mt-1 text-base leading-7 text-gray-600">Ut ipsa sint distinctio quod itaque nam qui. Possimus aut
+            unde id architecto voluptatem hic aut pariatur velit.</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <footer class="bg-white">
+    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-12 lg:px-8">
+      <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+        <div class="pb-6">
+          <a href="https://eu.umami.is/websites/60283522-e543-4dcb-bd47-e855f1e0a635"
+            class="text-sm leading-6 text-gray-600 hover:text-gray-900" target="_blank">Umami</a>
+        </div>
+        <div class="pb-6">
+          <a href="https://pintree.canny.io/" class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+            target="_blank">Roadmap</a>
+        </div>
+        <div class="pb-6">
+          <a href="https://pintree.canny.io/" class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+            target="_blank">Feedback</a>
+        </div>
+        <div class="pb-6">
+          <a href="https://github.com/Pintree-io/pintree" class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+            target="_blank">Github</a>
+        </div>
+      </nav>
+      <div class="mt-10 flex justify-center space-x-10">
+        <a href="https://x.com/decohack" class="text-gray-400 hover:text-gray-500" target="_blank">
+          <span class="sr-only">X</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
+          </svg>
+        </a>
+        <a href="https://github.com/Pintree-io/pintree" class="text-gray-400 hover:text-gray-500" target="_blank">
+          <span class="sr-only">GitHub</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+              clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+      <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2020 Pintree, Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    document.getElementById('menu-close').addEventListener('click', function () {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    });
+  </script>
+
+  <script src="js/inftab-and-browser-to-pintree.js"></script>
+</body>
+
+</html>

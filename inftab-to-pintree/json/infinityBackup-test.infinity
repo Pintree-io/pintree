@@ -1,0 +1,374 @@
+{
+    "version": "v2",
+    "browserEnv": "web",
+    "editionEnv": "pro",
+    "backupType": "local",
+    "time": 1719074789096,
+    "extVersion": "web",
+    "data": {
+        "site": {
+            "sites": [
+                [
+                    {
+                        "name": "Folder1",
+                        "uuid": "folder-1i0vujdp7r0uftuozvsuzq3c9fd",
+                        "id": "folderId-1i0vujdp74or240jcrf6dmictrf",
+                        "children": [
+                            {
+                                "name": "Extensions",
+                                "uuid": "194dd7b46ac16ac93becf5386f14bcca",
+                                "bgType": "image",
+                                "bgImage": "https://infinityicon.infinitynewtab.com/icon/194dd7b46ac16ac93becf5386f14bcca.png",
+                                "type": "app",
+                                "target": "infinity://extension",
+                                "id": "siteId-194dd7b46ac16ac93becf5386f14bcca",
+                                "updatetime": 0
+                            },
+                            {
+                                "name": "Settings",
+                                "uuid": "552fa3a378b29375843fa3d021cbe129",
+                                "bgType": "image",
+                                "bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/9622b98e90dd4f107d23481566095b34.png",
+                                "type": "app",
+                                "target": "infinity://settings",
+                                "id": "siteId-552fa3a378b29375843fa3d021cbe129",
+                                "updatetime": 0
+                            },
+                            {
+                                "uuid": "site-1i0vut4a0uggcw62cn5u69e2gsa",
+                                "id": "siteId-1i0vut4a0vtz1s86y8juxzdhodu",
+                                "type": "web",
+                                "bgType": "image",
+                                "bgImage": "https://infinitypro-img.infinitynewtab.com/custom-icon/icon-1i0vut3sjy38prxjurlut1wmrn1.png",
+                                "target": "http://www.baidu.com",
+                                "name": "百度一下，你就知道",
+                                "updatetime": 1719059517759
+                            }
+                        ],
+                        "updatetime": 1719059577994
+                    },
+                    {
+                        "name": "Folder2",
+                        "uuid": "folder-1i0vuuq9hhrrznold690k43e2xp",
+                        "id": "folderId-1i0vuuq9hns7u93ank0tsbvwed9",
+                        "children": [
+                            {
+                                "uuid": "site-1i0vutgg9i7vwmgvud6mhz4u6rh",
+                                "id": "siteId-1i0vutgg9gmmj976pg3mla081np",
+                                "type": "web",
+                                "bgType": "image",
+                                "bgImage": "https://infinitypro-img.infinitynewtab.com/custom-icon/icon-1i0vutgaci34q39sy78sr1qlpvr.png",
+                                "target": "http://www.ifeng.com",
+                                "name": "凤凰网",
+                                "updatetime": 1719059530247
+                            },
+                            {
+                                "name": "V2EX",
+                                "uuid": "9b2cda48782005be5791d6caf226a537",
+                                "bgType": "image",
+                                "bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/cc9b4b985a4a2c7d034dc18bf21ea019.png",
+                                "updatetime": 1719059563965,
+                                "id": "siteId-1i0vuuhdtgkfijbfi2st3239bs6",
+                                "target": "http://www.v2ex.com/",
+                                "type": "web"
+                            }
+                        ],
+                        "updatetime": 1719059575662
+                    },
+                    {
+                        "name": "Bookmarks",
+                        "uuid": "96646a13688f5bfd0aaf4811a579aee1",
+                        "bgType": "image",
+                        "bgImage": "https://infinityicon.infinitynewtab.com/user-share-icon/31a36139ccf4b9b005ec55445bf833b0.png",
+                        "updatetime": 1719059433221,
+                        "id": "siteId-1i0vuqho5ovxy05smnlffipg3r3",
+                        "target": "infinity://bookmarks",
+                        "type": "app"
+                    },
+                    {
+                        "uuid": "site-1i0vuvm35wa0n3egfv1fdits2z3",
+                        "id": "siteId-1i0vuvm354pfz0dhixbtdsro1zb",
+                        "type": "web",
+                        "bgType": "color",
+                        "bgColor": "rgba(255,71,52,1)",
+                        "bgFont": 30,
+                        "bgText": "Yo",
+                        "target": "http://www.youtube.com",
+                        "name": "YouTube",
+                        "bgColorImage": null,
+                        "updatetime": 1719059601508
+                    }
+                ]
+            ]
+        },
+        "setting": {
+            "setting": {
+                "notice": {
+                    "gmail": false,
+                    "gmailVoice": false,
+                    "gmailNumber": false,
+                    "todoNumber": true
+                },
+                "link": {
+                    "icon": true,
+                    "search": true,
+                    "bookmark": false,
+                    "history": false
+                },
+                "view": {
+                    "topBookmark": false,
+                    "topUseful": false,
+                    "windmill": true,
+                    "pagin": false,
+                    "hideInfinityAI": false,
+                    "isShowHomepageBtn": true,
+                    "isHideIcp": false,
+                    "scaleSide": 1,
+                    "scaleMain": 1
+                },
+                "layout": {
+                    "row": 3,
+                    "col": 6,
+                    "rowGap": 0.4,
+                    "colGap": 0.3,
+                    "custom": true,
+                    "customItem": [
+                        3,
+                        6
+                    ]
+                },
+                "animation": {
+                    "easing": "linear"
+                },
+                "icon": {
+                    "miniMode": false,
+                    "shadow": false,
+                    "startAnimation": false,
+                    "opacity": 1,
+                    "radius": 0.5,
+                    "scale": 0.6,
+                    "isHideIconName": false
+                },
+                "search": {
+                    "hide": false,
+                    "searchSuggest": true,
+                    "keepSearchInput": false,
+                    "hideCategory": false,
+                    "hideButton": true,
+                    "shadow": true,
+                    "scale": 0.75,
+                    "radius": 0.2,
+                    "opacity": 1
+                },
+                "font": {
+                    "shadow": true,
+                    "size": 13,
+                    "color": "rgb(221, 221, 221)"
+                },
+                "_v1Setting": {}
+            }
+        },
+        "wallpaper": {
+            "url": "/images/wallpaper.c4eff18.webp",
+            "rawUrl": "/images/wallpaper.c4eff18.webp",
+            "type": "default",
+            "switchType": "disabled",
+            "timeEnd": 0,
+            "index": -1,
+            "opacity": 40,
+            "blur": 0,
+            "cloudRecentUsed": [],
+            "cloudRecentUsedOrder": {},
+            "customColorItems": [],
+            "nextPage": 0,
+            "totalPage": -1,
+            "wpExt": "png"
+        },
+        "searcher": {
+            "searchEngine": {
+                "custom": [],
+                "addList": [],
+                "current": {
+                    "name": "Bing",
+                    "uuid": "5a6afaa65c95a841f6149c4e1591a637",
+                    "logo": "https://infinity-permanent.infinitynewtab.com/infinity/search-add/bing_new.png",
+                    "desc": "Bing is a search engine developed by Microsoft",
+                    "types": [
+                        {
+                            "name": "Web",
+                            "url": "https://www.infinitynewtab.com/bing/?q="
+                        },
+                        {
+                            "name": "Images",
+                            "url": "https://www.bing.com/images/search?q="
+                        },
+                        {
+                            "name": "Video",
+                            "url": "https://www.bing.com/videos/search?q="
+                        },
+                        {
+                            "name": "Maps",
+                            "url": "https://www.bing.com/maps?q="
+                        }
+                    ]
+                },
+                "all": [
+                    {
+                        "name": "Bing",
+                        "uuid": "5a6afaa65c95a841f6149c4e1591a637",
+                        "logo": "https://infinity-permanent.infinitynewtab.com/infinity/search-add/bing_new.png",
+                        "desc": "Bing is a search engine developed by Microsoft",
+                        "types": [
+                            {
+                                "name": "Web",
+                                "url": "https://www.infinitynewtab.com/bing/?q="
+                            },
+                            {
+                                "name": "Images",
+                                "url": "https://www.bing.com/images/search?q="
+                            },
+                            {
+                                "name": "Video",
+                                "url": "https://www.bing.com/videos/search?q="
+                            },
+                            {
+                                "name": "Maps",
+                                "url": "https://www.bing.com/maps?q="
+                            }
+                        ],
+                        "updatetime": 0
+                    },
+                    {
+                        "name": "Google",
+                        "uuid": "a22dcc25c75de3f58cb518e32c576865",
+                        "logo": "https://infinity-permanent.infinitynewtab.com/infinity/search-add/google.png",
+                        "desc": "Google Search is a search engine developed by Google. It is the largest, most influential search engine on the internet",
+                        "types": [
+                            {
+                                "name": "Web",
+                                "url": "https://www.google.com/search?q="
+                            },
+                            {
+                                "name": "Images",
+                                "url": "https://www.google.com/search?tbm=isch&q="
+                            },
+                            {
+                                "name": "News",
+                                "url": "https://www.google.com/search?tbm=nws&q="
+                            },
+                            {
+                                "name": "Video",
+                                "url": "https://www.google.com/search?tbm=vid&q="
+                            },
+                            {
+                                "name": "Maps",
+                                "url": "https://www.google.com/maps/preview?q="
+                            }
+                        ],
+                        "updatetime": 0
+                    }
+                ]
+            }
+        },
+        "todo": {
+            "todoList": [
+                {
+                    "text": "Welcome to Infinity New Tab page. This is a sample to-do item.",
+                    "todoId": "todo-id1dtkk87it2iepal6dv4hr2uig0c",
+                    "time": 1719059185984,
+                    "updatetime": 0,
+                    "done": false
+                }
+            ]
+        },
+        "note": {
+            "list": [
+                {
+                    "title": "",
+                    "content": "",
+                    "time": 1719059185991,
+                    "id": "note-default-1ehj4oc7ubn8bgu9zb2spjip0vj",
+                    "updatetime": 0,
+                    "fontSize": 14
+                }
+            ],
+            "checkedId": "note-default-1ehj4oc7ubn8bgu9zb2spjip0vj"
+        },
+        "weather": {
+            "list": [
+                {
+                    "cid": "101070201",
+                    "updateTime": 1719060120000,
+                    "updateIntervalMills": 28800000,
+                    "items": [
+                        {
+                            "time": 1719014400000,
+                            "conditionCode": "101",
+                            "tmpMin": "20",
+                            "tmpMax": "26",
+                            "windScale": "3-4",
+                            "humidity": "92",
+                            "pressure": "993"
+                        },
+                        {
+                            "time": 1719100800000,
+                            "conditionCode": "101",
+                            "tmpMin": "20",
+                            "tmpMax": "28",
+                            "windScale": "4-5",
+                            "humidity": "74",
+                            "pressure": "1001"
+                        },
+                        {
+                            "time": 1719187200000,
+                            "conditionCode": "100",
+                            "tmpMin": "20",
+                            "tmpMax": "28",
+                            "windScale": "4-5",
+                            "humidity": "61",
+                            "pressure": "1006"
+                        },
+                        {
+                            "time": 1719273600000,
+                            "conditionCode": "100",
+                            "tmpMin": "21",
+                            "tmpMax": "30",
+                            "windScale": "3-4",
+                            "humidity": "60",
+                            "pressure": "1009"
+                        },
+                        {
+                            "time": 1719360000000,
+                            "conditionCode": "100",
+                            "tmpMin": "20",
+                            "tmpMax": "29",
+                            "windScale": "3-4",
+                            "humidity": "74",
+                            "pressure": "1007"
+                        },
+                        {
+                            "time": 1719446400000,
+                            "conditionCode": "101",
+                            "tmpMin": "20",
+                            "tmpMax": "28",
+                            "windScale": "3-4",
+                            "humidity": "79",
+                            "pressure": "1006"
+                        },
+                        {
+                            "time": 1719532800000,
+                            "conditionCode": "101",
+                            "tmpMin": "21",
+                            "tmpMax": "29",
+                            "windScale": "3-4",
+                            "humidity": "92",
+                            "pressure": "1004"
+                        }
+                    ],
+                    "name": "ShangHai"
+                }
+            ],
+            "unit": "celsius"
+        }
+    }
+}

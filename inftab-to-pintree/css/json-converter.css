@@ -1,0 +1,53 @@
+.status {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: none;
+  }
+  
+  #fileInputWrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    margin-bottom: 16px;
+    cursor: pointer;
+  }
+  
+  #fileInput {
+    display: none;
+  }
+  
+  #fileInputLabel {
+    gap: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 16px 24px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    outline: none;
+    background-color: #16a34a;
+    color: #ffffff;
+  }
+  
+  #fileInputLabel:hover {
+    background-color: #15803d;
+    color: #ffffff;
+  }
+  
+  #fileInputLabel:active {
+    background-color: #15803d;
+    color: #f3f4f6;
+  }
+  
+  #fileInputLabel:focus-visible {
+    outline: 2px solid #16a34a;
+    outline-offset: 2px;
+  }
+  
+  #dropZone.dragover {
+    background-color: #f3f4f6;
+  }

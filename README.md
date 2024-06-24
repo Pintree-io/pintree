@@ -12,3 +12,5 @@ An intuitive tool for managing and exporting your local bookmarks into a shareab
 下载转换完成的json文件，替换本项目目录下的json文件 '/json/pintree.json'
 ### Step 5:
 托管这个静态网站到Github或你自己的服务器即可。
+
+### 如果你对本项目感兴趣，可以添加我的微信: ```Gift_wei``` 我拉你进开发群

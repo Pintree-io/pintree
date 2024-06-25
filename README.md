@@ -1,6 +1,6 @@
 # pintree
 An intuitive tool for managing and exporting your local bookmarks into a shareable website. 
-[](/assets/wechat_group.png)
+[](https://pintree.io/assets/wechat_group.png)
 
 ## 本项目还没有正式发布，但是已经可以下载测试了，下面是一个简单的教程，按照下面流程操作即可
 ### Step 1：

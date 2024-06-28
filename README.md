@@ -1,4 +1,4 @@
-This is a fork reposity from Pintree-io/pintree
+# This is a fork reposity from Pintree-io/pintree
 # Pintree
 
 ## Project Features and Goals

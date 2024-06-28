@@ -1,6 +1,6 @@
 # Pintree
 
-Pintree 是一个开源项目，旨在将浏览器书签导出成导航网站。通过简单的几步操作，您可以将书签转换成一个美观且易用的导航页面。
+Pintree 是一个开源项目，旨在将浏览器书签导出成导航网站。通过简单的几步操作，就可以将书签转换成一个美观且易用的导航页面。
 
 ## 项目功能和目标
 
@@ -15,36 +15,41 @@ Pintree 是一个开源项目，旨在将浏览器书签导出成导航网站。
 
 ## 安装和运行
 
-请按照以下步骤操作：
+### 步骤 1：Fork 项目
 
-### Step 1: 下载项目
+在这个页面的右上角，点击 `Fork` 按钮，将项目 Fork 到您的 GitHub 账号中。
 
-将本项目克隆到本地：
-```bash
-git clone https://github.com/Pintree-io/pintree.git
-cd pintree
-```
+### 步骤 2：下载浏览器书签
 
-### Step 2: 下载浏览器书签
+1. 打开 Chrome 浏览器。
+2. 在地址栏输入 `chrome://bookmarks/` 并按回车键。
+3. 在页面右上角，点击三点菜单，选择 `导出书签`。
+4. 将书签文件保存到您的电脑上。
 
-在Chrome浏览器中输入 `chrome://bookmarks/`，导出书签为HTML文件。
+### 步骤 3：书签文件转换
 
-### Step 3: 书签文件转换
+1. 打开浏览器，访问 [Pintree JSON Converter](https://pintree.io/json-converter) 网站。
+2. 点击 `选择文件` 按钮，选择刚才保存的书签文件（HTML 格式）。
+3. 点击 `转换` 按钮，网站会自动将书签文件转换为 JSON 格式。
+4. 转换完成后，点击 `下载 JSON 文件`，将转换后的文件下载到您的电脑上。
 
-前往 [Pintree JSON Converter](https://pintree.io/json-converter) 网站，将下载的HTML书签文件转换成JSON格式。
+### 步骤 4：替换 JSON 文件
 
-### Step 4: 替换JSON文件
+1. 打开您的 GitHub 账号中的 `pintree` 仓库（即刚才 Fork 的项目）。
+2. 点击仓库中的 `json` 文件夹。
+3. 点击 `Upload files` 按钮，选择刚才下载的 JSON 文件，并上传。
+4. 确保上传的文件命名为 `pintree.json`，并选择 `Commit changes`。
 
-将转换完成的JSON文件下载下来，替换项目目录中的 `/json/pintree.json` 文件。
+### 步骤 5：启用 GitHub Pages
 
-### Step 5: 托管静态网站
+1. 在您的 `pintree` 仓库页面，点击 `Settings`。
+2. 找到 `Pages` 选项。
+3. 在 `Source` 下拉菜单中，选择 `gh-pages` 分支，然后点击 `Save`。
+4. 几分钟后，您的静态网站将会在 `https://yourusername.github.io/pintree` 上可用。记得替换`yourusername`
 
-您可以选择将此静态网站托管到GitHub Pages或您的服务器上。以下是托管到GitHub Pages的简单步骤：
+---
 
-1. 创建一个新的GitHub仓库。
-2. 将项目文件推送到GitHub仓库。
-3. 在GitHub仓库设置中启用GitHub Pages，选择`main`分支作为来源。
-
+通过以上步骤，您已经成功完成了 Pintree 项目的安装和运行。如果有任何问题，可以加群获取更多帮助。
 ## 使用技术
 
 - HTML/CSS/JavaScript
@@ -70,4 +75,4 @@ cd pintree
 - Email: viggo.zw@gmail.com
 - 微信：```Gift_wei```
 
-感谢您的使用和支持！
+感谢使用和支持！

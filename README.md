@@ -10,9 +10,6 @@ Pintree is an open-source project aimed at exporting browser bookmarks into a na
 - Convert bookmark files to JSON format
 - Generate a static navigation website
 
-#### If you are interested in this project, you can scan the QR code to join the group, or add my WeChat: ```Gift_wei```, and I will invite you to the development group.
-![](https://github.com/Pintree-io/pintree/blob/main/assets/wechat_group.png)
-
 This project is not officially released yet but is available for testing. Here is a simple tutorial; follow the steps below to get started.
 
 ## Installation and Usage

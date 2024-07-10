@@ -16,13 +16,13 @@ Pintree is an open-source project that aims to convert browser bookmarks into a 
 
 1. Install the [Pintree Bookmarks Exporter](https://chromewebstore.google.com/detail/pintree-bookmarks-exporte/mjcglnkikjidokobpfdcdmcnfdicojce) extension.
 2. Use the extension to export browser bookmarks and save the JSON file locally.
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step1.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step1.png)
 
 ### Step 2: Fork the Project
 
 1. Visit the [Pintree GitHub repository](https://github.com/Pintree-io/pintree).
 2. Click the `Fork` button in the upper right corner of the page to fork the project to your GitHub account.
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step2.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step2.png)
 
 ### Step 3: Replace the JSON File
 
@@ -30,7 +30,7 @@ Pintree is an open-source project that aims to convert browser bookmarks into a 
 2. Click on the `json` folder in the repository.
 3. Click the `Upload files` button, select the JSON file you downloaded earlier, and upload it.
 4. Make sure the uploaded file is named `pintree.json`, and select `Commit changes`.
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step3.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step3.png)
 
 ### Step 4: Enable GitHub Pages
 
@@ -38,7 +38,7 @@ Pintree is an open-source project that aims to convert browser bookmarks into a 
 2. Find the `Pages` option.
 3. In the `Source` dropdown menu, select the `gh-pages` branch and click `Save`.
 4. After a few minutes, your static website will be available at `https://yourusername.github.io/pintree`. Remember to replace `yourusername`.
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step4.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step4.png)
 
 ---
 

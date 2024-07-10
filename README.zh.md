@@ -16,13 +16,13 @@ Pintree 是一个开源项目，旨在将浏览器书签导出成导航网站。
 
 1. 安装 [Pintree Bookmarks Exporter](https://chromewebstore.google.com/detail/pintree-bookmarks-exporte/mjcglnkikjidokobpfdcdmcnfdicojce) 插件。
 2. 使用插件导出浏览器书签，并保存 JSON 文件到本地。
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step1.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step1.png)
 
 ### 步骤 2：Fork 项目
 
 1. 访问 [Pintree GitHub 仓库](https://github.com/Pintree-io/pintree)。
 2. 点击页面右上角的 `Fork` 按钮，将项目 Fork 到您的 GitHub 账号中。
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step2.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step2.png)
 
 ### 步骤 3：替换 JSON 文件
 
@@ -30,7 +30,7 @@ Pintree 是一个开源项目，旨在将浏览器书签导出成导航网站。
 2. 点击仓库中的 `json` 文件夹。
 3. 点击 `Upload files` 按钮，选择刚才下载的 JSON 文件，并上传。
 4. 确保上传的文件命名为 `pintree.json`，并选择 `Commit changes`。
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step3.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step3.png)
 
 ### 步骤 4：启用 GitHub Pages
 
@@ -38,7 +38,7 @@ Pintree 是一个开源项目，旨在将浏览器书签导出成导航网站。
 2. 找到 `Pages` 选项。
 3. 在 `Source` 下拉菜单中，选择 `gh-pages` 分支，然后点击 `Save`。
 4. 几分钟后，您的静态网站将会在 `https://yourusername.github.io/pintree` 上可用。记得替换 `yourusername`。
-![](https://github.com/Pintree-io/pintree/blob/main/assets/step4.png)
+![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step4.png)
 
 ---
 

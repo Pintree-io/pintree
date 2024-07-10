@@ -44,12 +44,6 @@ Pintree is an open-source project that aims to convert browser bookmarks into a 
 
 ![](https://github.com/Pintree-io/pintree/blob/main/assets/guide/step4.png)
 
----
-
-By following the above steps, you have successfully installed and run the Pintree project. If you have any questions, you can join the group for more help or add me on WeChat: `Gift_wei` and I'll add you to the group.
-
-![](https://github.com/Pintree-io/pintree/blob/main/assets/wechat_group.png)
-
 ## Technologies Used
 
 - HTML/CSS/JavaScript

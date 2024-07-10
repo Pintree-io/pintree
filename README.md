@@ -73,6 +73,5 @@ Please note that the `main` branch is the source code branch of the project, whi
 If you have any questions or suggestions, please contact us through the following ways:
 - Project website: [Pintree](https://pintree.io/)
 - Email: viggo.zw@gmail.com
-- WeChat: `Gift_wei`
 
 Thank you for using and supporting Pintree!

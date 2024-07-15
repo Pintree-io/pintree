@@ -12,7 +12,14 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.pintree.io">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="60283522-e543-4dcb-bd47-e855f1e0a635"></script>
-
+  <script defer data-domain="pintree.io" src="https://plausible.io/js/script.js"></script>
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "n75ecz0sud");
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-P1JF3QTQ79"></script>
   <script>
@@ -165,6 +172,9 @@
 
       <!-- Main content area -->
       <main class="mt-4 dark:bg-gray-900 flex-grow">
+        <div id="loading-spinner" class="flex justify-center items-center h-full">
+          <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-400 h-6 w-6"></div>
+        </div>
         <div id="breadcrumbs" class="mt-2 px-6 text-sm text-gray-400 flex justify-between items-center">
           <div id="breadcrumbs-path" class="">
             <!-- Breadcrumbs will be inserted here -->
@@ -647,6 +657,35 @@
         applyDarkTheme();
       }
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fetch and render data
+      fetch('json/pintree.json')
+        .then(response => response.json())
+        .then(data => {
+          // Hide loading spinner
+          document.getElementById('loading-spinner').style.display = 'none';
+
+          // Use the first layer of the data directly
+          const firstLayer = data;
+          // Render navigation using the first layer of data
+          renderNavigation(firstLayer, document.getElementById('navigation'), true);
+          // Render bookmarks using the first layer of data, starting from the Bookmark
+          renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
+
+          // Automatically select and show the first item
+          if (firstLayer.length > 0) {
+            const firstItem = firstLayer[0];
+            updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
+            renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
+          }
+        })
+        .catch(error => {
+          console.error('Error loading bookmarks:', error);
+          // Optionally hide the spinner and show an error message
+          document.getElementById('loading-spinner').style.display = 'none';
+        });
+    });
 
     // Event listener for theme toggle button
     themeToggleButton.addEventListener('click', toggleTheme);

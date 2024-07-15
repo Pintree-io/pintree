@@ -656,23 +656,49 @@
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
 
-    // Function to toggle dark/light mode
+    // Functions to apply dark/light theme
+    function applyDarkTheme() {
+      document.documentElement.classList.add('dark');
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
+    
+    function applyLightTheme() {
+      document.documentElement.classList.remove('dark');
+      sunIcon.classList.remove('hidden');
+      moonIcon.classList.add('hidden');
+    }
+
+    // Function to toggle dark/light theme
     function toggleTheme() {
       if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
+        applyLightTheme()
       } else {
-        document.documentElement.classList.add('dark');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
+        applyDarkTheme()
       }
     }
 
     // Event listener for the theme toggle button
     themeToggleButton.addEventListener('click', toggleTheme);
 
+    // Automatically apply theme according to system theme settings 
+    function applyColorTheme(theme) {
+      if (theme === 'dark') {
+        applyDarkTheme()
+      } else {
+        applyLightTheme()
+      }
+    }
 
+    // Detect initial color theme
+    const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyColorTheme(prefersDarkTheme ? 'dark' : 'light');
+
+    // Listen for changes in the color thheme
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+      applyColorTheme(event.matches ? 'dark' : 'light');
+    });
+    
     // 打开mobile菜单
     document.getElementById('open-sidebar-button').addEventListener('click', function () {
       var navigation = document.getElementById('navigation').cloneNode(true);

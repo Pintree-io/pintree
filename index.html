@@ -532,12 +532,12 @@
       icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />';
 
       const title = document.createElement('h2');
-      title.className = 'text-xl font-semibold mt-4';
-      title.innerText = 'No Results Found';
+      title.className = 'text-gray-500 text-xl font-semibold mt-4';
+      title.innerText = 'Oops, Nothing to See Here!';
 
       const message = document.createElement('p');
       message.className = 'text-gray-500 mt-2';
-      message.innerText = 'Please try a different search term or check back later.';
+      message.innerText = 'Try another search or discover more cool stuff elsewhere!';
 
       messageContainer.appendChild(icon);
       messageContainer.appendChild(title);

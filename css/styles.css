@@ -7,8 +7,8 @@
   color: rgba(11, 166, 101, var(--tw-text-opacity)) 
 }
 .dark{
-    --tw-bg-opacity: 1;
-    background-color: rgba(17, 24, 39, var(--tw-bg-opacity))
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 20 24 / var(--tw-bg-opacity));
 }
 .sidebar-active {
     --tw-bg-opacity: 0.2;
@@ -123,5 +123,105 @@
     ry: 13;
     y: 0; height:80;
     transform: skewY(0deg) scaleY(0.6);
+  }
+
+  .loader {
+    border-top-color: #0BA665; /* You can change this color as needed */
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.card-icon-bg{
+  background-color: rgb(129 132 138 / 10%);
+}
+
+
+  .dark\:pintree-bg-gray-900:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-bg-gray-800:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-bg-gray-700:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-bg-gray-600:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(45 49 57 / var(--tw-bg-opacity));
+  }
+
+
+  .dark\:hover\:pintree-bg-gray-900:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:hover\:pintree-bg-gray-800:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:hover\:pintree-bg-gray-700:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:hover\:pintree-bg-gray-600:hover:is(.dark *) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(45 49 57 / var(--tw-bg-opacity));
+  }
+
+
+  .dark\:pintree-border-gray-900:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-border-gray-800:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-border-gray-700:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-border-gray-600:is(.dark *) {
+    --tw-bg-opacity: 1;
+    border-color: rgb(45 49 57 / var(--tw-bg-opacity));
+  }
+
+
+  .dark\:pintree-ring-gray-900:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(17 20 24 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-ring-gray-800:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(34 37 42 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-ring-gray-700:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(39 42 48 / var(--tw-bg-opacity));
+  }
+  .dark\:pintree-ring-gray-600:is(.dark *) {
+    --tw-bg-opacity: 1;
+    --tw-ring-color: rgb(45 49 57 / var(--tw-bg-opacity));
   }
 

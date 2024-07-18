@@ -1,0 +1,1815 @@
+[
+  {
+    "type": "folder",
+    "addDate": 1701493222055,
+    "title": "书签栏",
+    "children": [
+      {
+        "type": "link",
+        "addDate": 1633365619005,
+        "title": "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili",
+        "icon": "https://logo.clearbit.com/www.bilibili.com",
+        "url": "https://www.bilibili.com/"
+      },
+      {
+        "type": "folder",
+        "addDate": 1666313776979,
+        "title": "顶点",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1665299467656,
+            "title": "apexinfo wiki",
+            "icon": "https://logo.clearbit.com/wiki.livebos.com",
+            "url": "https://wiki.livebos.com/welcome.do#"
+          },
+          {
+            "type": "link",
+            "addDate": 1678275628744,
+            "title": "顶点信息知识中心 - Powered by MinDoc",
+            "icon": "https://logo.clearbit.com/218.66.59.169",
+            "url": "http://218.66.59.169:2481/"
+          },
+          {
+            "type": "link",
+            "addDate": 1679017050049,
+            "title": "顶点软件邮件系统 | Apexsoft Mail Server",
+            "icon": "https://logo.clearbit.com/mail.apexsoft.com.cn",
+            "url": "https://mail.apexsoft.com.cn/index.php?"
+          },
+          {
+            "type": "link",
+            "addDate": 1638946089843,
+            "title": "顶点综合管理平台",
+            "icon": "https://logo.clearbit.com/imp.apexinfo.com.cn",
+            "url": "http://imp.apexinfo.com.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1639010766697,
+            "title": "顶点管理信息系统",
+            "icon": "https://logo.clearbit.com/360f.apexsoft.com.cn",
+            "url": "https://360f.apexsoft.com.cn/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1644887464227,
+        "title": "外采",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1644887452495,
+            "title": "中海油测试环境",
+            "icon": "https://logo.clearbit.com/user.dev.srms-dice.cnooc",
+            "url": "http://user.dev.srms-dice.cnooc/"
+          },
+          {
+            "type": "link",
+            "addDate": 1644887562189,
+            "title": "中海油正式",
+            "icon": "https://logo.clearbit.com/web.srms.cnooc.com.cn",
+            "url": "https://web.srms.cnooc.com.cn/welcome.do"
+          },
+          {
+            "type": "link",
+            "addDate": 1644890751784,
+            "title": "代码仓库",
+            "icon": "https://logo.clearbit.com/cnooc-ol-purchase-org.app-dice.cnooc",
+            "url": "http://cnooc-ol-purchase-org.app-dice.cnooc/cnooc-ol-purchase"
+          },
+          {
+            "type": "link",
+            "addDate": 1659084934198,
+            "title": "localhost:8080/login.do",
+            "icon": "https://logo.clearbit.com/localhost",
+            "url": "http://localhost:8080/login.do"
+          },
+          {
+            "type": "link",
+            "addDate": 1669985286942,
+            "title": "中海炼化销售资源管理系统[开发模式]-同步电商物料记录",
+            "icon": "https://logo.clearbit.com/web.srms.cnooc.com.cn",
+            "url": "https://web.srms.cnooc.com.cn/UIProcessor?Table=T_SRM_SynECSMaterial"
+          },
+          {
+            "type": "link",
+            "addDate": 1670001799027,
+            "title": "中海炼化销售资源管理系统[开发模式]-物流运单同步记录",
+            "icon": "https://logo.clearbit.com/web.srms.cnooc.com.cn",
+            "url": "https://web.srms.cnooc.com.cn/UIProcessor?Table=T_SRM_TransportRecord"
+          },
+          {
+            "type": "link",
+            "addDate": 1670220173702,
+            "title": "中海炼化销售资源管理系统[开发模式]-测试微服务",
+            "icon": "https://logo.clearbit.com/wx.srms.cnooc.com.cn",
+            "url": "https://wx.srms.cnooc.com.cn/UIProcessor?Table=Entity_Cswfw"
+          },
+          {
+            "type": "link",
+            "addDate": 1686557165236,
+            "title": "生产堡垒",
+            "icon": "https://logo.clearbit.com/10.72.232.42",
+            "url": "https://10.72.232.42/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1646012827979,
+        "title": "一体化报表",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1646010218203,
+            "title": "首页 - ECharts Demo集,echarts gallery社区,Make A Pie,分享你的可视化作品isqqw.com",
+            "icon": "https://logo.clearbit.com/www.isqqw.com",
+            "url": "https://www.isqqw.com/#/homepage"
+          },
+          {
+            "type": "link",
+            "addDate": 1646027730445,
+            "title": "进销存一体化报表开发环境",
+            "icon": "https://logo.clearbit.com/10.72.230.144",
+            "url": "http://10.72.230.144/welcome.do"
+          },
+          {
+            "type": "link",
+            "addDate": 1646027829298,
+            "title": "进销存一体化报表生产环境",
+            "icon": "https://logo.clearbit.com/10.72.232.215",
+            "url": "http://10.72.232.215/welcome.do"
+          },
+          {
+            "type": "link",
+            "addDate": 1646271030379,
+            "title": "卖家端-海油商城",
+            "icon": "https://logo.clearbit.com/seller.staging.cnoocmall.com",
+            "url": "https://seller.staging.cnoocmall.com/marketingPlanList"
+          },
+          {
+            "type": "link",
+            "addDate": 1646271033857,
+            "title": "中国海油物流管理系统",
+            "icon": "https://logo.clearbit.com/wuliu-uat.staging.cnoocmall.com",
+            "url": "https://wuliu-uat.staging.cnoocmall.com/scm/"
+          },
+          {
+            "type": "link",
+            "addDate": 1652075404744,
+            "title": "FineReport10.0插件开发文档V2 - 插件文档 - 开发帮助中心",
+            "icon": "https://logo.clearbit.com/wiki.fanruan.com",
+            "url": "https://wiki.fanruan.com/pages/viewpage.action?pageId=53123961"
+          },
+          {
+            "type": "link",
+            "addDate": 1669882972848,
+            "title": "account.res.alicloudin.cnooc",
+            "icon": "https://logo.clearbit.com/dataphin.cn-beijing-zhynwpt-d01.res.alicloudin.cnooc",
+            "url": "https://dataphin.cn-beijing-zhynwpt-d01.res.alicloudin.cnooc/"
+          },
+          {
+            "type": "link",
+            "addDate": 1671005782538,
+            "title": "dataphin",
+            "icon": "https://logo.clearbit.com/one.console.res.alicloudin.cnooc",
+            "url": "https://one.console.res.alicloudin.cnooc/ascm/login?oauth_callback=http%3A%2F%2Fdataphin.cn-beijing-zhynwpt-d01.res.alicloudin.cnooc%2F"
+          },
+          {
+            "type": "link",
+            "addDate": 1671022695021,
+            "title": "修改密码 - 中国海油AD账号自助服务平台",
+            "icon": "https://logo.clearbit.com/ad.cnooc.com.cn",
+            "url": "https://ad.cnooc.com.cn/ChangePwd.aspx"
+          },
+          {
+            "type": "link",
+            "addDate": 1683538680081,
+            "title": "云平台",
+            "icon": "https://logo.clearbit.com/one.console.res.alicloud.cnooc",
+            "url": "https://one.console.res.alicloud.cnooc/ascm/login?oauth_callback=https%3A%2F%2Fasc.res.alicloud.cnooc%2Fmodule%2Fworkbench#/"
+          },
+          {
+            "type": "link",
+            "addDate": 1692345213214,
+            "title": "数据中台模型 -一体化报表v2",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/sheet/DQnVncXVBTXFOT2tK?scene=f6bcee36763a7f1b3f7c8c26SUamn1&_t=1650889360497&tab=BB08JB"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1662709002475,
+        "title": "服务器",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1637202715702,
+            "title": "后台管理地址",
+            "icon": "https://logo.clearbit.com/120.26.88.109",
+            "url": "http://120.26.88.109/bms"
+          },
+          {
+            "type": "link",
+            "addDate": 1638252799960,
+            "title": "gateterminalvue",
+            "icon": "https://logo.clearbit.com/121.196.222.189",
+            "url": "https://121.196.222.189/gate/#/index"
+          },
+          {
+            "type": "link",
+            "addDate": 1637515334284,
+            "title": "自助终端",
+            "icon": "https://logo.clearbit.com/120.26.88.109",
+            "url": "http://120.26.88.109/selfpay/#/vehicleselect"
+          },
+          {
+            "type": "link",
+            "addDate": 1663156251807,
+            "title": "LKs - 良心到难以置信的网站推荐",
+            "icon": "https://logo.clearbit.com/lkssite.vip",
+            "url": "https://lkssite.vip/"
+          },
+          {
+            "type": "link",
+            "addDate": 1677401324740,
+            "title": "memos",
+            "icon": "https://logo.clearbit.com/120.26.88.109",
+            "url": "http://120.26.88.109:5230/"
+          },
+          {
+            "type": "link",
+            "addDate": 1677407892694,
+            "title": "小众软件 - 分享免费、小巧、实用、有趣、绿色的软件",
+            "icon": "https://logo.clearbit.com/www.appinn.com",
+            "url": "https://www.appinn.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1677478653506,
+            "title": "WizNote",
+            "icon": "https://logo.clearbit.com/120.26.88.109",
+            "url": "http://120.26.88.109/"
+          },
+          {
+            "type": "link",
+            "addDate": 1635488548061,
+            "title": "云服务器管理控制台",
+            "icon": "https://logo.clearbit.com/ecs.console.aliyun.com",
+            "url": "https://ecs.console.aliyun.com/?spm=5176.12818093.ProductAndService--ali--widget-home-product-recent.dre0.724e16d0ZKEZtL#/home"
+          },
+          {
+            "type": "link",
+            "addDate": 1708656244180,
+            "title": "宝塔Linux面板",
+            "icon": "https://logo.clearbit.com/120.26.88.109",
+            "url": "https://120.26.88.109:22014/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1666313790559,
+        "title": "顶点开发组",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1672050955452,
+            "title": "陈鸿锐（开发组(企)(信息)） · GitLab",
+            "icon": "https://logo.clearbit.com/git.apexsoft.com.cn",
+            "url": "http://git.apexsoft.com.cn/chenhongrui"
+          },
+          {
+            "type": "link",
+            "addDate": 1672126859686,
+            "title": "Livecloud私有库",
+            "icon": "https://logo.clearbit.com/192.168.43.54",
+            "url": "http://192.168.43.54:8081/"
+          },
+          {
+            "type": "link",
+            "addDate": 1672247839308,
+            "title": "UReport2 报表存储与数据源配置_w3cschool",
+            "icon": "https://logo.clearbit.com/www.w3cschool.cn",
+            "url": "https://www.w3cschool.cn/ureport/ureport-vpna2h8m.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1672560998446,
+            "title": "Project（凤凰版） / 中海油 / 总院CYD / Custompage · GitLab",
+            "icon": "https://logo.clearbit.com/27.151.72.171",
+            "url": "http://27.151.72.171:15525/project/zhy/cyd/custompage"
+          },
+          {
+            "type": "link",
+            "addDate": 1676292545596,
+            "title": "日志",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/sheet/DVkNORllnVFNIQ0RE?tab=mytvap&viewId=vdkPmi"
+          },
+          {
+            "type": "link",
+            "addDate": 1676292540419,
+            "title": "日常事务文档存放",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/doc/DVnlIZkNFakJwY1dB?groupUin=zWeJrwbQHDk0FxlLuw0WKg%253D%253D&ADUIN=1220289714&ADSESSION=1676286404&ADTAG=CLIENT.QQ.5953_.0&ADPUBNO=27283&jumpuin=1220289714"
+          },
+          {
+            "type": "link",
+            "addDate": 1677413115581,
+            "title": "定制开发组 / 代码审核记录 / 2023年定制开发组代码审核日志 · GitLab",
+            "icon": "https://logo.clearbit.com/27.151.72.171",
+            "url": "http://27.151.72.171:15525/product_dev_wiki/check_logs/2023"
+          },
+          {
+            "type": "link",
+            "addDate": 1679885052692,
+            "title": "Index of /Tomcat_native",
+            "icon": "https://logo.clearbit.com/192.168.40.29",
+            "url": "http://192.168.40.29/Tomcat_native/"
+          },
+          {
+            "type": "link",
+            "addDate": 1692068661868,
+            "title": "总院CYD · GitLab",
+            "icon": "https://logo.clearbit.com/192.168.43.54",
+            "url": "http://192.168.43.54:9009/project/zhy/cyd"
+          },
+          {
+            "type": "link",
+            "addDate": 1692264761096,
+            "title": "组织过程管理资产库: / - VisualSVN Server",
+            "icon": "https://logo.clearbit.com/192.168.40.248",
+            "url": "http://192.168.40.248:55555/svn/%e7%bb%84%e7%bb%87%e8%bf%87%e7%a8%8b%e7%ae%a1%e7%90%86%e8%b5%84%e4%ba%a7%e5%ba%93/"
+          },
+          {
+            "type": "link",
+            "addDate": 1714016861286,
+            "title": "设计中报表-ureport",
+            "icon": "https://logo.clearbit.com/localhost",
+            "url": "http://localhost:8080/dev/ureport/preview?_u=p"
+          },
+          {
+            "type": "link",
+            "addDate": 1715248413777,
+            "title": "顶点灵动云平台[开发模式]",
+            "icon": "https://logo.clearbit.com/localhost",
+            "url": "http://localhost:8166/dev/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1668491780601,
+        "title": "资源",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1667666470108,
+            "title": "晨钟网络科技 - 致力于开发小众实用软件",
+            "icon": "https://logo.clearbit.com/www.jamcz.com",
+            "url": "https://www.jamcz.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1668858908943,
+            "title": "主页 | Appek云盘",
+            "icon": "https://logo.clearbit.com/pan.appek.ml",
+            "url": "https://pan.appek.ml/"
+          },
+          {
+            "type": "link",
+            "addDate": 1668875827158,
+            "title": "一网一匠极速版 - 一起发现有趣的新产品",
+            "icon": "https://logo.clearbit.com/ywyj.cn",
+            "url": "https://ywyj.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1671351609051,
+            "title": "iconfont-阿里巴巴矢量图标库",
+            "icon": "https://logo.clearbit.com/www.iconfont.cn",
+            "url": "https://www.iconfont.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1672544090359,
+            "title": "byrut",
+            "icon": "https://logo.clearbit.com/byrut.org",
+            "url": "https://byrut.org/"
+          },
+          {
+            "type": "link",
+            "addDate": 1672710737330,
+            "title": "HelloGitHub",
+            "icon": "https://logo.clearbit.com/hellogithub.com",
+            "url": "https://hellogithub.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1672928852075,
+            "title": "Maven Repository: org.apache.calcite » calcite-core » 1.32.0",
+            "icon": "https://logo.clearbit.com/mvnrepository.com",
+            "url": "https://mvnrepository.com/artifact/org.apache.calcite/calcite-core/1.32.0"
+          },
+          {
+            "type": "link",
+            "addDate": 1673923450505,
+            "title": "The Algorithms",
+            "icon": "https://logo.clearbit.com/the-algorithms.com",
+            "url": "https://the-algorithms.com/zh_Hans?continueFlag=e0306de96aca1e764015aadab8a7b03e"
+          },
+          {
+            "type": "link",
+            "addDate": 1673944091791,
+            "title": "来大疆官网体验无人机飞行",
+            "icon": "https://logo.clearbit.com/start.dji.com",
+            "url": "https://start.dji.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1676364715475,
+            "title": "硬件开发设计方案共享平台 - 硬创社",
+            "icon": "https://logo.clearbit.com/x.jlc.com",
+            "url": "https://x.jlc.com/platform/categoryPreview?projectType=all"
+          },
+          {
+            "type": "link",
+            "addDate": 1676423330302,
+            "title": "AwA | HANDSOME-CSS3-LIB",
+            "icon": "https://logo.clearbit.com/www.handsome-css.com",
+            "url": "https://www.handsome-css.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1676942884864,
+            "title": "Spring Boot 中文导航",
+            "icon": "https://logo.clearbit.com/springboot.fun",
+            "url": "http://springboot.fun/"
+          },
+          {
+            "type": "link",
+            "addDate": 1676942900288,
+            "title": "Web前端导航",
+            "icon": "https://logo.clearbit.com/www.alloyteam.com",
+            "url": "http://www.alloyteam.com/nav/"
+          },
+          {
+            "type": "link",
+            "addDate": 1676942919126,
+            "title": "bugstack 虫洞栈",
+            "icon": "https://logo.clearbit.com/bugstack.cn",
+            "url": "https://bugstack.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1676942931128,
+            "title": "首页 - 廖雪峰的官方网站",
+            "icon": "https://logo.clearbit.com/www.liaoxuefeng.com",
+            "url": "https://www.liaoxuefeng.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1677029198087,
+            "title": "ChatGPT 应用汇总及操作手册",
+            "icon": "https://logo.clearbit.com/www.mojidoc.com",
+            "url": "https://www.mojidoc.com/05dbc-uvhdkr22fjazlowmiihngdoxvq-00b?continueFlag=8f75ea3c60f02d7aee7fc531bc0ee944"
+          },
+          {
+            "type": "link",
+            "addDate": 1677812944852,
+            "title": "哔哩哔哩 · 视频内容一键总结",
+            "icon": "https://logo.clearbit.com/b.jimmylv.cn",
+            "url": "https://b.jimmylv.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1678418632881,
+            "title": "ChatPDF - Chat with any PDF!",
+            "icon": "https://logo.clearbit.com/www.chatpdf.com",
+            "url": "https://www.chatpdf.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1678436377793,
+            "title": "一切和隐私相关的——PrivacysClub |",
+            "icon": "https://logo.clearbit.com/www.privacys.club",
+            "url": "https://www.privacys.club/"
+          },
+          {
+            "type": "link",
+            "addDate": 1694767771196,
+            "title": "pub-OpenBSD-OpenSSH安装包下载_开源镜像站-阿里云",
+            "icon": "https://logo.clearbit.com/mirrors.aliyun.com",
+            "url": "https://mirrors.aliyun.com/pub/OpenBSD/OpenSSH/"
+          },
+          {
+            "type": "link",
+            "addDate": 1698160149349,
+            "title": "Azgaar的奇幻地图生成器 v1.93.04",
+            "icon": "https://logo.clearbit.com/www.8desk.top",
+            "url": "https://www.8desk.top/"
+          },
+          {
+            "type": "link",
+            "addDate": 1698806651068,
+            "title": "阿水AI6.0",
+            "icon": "https://logo.clearbit.com/ai.xiabb.chat",
+            "url": "https://ai.xiabb.chat/home"
+          },
+          {
+            "type": "link",
+            "addDate": 1698972201470,
+            "title": "Light2f",
+            "icon": "https://logo.clearbit.com/light2f.com",
+            "url": "https://light2f.com/#/home"
+          },
+          {
+            "type": "link",
+            "addDate": 1700155402991,
+            "title": "ChatGPT",
+            "icon": "https://logo.clearbit.com/chat.openai.com",
+            "url": "https://chat.openai.com/?model=gpt-4-gizmo"
+          },
+          {
+            "type": "link",
+            "addDate": 1700726344823,
+            "title": "Ureport2源码修改：增加自定义功能",
+            "icon": "https://logo.clearbit.com/www.taodudu.cc",
+            "url": "http://www.taodudu.cc/news/show-5653156.html?action=onClick"
+          },
+          {
+            "type": "link",
+            "addDate": 1704176859241,
+            "title": "MyLens",
+            "icon": "https://logo.clearbit.com/mylens.ai",
+            "url": "https://mylens.ai/"
+          },
+          {
+            "type": "link",
+            "addDate": 1704176897393,
+            "title": "ahhhhfs - A姐分享",
+            "icon": "https://logo.clearbit.com/www.ahhhhfs.com",
+            "url": "https://www.ahhhhfs.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1704177980237,
+            "title": "探险家 (ISFP性格) | 16Personalities",
+            "icon": "https://logo.clearbit.com/www.16personalities.com",
+            "url": "https://www.16personalities.com/ch/isfp-%E4%BA%BA%E6%A0%BC"
+          },
+          {
+            "type": "link",
+            "addDate": 1704262442201,
+            "title": "亚数信息-SSL/TLS安全评估报告",
+            "icon": "https://logo.clearbit.com/myssl.com",
+            "url": "https://myssl.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1706802544162,
+            "title": "小纸条-开放纯粹的资源网站",
+            "icon": "https://logo.clearbit.com/ali.gitcafe.ink",
+            "url": "https://ali.gitcafe.ink/"
+          },
+          {
+            "type": "link",
+            "addDate": 1707273991923,
+            "title": "隐私搜索引擎 - LosePrivacy隐私查询器",
+            "icon": "https://logo.clearbit.com/loseprivacy.net",
+            "url": "https://loseprivacy.net/"
+          },
+          {
+            "type": "link",
+            "addDate": 1708522945225,
+            "title": "ChatGPT复现之路",
+            "icon": "https://logo.clearbit.com/wqw547243068.github.io",
+            "url": "https://wqw547243068.github.io/chatgpt_mimic?continueFlag=0f16784ef05858f8a8c9bb89af3b1ea7"
+          },
+          {
+            "type": "link",
+            "addDate": 1709809743936,
+            "title": "Vue Flow",
+            "icon": "https://logo.clearbit.com/vueflow.dev",
+            "url": "https://vueflow.dev/"
+          },
+          {
+            "type": "link",
+            "addDate": 1709869404951,
+            "title": "vfox | 跨平台、可拓展的版本管理器",
+            "icon": "https://logo.clearbit.com/vfox.lhan.me",
+            "url": "https://vfox.lhan.me/zh-hans/"
+          },
+          {
+            "type": "link",
+            "addDate": 1709892043826,
+            "title": "【这就是ChatGPT】了解原理让大语言模型AI成为你的打工人—慢慢学AI006 | AIMeticulously",
+            "icon": "https://logo.clearbit.com/www.iaiuse.com",
+            "url": "https://www.iaiuse.com/posts/508a6067.html?continueFlag=6d5aa03a22e3c03865a1f8b35dea16cf"
+          },
+          {
+            "type": "link",
+            "addDate": 1709892837117,
+            "title": "PDF转Word在线免费 - PDF怎么转换成Word - PDF派转换器在线免费版",
+            "icon": "https://logo.clearbit.com/www.pdfpai.com",
+            "url": "https://www.pdfpai.com/pdf-to-word"
+          },
+          {
+            "type": "link",
+            "addDate": 1710327206785,
+            "title": "lofi.cafe - lofi music 🎧",
+            "icon": "https://logo.clearbit.com/www.lofi.cafe",
+            "url": "https://www.lofi.cafe/"
+          },
+          {
+            "type": "link",
+            "addDate": 1715952574344,
+            "title": "catcharactor",
+            "icon": "https://logo.clearbit.com/150.158.78.78",
+            "url": "http://150.158.78.78:21422/#/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1666314199410,
+        "title": "技术",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1665726942019,
+            "title": "kkFileView - 在线文件预览",
+            "icon": "https://logo.clearbit.com/kkfileview.keking.cn",
+            "url": "https://kkfileview.keking.cn/zh-cn/index.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1675933733269,
+            "title": "Spring Bean的生命周期（非常详细） - Chandler Qian - 博客园",
+            "icon": "https://logo.clearbit.com/www.cnblogs.com",
+            "url": "https://www.cnblogs.com/zrtqsk/p/3735273.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1667491705332,
+            "title": "GoView 说明文档",
+            "icon": "https://logo.clearbit.com/www.mtruning.club",
+            "url": "https://www.mtruning.club/framework/start/introduction.html#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81"
+          },
+          {
+            "type": "link",
+            "addDate": 1668435120149,
+            "title": "Linux命令搜索引擎 命令，Linux Linux命令搜索引擎 命令详解：最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。 - Linux 命令搜索引擎",
+            "icon": "https://logo.clearbit.com/wangchujiang.com",
+            "url": "https://wangchujiang.com/linux-command/"
+          },
+          {
+            "type": "link",
+            "addDate": 1668482725783,
+            "title": "Express - 基于 Node.js 平台的 web 应用开发框架 - Express 中文文档 | Express 中文网",
+            "icon": "https://logo.clearbit.com/www.expressjs.com.cn",
+            "url": "https://www.expressjs.com.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1668493718735,
+            "title": "Next.js - React 应用开发框架 | Next.js中文网",
+            "icon": "https://logo.clearbit.com/www.nextjs.cn",
+            "url": "https://www.nextjs.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1668497153511,
+            "title": "Learn Git Branching",
+            "icon": "https://logo.clearbit.com/learngitbranching.js.org",
+            "url": "https://learngitbranching.js.org/?locale=zh_CN"
+          },
+          {
+            "type": "link",
+            "addDate": 1668665928922,
+            "title": "快速上手 - Handbook - Apache ECharts",
+            "icon": "https://logo.clearbit.com/echarts.apache.org",
+            "url": "https://echarts.apache.org/handbook/zh/get-started/"
+          },
+          {
+            "type": "link",
+            "addDate": 1669486089964,
+            "title": "架构师05-互联网常用监控和多维度立体监控总结_的技术博客_51CTO博客",
+            "icon": "https://logo.clearbit.com/blog.51cto.com",
+            "url": "https://blog.51cto.com/u_9681602/5889228"
+          },
+          {
+            "type": "link",
+            "addDate": 1671186917370,
+            "title": "编程环境安装 - Hello 算法",
+            "icon": "https://logo.clearbit.com/www.hello-algo.com",
+            "url": "https://www.hello-algo.com/chapter_preface/installation/"
+          },
+          {
+            "type": "link",
+            "addDate": 1672572794292,
+            "title": "CellReport",
+            "icon": "https://logo.clearbit.com/noneday.gitee.io",
+            "url": "http://noneday.gitee.io/cellreport/"
+          },
+          {
+            "type": "link",
+            "addDate": 1674724870877,
+            "title": "首页 - 赛泰先生 - 博客天地",
+            "icon": "https://logo.clearbit.com/www.altitude.xin",
+            "url": "https://www.altitude.xin/blog/home/#/"
+          },
+          {
+            "type": "link",
+            "addDate": 1677998573251,
+            "title": "Flex Cheatsheet",
+            "icon": "https://logo.clearbit.com/yoksel.github.io",
+            "url": "https://yoksel.github.io/flex-cheatsheet/"
+          },
+          {
+            "type": "link",
+            "addDate": 1678180455307,
+            "title": "Hello 算法",
+            "icon": "https://logo.clearbit.com/www.hello-algo.com",
+            "url": "https://www.hello-algo.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1678759460479,
+            "title": "互联网 Java 工程师进阶知识完全扫盲 - Doocs 技术社区",
+            "icon": "https://logo.clearbit.com/doocs.github.io",
+            "url": "https://doocs.github.io/advanced-java/#/?id=%e4%ba%92%e8%81%94%e7%bd%91-java-%e5%b7%a5%e7%a8%8b%e5%b8%88%e8%bf%9b%e9%98%b6%e7%9f%a5%e8%af%86%e5%ae%8c%e5%85%a8%e6%89%ab%e7%9b%b2"
+          },
+          {
+            "type": "link",
+            "addDate": 1681096784552,
+            "title": "纯净天空",
+            "icon": "https://logo.clearbit.com/vimsky.com",
+            "url": "https://vimsky.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1681664707006,
+            "title": "介绍 · 进击的java菜鸟",
+            "icon": "https://logo.clearbit.com/fhfirehuo.github.io",
+            "url": "https://fhfirehuo.github.io/Attacking-Java-Rookie/"
+          },
+          {
+            "type": "link",
+            "addDate": 1681790576593,
+            "title": "前言 - Docker — 从入门到实践",
+            "icon": "https://logo.clearbit.com/yeasy.gitbook.io",
+            "url": "https://yeasy.gitbook.io/docker_practice/"
+          },
+          {
+            "type": "link",
+            "addDate": 1685953855241,
+            "title": "ab test压力测试 - 请叫我头头哥 - 博客园",
+            "icon": "https://logo.clearbit.com/www.cnblogs.com",
+            "url": "https://www.cnblogs.com/toutou/p/ab_test.html#_nav_5"
+          },
+          {
+            "type": "link",
+            "addDate": 1685953877649,
+            "title": "Nginx配置中的log_format用法梳理（设置详细的日志格式） - 散尽浮华 - 博客园",
+            "icon": "https://logo.clearbit.com/www.cnblogs.com",
+            "url": "https://www.cnblogs.com/kevingrace/p/5893499.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1686045723003,
+            "title": "Linux与等保那些事 - 云原生笔记",
+            "icon": "https://logo.clearbit.com/blog.bwcxtech.com",
+            "url": "https://blog.bwcxtech.com/posts/997246a0/"
+          },
+          {
+            "type": "link",
+            "addDate": 1686126341539,
+            "title": "AwesomeAI / awesome-chatgpt-zh · GitLab",
+            "icon": "https://logo.clearbit.com/gitlab.com",
+            "url": "https://gitlab.com/awesomeai/awesome-chatgpt-zh?continueFlag=34ed6b02ba678ae8608c3a02e8607732"
+          },
+          {
+            "type": "link",
+            "addDate": 1686127039412,
+            "title": "ChatGPT 指令大全｜ExplainThis",
+            "icon": "https://logo.clearbit.com/www.explainthis.io",
+            "url": "https://www.explainthis.io/zh-hans/chatgpt?continueFlag=beb34e75b9f54fa714cc212147b7fd74"
+          },
+          {
+            "type": "link",
+            "addDate": 1689650366036,
+            "title": "OpenResty® - 开源官方站",
+            "icon": "https://logo.clearbit.com/openresty.org",
+            "url": "http://openresty.org/cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1692168840603,
+            "title": "介绍 - Rust 的绅士介绍",
+            "icon": "https://logo.clearbit.com/llever.com",
+            "url": "https://llever.com/gentle-intro/readme.zh.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1693448049238,
+            "title": "arthas",
+            "icon": "https://logo.clearbit.com/arthas.aliyun.com",
+            "url": "https://arthas.aliyun.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1697091816794,
+            "title": "后台开发命令 365",
+            "icon": "https://logo.clearbit.com/dablelv.github.io",
+            "url": "https://dablelv.github.io/backend-cmd/"
+          },
+          {
+            "type": "link",
+            "addDate": 1698204707552,
+            "title": "HTTP请求协议中请求报文（Request Headers）跟响应报文（Response Headers）的简单理解 - vin_howe - 博客园",
+            "icon": "https://logo.clearbit.com/www.cnblogs.com",
+            "url": "https://www.cnblogs.com/lwh-note/p/11063494.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1698229186429,
+            "title": "全栈公开课",
+            "icon": "https://logo.clearbit.com/fullstackopen.com",
+            "url": "https://fullstackopen.com/zh/"
+          },
+          {
+            "type": "link",
+            "addDate": 1649478914459,
+            "title": "Java 全栈知识体系",
+            "icon": "https://logo.clearbit.com/www.pdai.tech",
+            "url": "https://www.pdai.tech/"
+          },
+          {
+            "type": "link",
+            "addDate": 1698974328996,
+            "title": "编程路书 | 小傅哥 bugstack 虫洞栈",
+            "icon": "https://logo.clearbit.com/bugstack.cn",
+            "url": "https://bugstack.cn/md/road-map/road-map.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1702431946988,
+            "title": "Java技术栈_教程 面试题 学习资料 工具 技术爱好分享",
+            "icon": "https://logo.clearbit.com/www.javastack.cn",
+            "url": "https://www.javastack.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1704156070371,
+            "title": "主页 | 二哥的Java进阶之路",
+            "icon": "https://logo.clearbit.com/javabetter.cn",
+            "url": "https://javabetter.cn/"
+          },
+          {
+            "type": "link",
+            "addDate": 1704437848130,
+            "title": "开发指南 | elasticsearch中文指南",
+            "icon": "https://logo.clearbit.com/endymecy.gitbooks.io",
+            "url": "https://endymecy.gitbooks.io/elasticsearch-guide-chinese/content/index.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1705057964620,
+            "title": "冰河技术",
+            "icon": "https://logo.clearbit.com/binghe001.github.io",
+            "url": "https://binghe001.github.io/"
+          },
+          {
+            "type": "link",
+            "addDate": 1706770792170,
+            "title": "爱码叔-iCodeBook",
+            "icon": "https://logo.clearbit.com/icodebook.com",
+            "url": "https://icodebook.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1717641253778,
+            "title": "为什么这么设计系列文章 - 面向信仰编程",
+            "icon": "https://logo.clearbit.com/draven.co",
+            "url": "https://draven.co/whys-the-design/?continueFlag=3a68469aae12db545edae885344b83f9"
+          },
+          {
+            "type": "link",
+            "addDate": 1718251062244,
+            "title": "Lecture Videos | Advanced Data Structures | Electrical Engineering and Computer Science | MIT OpenCourseWare",
+            "icon": "https://logo.clearbit.com/ocw.mit.edu",
+            "url": "https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/video_galleries/lecture-videos/"
+          },
+          {
+            "type": "link",
+            "addDate": 1721200213968,
+            "title": "小林coding",
+            "icon": "https://logo.clearbit.com/xiaolincoding.com",
+            "url": "https://xiaolincoding.com/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1668491700105,
+        "title": "开发工具",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1668491689714,
+            "title": "JSON Viewer - JSON Hero",
+            "icon": "https://logo.clearbit.com/jsonhero.io",
+            "url": "https://jsonhero.io/"
+          },
+          {
+            "type": "link",
+            "addDate": 1667662730593,
+            "title": "CTF在线工具-CTF工具|CTF编码|CTF密码学|CTF加解密|程序员工具|在线编解码",
+            "icon": "https://logo.clearbit.com/www.hiencode.com",
+            "url": "http://www.hiencode.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1666939690541,
+            "title": "Editor | JSON Crack",
+            "icon": "https://logo.clearbit.com/jsoncrack.com",
+            "url": "https://jsoncrack.com/editor"
+          },
+          {
+            "type": "link",
+            "addDate": 1667726637056,
+            "title": "BuiltWith技术资料查找",
+            "icon": "https://logo.clearbit.com/builtwith.com",
+            "url": "https://builtwith.com/zh/"
+          },
+          {
+            "type": "link",
+            "addDate": 1668496099693,
+            "title": "Loupe",
+            "icon": "https://logo.clearbit.com/latentflip.com",
+            "url": "http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D"
+          },
+          {
+            "type": "link",
+            "addDate": 1668831175425,
+            "title": "Quick Reference & Quick Reference",
+            "icon": "https://logo.clearbit.com/wangchujiang.com",
+            "url": "https://wangchujiang.com/reference/index.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1673153128055,
+            "title": "MKV to MP4 | CloudConvert",
+            "icon": "https://logo.clearbit.com/cloudconvert.com",
+            "url": "https://cloudconvert.com/mkv-to-mp4?utm_source=appinn.com&continueFlag=4fa72965f7c1df2d75ca841dc0d5674d"
+          },
+          {
+            "type": "link",
+            "addDate": 1681749688626,
+            "title": "CTFever Toolkit by uniiem",
+            "icon": "https://logo.clearbit.com/ctfever.uniiem.com",
+            "url": "https://ctfever.uniiem.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1681790559456,
+            "title": "使用 Dockerfile 定制镜像 - Docker — 从入门到实践",
+            "icon": "https://logo.clearbit.com/yeasy.gitbook.io",
+            "url": "https://yeasy.gitbook.io/docker_practice/image/build"
+          },
+          {
+            "type": "link",
+            "addDate": 1689748874533,
+            "title": "Cron表达式在线生成工具 - 51tools.info您身边的在线工具",
+            "icon": "https://logo.clearbit.com/51tools.info",
+            "url": "https://51tools.info/cron/"
+          },
+          {
+            "type": "link",
+            "addDate": 1691631801160,
+            "title": "Chatmind: AI Mind Mapping & Brainstorming by GPT-4",
+            "icon": "https://logo.clearbit.com/chatmind.tech",
+            "url": "https://chatmind.tech/"
+          },
+          {
+            "type": "link",
+            "addDate": 1706751088130,
+            "title": "隐私搜索引擎 - LosePrivacy隐私查询器",
+            "icon": "https://logo.clearbit.com/loseprivacy.net",
+            "url": "https://loseprivacy.net/search"
+          },
+          {
+            "type": "link",
+            "addDate": 1713313858900,
+            "title": "Web Tools & Utilities",
+            "icon": "https://logo.clearbit.com/tools.curiouspenguins.com",
+            "url": "https://tools.curiouspenguins.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1713869305666,
+            "title": "Crx搜搜 - 一个牛X的扩展和应用商店",
+            "icon": "https://logo.clearbit.com/www.crxsoso.com",
+            "url": "https://www.crxsoso.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1716272626374,
+            "title": "websocket在线测试",
+            "icon": "https://logo.clearbit.com/www.websocket-test.com",
+            "url": "http://www.websocket-test.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1717000366490,
+            "title": "在线屏幕录制 - 在线录屏/录像/录音 - 录制视频为 GIF - 在线工具",
+            "icon": "https://logo.clearbit.com/toolwa.com",
+            "url": "https://toolwa.com/record/?continueFlag=9a2806855ede98b6e85c14e752ee9d0f"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1693883230176,
+        "title": "LiveCloud产品",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1693883211472,
+            "title": "LivePUB",
+            "icon": "https://logo.clearbit.com/192.168.41.149",
+            "url": "http://192.168.41.149:6040/bpm/"
+          },
+          {
+            "type": "link",
+            "addDate": 1696730076931,
+            "title": "顶点合同管理[开发模式]",
+            "icon": "https://logo.clearbit.com/27.151.72.171",
+            "url": "https://27.151.72.171:15547/Publish/"
+          },
+          {
+            "type": "link",
+            "addDate": 1697178784062,
+            "title": "iconfont-frontend",
+            "icon": "https://logo.clearbit.com/192.168.42.100",
+            "url": "http://192.168.42.100:9998/"
+          },
+          {
+            "type": "link",
+            "addDate": 1679885046836,
+            "title": "Index of /LiveCloud",
+            "icon": "https://logo.clearbit.com/192.168.40.29",
+            "url": "http://192.168.40.29/LiveCloud/"
+          },
+          {
+            "type": "link",
+            "addDate": 1697421272088,
+            "title": "LiveCloud-WEB-蓝湖",
+            "icon": "https://logo.clearbit.com/lanhuapp.com",
+            "url": "https://lanhuapp.com/web/#/item/project/stage?tid=f61fad5c-ae93-47a9-96dd-64e932b694ee&pid=d8392dab-12c7-41fa-9478-c314875152d2"
+          },
+          {
+            "type": "link",
+            "addDate": 1697598101349,
+            "title": "投票功能-产品凤凰版",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/doc/DY3NjcU51bVNNRUJL?groupUin=LiLjMqm%252B8XTCLseUkSh%252F4A%253D%253D"
+          },
+          {
+            "type": "link",
+            "addDate": 1702348580967,
+            "title": "在线学习",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/doc/DY2RTclJaYVhGQWdM?groupUin=LiLjMqm%252B8XTCLseUkSh%252F4A%253D%253D&ADUIN=1220289714&ADSESSION=1702346468&ADTAG=CLIENT.QQ.6049_.0&ADPUBNO=27386&jumpuin=1220289714"
+          },
+          {
+            "type": "link",
+            "addDate": 1705280278623,
+            "title": "在线考试",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/doc/DY3hIcnF5a0JWc3ZU?groupUin=LiLjMqm%252B8XTCLseUkSh%252F4A%253D%253D&ADUIN=1220289714&ADSESSION=1704872453&ADTAG=CLIENT.QQ.6055_.0&ADPUBNO=27392&jumpuin=1220289714"
+          },
+          {
+            "type": "link",
+            "addDate": 1698049291893,
+            "title": "帆软10",
+            "icon": "https://logo.clearbit.com/192.168.41.140",
+            "url": "http://192.168.41.140:8075/webroot/decision"
+          },
+          {
+            "type": "link",
+            "addDate": 1698420591441,
+            "title": "灵动商务系统[开发模式]",
+            "icon": "https://logo.clearbit.com/192.168.40.76",
+            "url": "http://192.168.40.76:8060/dev/"
+          },
+          {
+            "type": "link",
+            "addDate": 1698747277159,
+            "title": "研发管理系统",
+            "icon": "https://logo.clearbit.com/192.168.41.226",
+            "url": "http://192.168.41.226:39060/Problem/"
+          },
+          {
+            "type": "link",
+            "addDate": 1698843324658,
+            "title": "研发管理系统外网",
+            "icon": "https://logo.clearbit.com/livecloud.apexinfo.com.cn",
+            "url": "https://livecloud.apexinfo.com.cn:15547/Problem"
+          },
+          {
+            "type": "link",
+            "addDate": 1698907470354,
+            "title": "ProcessOn - 我的文件",
+            "icon": "https://logo.clearbit.com/www.processon.com",
+            "url": "https://www.processon.com/diagrams"
+          },
+          {
+            "type": "link",
+            "addDate": 1700448959307,
+            "title": "扩展应用 · GitLab",
+            "icon": "https://logo.clearbit.com/192.168.43.54",
+            "url": "http://192.168.43.54:9009/livecloud/server/plugins/product/extra"
+          },
+          {
+            "type": "link",
+            "addDate": 1704356402163,
+            "title": "gbase",
+            "icon": "https://logo.clearbit.com/192.168.41.170",
+            "url": "http://192.168.41.170:6888/SM"
+          },
+          {
+            "type": "link",
+            "addDate": 1709706451295,
+            "title": "权限管理系统",
+            "icon": "https://logo.clearbit.com/192.168.40.29",
+            "url": "http://192.168.40.29:8111/login"
+          },
+          {
+            "type": "link",
+            "addDate": 1711960863940,
+            "title": "测试门户",
+            "icon": "https://logo.clearbit.com/192.168.41.226",
+            "url": "http://192.168.41.226:39980/Portal/"
+          },
+          {
+            "type": "link",
+            "addDate": 1720518154355,
+            "title": "LiveCloud产品公共资源",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/doc/DUGVRU1VSUkd0THVy?groupUin=LiLjMqm%252B8XTCLseUkSh%252F4A%253D%253D&dver=&u=3b557907d8f143a49b2dae51b6fd9f41"
+          },
+          {
+            "type": "link",
+            "addDate": 1720518436392,
+            "title": "开放平台",
+            "icon": "https://logo.clearbit.com/livecloud.apexinfo.com.cn",
+            "url": "https://livecloud.apexinfo.com.cn:15547/open/"
+          },
+          {
+            "type": "link",
+            "addDate": 1720592493369,
+            "title": "LiveCloud在线学习课程大纲_V20240129",
+            "icon": "https://logo.clearbit.com/docs.qq.com",
+            "url": "https://docs.qq.com/sheet/DTkZSa3htYUZ1Wkpz?tab=000001&groupUin=LiLjMqm%25252B8XTCLseUkSh%25252F4A%25253D%25253D&ADUIN=1220289714&ADSESSION=1720591155&ADTAG=CLIENT.QQ.6067_.0&ADPUBNO=27427&jumpuin=1220289714"
+          },
+          {
+            "type": "link",
+            "addDate": 1721003986133,
+            "title": "开放平台[开发模式]",
+            "icon": "https://logo.clearbit.com/livecloud.apexinfo.com.cn",
+            "url": "https://livecloud.apexinfo.com.cn:15547/openConsole/"
+          }
+        ]
+      },
+      {
+        "type": "link",
+        "addDate": 1571738277000,
+        "title": "力扣（LeetCode）官网 - 全球极客挚爱的技术成长平台",
+        "icon": "https://logo.clearbit.com/leetcode.cn",
+        "url": "https://leetcode.cn/"
+      },
+      {
+        "type": "link",
+        "addDate": 1585656230000,
+        "title": "What Did Hubble See on Your Birthday? | NASA",
+        "icon": "https://logo.clearbit.com/www.nasa.gov",
+        "url": "https://www.nasa.gov/content/goddard/what-did-hubble-see-on-your-birthday"
+      },
+      {
+        "type": "link",
+        "addDate": 1593951795628,
+        "title": "Stack Overflow - Where Developers Learn, Share, & Build Careers",
+        "icon": "https://logo.clearbit.com/stackoverflow.com",
+        "url": "https://stackoverflow.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1601965740348,
+        "title": "王道论坛,专注于计算机考研的点点滴滴! - Powered by Discuz!",
+        "icon": "https://logo.clearbit.com/www.cskaoyan.com",
+        "url": "http://www.cskaoyan.com/forum.php"
+      },
+      {
+        "type": "link",
+        "addDate": 1596723579299,
+        "title": "全部课程_IT培训精品课程-慕课网",
+        "icon": "https://logo.clearbit.com/www.imooc.com",
+        "url": "https://www.imooc.com/course/list"
+      },
+      {
+        "type": "link",
+        "addDate": 1594102356548,
+        "title": "StudyNotes/Vue at master · krislinzhao/StudyNotes · GitHub",
+        "icon": "https://logo.clearbit.com/github.com",
+        "url": "https://github.com/krislinzhao/StudyNotes/tree/master/Vue"
+      },
+      {
+        "type": "link",
+        "addDate": 1591969373581,
+        "title": "Vue.js",
+        "icon": "https://logo.clearbit.com/cn.vuejs.org",
+        "url": "https://cn.vuejs.org/"
+      },
+      {
+        "type": "link",
+        "addDate": 1555076848000,
+        "title": "几何 - GeoGebra",
+        "icon": "https://logo.clearbit.com/www.geogebra.org",
+        "url": "https://www.geogebra.org/geometry"
+      },
+      {
+        "type": "link",
+        "addDate": 1594821591516,
+        "title": "2019年最全最新Vue、Vuejs教程，从入门到精通_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili",
+        "icon": "https://logo.clearbit.com/www.bilibili.com",
+        "url": "https://www.bilibili.com/video/BV15741177Eh?p=102"
+      },
+      {
+        "type": "link",
+        "addDate": 1588408620000,
+        "title": "小木虫论坛-学术科研互动平台",
+        "icon": "https://logo.clearbit.com/muchong.com",
+        "url": "http://muchong.com/f-430-1"
+      },
+      {
+        "type": "link",
+        "addDate": 1565090805000,
+        "title": "Crash Course 中文字幕组",
+        "icon": "https://logo.clearbit.com/crashcourse.club",
+        "url": "https://crashcourse.club/category/history_of_science/"
+      },
+      {
+        "type": "link",
+        "addDate": 1560187111000,
+        "title": "扩展迷 - Chrome扩展与插件离线安装包商店",
+        "icon": "https://logo.clearbit.com/extfans.com",
+        "url": "https://extfans.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1590484918147,
+        "title": "ClickMe 點我一下 分享無價",
+        "icon": "https://logo.clearbit.com/clickme.net",
+        "url": "https://clickme.net/"
+      },
+      {
+        "type": "link",
+        "addDate": 1590513949361,
+        "title": "网站测速|网站速度测试|网速测试|电信|联通|网通|全国|监控|CDN|PING|DNS 17CE.COM",
+        "icon": "https://logo.clearbit.com/www.17ce.com",
+        "url": "https://www.17ce.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1590513954223,
+        "title": "网速测试,测网速,网速检测,网站速度测试—卡卡网 www.webkaka.com",
+        "icon": "https://logo.clearbit.com/www.webkaka.com",
+        "url": "http://www.webkaka.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1590824793312,
+        "title": "PostgreSQL Database Download | EnterpriseDB",
+        "icon": "https://logo.clearbit.com/www.enterprisedb.com",
+        "url": "https://www.enterprisedb.com/downloads/postgres-postgresql-downloads"
+      },
+      {
+        "type": "link",
+        "addDate": 1595502989721,
+        "title": "爱达杂货铺 | 收集那些有用的东西|爱达导航",
+        "icon": "https://logo.clearbit.com/adzhp.cn",
+        "url": "https://adzhp.cn/"
+      },
+      {
+        "type": "link",
+        "addDate": 1590993962192,
+        "title": "移动芯片性能排行榜",
+        "icon": "https://logo.clearbit.com/www.socpk.com",
+        "url": "https://www.socpk.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1585720546000,
+        "title": "[pixiv]",
+        "icon": "https://logo.clearbit.com/www.pixiv.net",
+        "url": "https://www.pixiv.net/"
+      },
+      {
+        "type": "link",
+        "addDate": 1594037958025,
+        "title": "Data Structure Visualization",
+        "icon": "https://logo.clearbit.com/www.cs.usfca.edu",
+        "url": "https://www.cs.usfca.edu/~galles/visualization/Algorithms.html"
+      },
+      {
+        "type": "link",
+        "addDate": 1597888124911,
+        "title": "合集网 | 信息资源大全",
+        "icon": "https://logo.clearbit.com/www.heji.ltd",
+        "url": "http://www.heji.ltd/"
+      },
+      {
+        "type": "link",
+        "addDate": 1599401135231,
+        "title": "程序员可接私活的10个平台和一些建议，别掉坑里！_码农突围-CSDN博客",
+        "icon": "https://logo.clearbit.com/blog.csdn.net",
+        "url": "https://blog.csdn.net/hejjunlin/article/details/102597468"
+      },
+      {
+        "type": "link",
+        "addDate": 1633418250144,
+        "title": "IntelliJ IDEA 2021.2最新激活码，注册码，破解码，可激活至永久（亲测有效） - 哔哩哔哩",
+        "icon": "https://logo.clearbit.com/www.bilibili.com",
+        "url": "https://www.bilibili.com/read/cv12171866?ivk_sa=1024320u"
+      },
+      {
+        "type": "link",
+        "addDate": 1635610691923,
+        "title": "使用阿里云ECS结合Shadowsocks搭建自己的专属翻墙梯子(Mac和iphone环境搭建) | 自律则自由",
+        "icon": "https://logo.clearbit.com/www.bozaigao.net",
+        "url": "https://www.bozaigao.net/2019/11/07/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91ECS%E7%BB%93%E5%90%88Shadowsocks%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%93%E5%B1%9E%E7%BF%BB%E5%A2%99%E6%A2%AF%E5%AD%90/"
+      },
+      {
+        "type": "link",
+        "addDate": 1636444668505,
+        "title": "在线Cron表达式生成器",
+        "icon": "https://logo.clearbit.com/cron.qqe2.com",
+        "url": "https://cron.qqe2.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1636644551828,
+        "title": "If the Moon Were Only 1 Pixel - A tediously accurate map of the solar system",
+        "icon": "https://logo.clearbit.com/joshworth.com",
+        "url": "https://joshworth.com/dev/pixelspace/pixelspace_solarsystem.html#suntxt"
+      },
+      {
+        "type": "link",
+        "addDate": 1636947341944,
+        "title": "Linux云计算 | 马哥教育「官网」-专业Linux云计算运维、SRE、Devops、容器云、Python、Go开发培训机构！",
+        "icon": "https://logo.clearbit.com/www.magedu.com",
+        "url": "https://www.magedu.com/xwzx/linuxxx"
+      },
+      {
+        "type": "link",
+        "addDate": 1637112011857,
+        "title": "反斗限免",
+        "icon": "https://logo.clearbit.com/free.apprcn.com",
+        "url": "http://free.apprcn.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1637513019739,
+        "title": "图片压缩——免费在线压缩图片文件大小",
+        "icon": "https://logo.clearbit.com/www.zuohaotu.com",
+        "url": "http://www.zuohaotu.com/image-compress.aspx"
+      },
+      {
+        "type": "link",
+        "addDate": 1638030146978,
+        "title": "课程-KuangStudy",
+        "icon": "https://logo.clearbit.com/www.kuangstudy.com",
+        "url": "https://www.kuangstudy.com/course"
+      },
+      {
+        "type": "link",
+        "addDate": 1638193442573,
+        "title": "mybatis – MyBatis 3 | 简介",
+        "icon": "https://logo.clearbit.com/mybatis.org",
+        "url": "https://mybatis.org/mybatis-3/zh/"
+      },
+      {
+        "type": "link",
+        "addDate": 1639061897736,
+        "title": "小白打印",
+        "icon": "https://logo.clearbit.com/web.gongfudou.com",
+        "url": "https://web.gongfudou.com/#/"
+      },
+      {
+        "type": "link",
+        "addDate": 1638956178973,
+        "title": "鱼皮 - 编程学习路线",
+        "icon": "https://logo.clearbit.com/luxian.yupi.icu",
+        "url": "https://luxian.yupi.icu/#/"
+      },
+      {
+        "type": "link",
+        "addDate": 1639276923831,
+        "title": "在 GitHub 上搜索信息 - GitHub Docs",
+        "icon": "https://logo.clearbit.com/docs.github.com",
+        "url": "https://docs.github.com/cn/search-github"
+      },
+      {
+        "type": "link",
+        "addDate": 1640743054562,
+        "title": "美团技术团队",
+        "icon": "https://logo.clearbit.com/tech.meituan.com",
+        "url": "https://tech.meituan.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1641372962659,
+        "title": "不求人导航@Java | 专业Java资源导航网站",
+        "icon": "https://logo.clearbit.com/java.bqrdh.com",
+        "url": "https://java.bqrdh.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1642431423125,
+        "title": "R2ML",
+        "icon": "https://logo.clearbit.com/tjxj.github.io",
+        "url": "https://tjxj.github.io/"
+      },
+      {
+        "type": "link",
+        "addDate": 1642575411114,
+        "title": "MSDN, 我告诉你 - 做一个安静的工具站",
+        "icon": "https://logo.clearbit.com/msdn.itellyou.cn",
+        "url": "https://msdn.itellyou.cn/"
+      },
+      {
+        "type": "link",
+        "addDate": 1642995242274,
+        "title": "程序员福利网 - 一个给程序员谋福利的网站",
+        "icon": "https://logo.clearbit.com/www.coderfuli.com",
+        "url": "https://www.coderfuli.com/#/home"
+      },
+      {
+        "type": "link",
+        "addDate": 1645165157413,
+        "title": "LDTools - LaodiTeachTips",
+        "icon": "https://logo.clearbit.com/ldtstore.com.cn",
+        "url": "https://ldtstore.com.cn/ldtools/"
+      },
+      {
+        "type": "link",
+        "addDate": 1649477035684,
+        "title": "在线动画 动漫下载 - AGE动漫",
+        "icon": "https://logo.clearbit.com/www.agemys.com",
+        "url": "https://www.agemys.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1650714350228,
+        "title": "FineReport大屏演示系统",
+        "icon": "https://logo.clearbit.com/finemaxdemo.fanruan.com",
+        "url": "http://finemaxdemo.fanruan.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1651637913311,
+        "title": "ResearchTools",
+        "icon": "https://logo.clearbit.com/47.99.215.196",
+        "url": "http://47.99.215.196:2333/"
+      },
+      {
+        "type": "link",
+        "addDate": 1651754506187,
+        "title": "互联网行业黑话生成器",
+        "icon": "https://logo.clearbit.com/zhongkai.github.io",
+        "url": "https://zhongkai.github.io/nhr/"
+      },
+      {
+        "type": "link",
+        "addDate": 1652026159279,
+        "title": "Ctool 程序开发常用工具",
+        "icon": "https://logo.clearbit.com/baiy.github.io",
+        "url": "https://baiy.github.io/Ctool/tool.html#/tool/hash"
+      },
+      {
+        "type": "link",
+        "addDate": 1658113160600,
+        "title": "翻译",
+        "icon": "https://logo.clearbit.com/translate.google.com",
+        "url": "https://translate.google.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1658802100889,
+        "title": "MD5免费在线解密破解_MD5在线加密-SOMD5",
+        "icon": "https://logo.clearbit.com/www.somd5.com",
+        "url": "https://www.somd5.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1659062984319,
+        "title": "兽音译者/兽语加密 - PcMoe!",
+        "icon": "https://logo.clearbit.com/hi.pcmoe.net",
+        "url": "http://hi.pcmoe.net/roar.html"
+      },
+      {
+        "type": "link",
+        "addDate": 1664783376492,
+        "title": "盲盒搜索",
+        "icon": "https://logo.clearbit.com/www.xbinweb.com",
+        "url": "http://www.xbinweb.com/search/"
+      },
+      {
+        "type": "link",
+        "addDate": 1664951481463,
+        "title": "地图",
+        "icon": "https://logo.clearbit.com/maps.google.com",
+        "url": "https://maps.google.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1664951485753,
+        "title": "翻译",
+        "icon": "https://logo.clearbit.com/translate.google.com",
+        "url": "https://translate.google.com/"
+      },
+      {
+        "type": "folder",
+        "addDate": 1667884340134,
+        "title": "CYD",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1667884330819,
+            "title": "CYD客户环境",
+            "icon": "https://logo.clearbit.com/10.57.1.177",
+            "url": "http://10.57.1.177:8060/"
+          },
+          {
+            "type": "link",
+            "addDate": 1671266455919,
+            "title": "CYD凤凰版",
+            "icon": "https://logo.clearbit.com/192.168.43.58",
+            "url": "http://192.168.43.58:8100/"
+          },
+          {
+            "type": "link",
+            "addDate": 1669606867353,
+            "title": "公司内网CYD",
+            "icon": "https://logo.clearbit.com/192.168.41.170",
+            "url": "http://192.168.41.170:8100/ZHY/"
+          },
+          {
+            "type": "link",
+            "addDate": 1671163473695,
+            "title": "LiveBOSConsole",
+            "icon": "https://logo.clearbit.com/192.168.43.58",
+            "url": "http://192.168.43.58:8101/SystemManager/SystemInfo"
+          },
+          {
+            "type": "link",
+            "addDate": 1671615525867,
+            "title": "LiveCloud[开发模式]",
+            "icon": "https://logo.clearbit.com/27.151.72.171",
+            "url": "http://27.151.72.171:15547/Publish/"
+          },
+          {
+            "type": "link",
+            "addDate": 1671759131708,
+            "title": "烟草",
+            "icon": "https://logo.clearbit.com/27.151.72.171",
+            "url": "http://27.151.72.171:15524/tzgl/"
+          }
+        ]
+      },
+      {
+        "type": "link",
+        "addDate": 1668355239470,
+        "title": "樱花动漫(P)－专注动漫的门户网站",
+        "icon": "https://logo.clearbit.com/www.yhdmp.cc",
+        "url": "https://www.yhdmp.cc/"
+      },
+      {
+        "type": "link",
+        "addDate": 1672678597043,
+        "title": "YouTube",
+        "icon": "https://logo.clearbit.com/youtube.com",
+        "url": "https://youtube.com/"
+      },
+      {
+        "type": "folder",
+        "addDate": 1681290927426,
+        "title": "钉钉",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1681290932380,
+            "title": "钉钉OA",
+            "icon": "https://logo.clearbit.com/oa.dingtalk.com",
+            "url": "https://oa.dingtalk.com/index.htm#/welcome"
+          },
+          {
+            "type": "link",
+            "addDate": 1681290953996,
+            "title": "开发者后台",
+            "icon": "https://logo.clearbit.com/open-dev.dingtalk.com",
+            "url": "https://open-dev.dingtalk.com/?spm=dd_developers.homepage.0.0.205a4a97adDWQw#/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1683338820055,
+        "title": "中航材",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1683338888955,
+            "title": "服务平台-验证环境",
+            "icon": "https://logo.clearbit.com/livebos-portal-inspect.cascpooling.com",
+            "url": "https://livebos-portal-inspect.cascpooling.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1683338928046,
+            "title": "信息平台-验证环境",
+            "icon": "https://logo.clearbit.com/livebos-pc-inspect.cascpooling.com",
+            "url": "https://livebos-pc-inspect.cascpooling.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1684805706470,
+            "title": "项目 · 仪表板 · GitLab",
+            "icon": "https://logo.clearbit.com/gitlab.cascpooling.com",
+            "url": "https://gitlab.cascpooling.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1691737137671,
+            "title": "vpn",
+            "icon": "https://logo.clearbit.com/vpn.casc.com.cn",
+            "url": "https://vpn.casc.com.cn/portal/"
+          },
+          {
+            "type": "link",
+            "addDate": 1692760245071,
+            "title": "定制开发组 / Java定制知识库 / 开发规范 / 项目交接文档 / 中航材项目 · GitLab",
+            "icon": "https://logo.clearbit.com/192.168.43.54",
+            "url": "http://192.168.43.54:9009/product_dev_wiki/java-apop/dev-guides/project-docs/casc"
+          }
+        ]
+      },
+      {
+        "type": "link",
+        "addDate": 1682955743599,
+        "title": "人人电影网,百度云盘,阿里网盘下载",
+        "icon": "https://logo.clearbit.com/www.rrdynb.com",
+        "url": "https://www.rrdynb.com/index.html"
+      },
+      {
+        "type": "folder",
+        "addDate": 1701447027644,
+        "title": "其他",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1701447004940,
+            "title": "UNDERRUN",
+            "icon": "https://logo.clearbit.com/js13kgames.com",
+            "url": "https://js13kgames.com/games/underrun/index.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1702144162198,
+            "title": "Project Nayuki",
+            "icon": "https://logo.clearbit.com/www.nayuki.io",
+            "url": "https://www.nayuki.io/"
+          },
+          {
+            "type": "link",
+            "addDate": 1704692421737,
+            "title": "太阳系|Solar System",
+            "icon": "https://logo.clearbit.com/www.720yun.com",
+            "url": "https://www.720yun.com/t/eb42ejpvu1a?scene_id=365147"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "folder",
+    "addDate": 1701493222055,
+    "title": "其他书签",
+    "children": [
+      {
+        "type": "link",
+        "addDate": 1659182067898,
+        "title": "韩小韩API接口站 - 免费API数据接口调用服务平台",
+        "icon": "https://logo.clearbit.com/api.vvhan.com",
+        "url": "https://api.vvhan.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1659184452042,
+        "title": "接口大全-免费API,收集所有免费的API",
+        "icon": "https://logo.clearbit.com/www.free-api.com",
+        "url": "https://www.free-api.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1659185232106,
+        "title": "JSONPlaceholder - Free Fake REST API",
+        "icon": "https://logo.clearbit.com/jsonplaceholder.typicode.com",
+        "url": "http://jsonplaceholder.typicode.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1660615523475,
+        "title": "阮一峰的网络日志",
+        "icon": "https://logo.clearbit.com/www.ruanyifeng.com",
+        "url": "https://www.ruanyifeng.com/blog/"
+      },
+      {
+        "type": "link",
+        "addDate": 1660618800583,
+        "title": "网道 - 互联网开发文档",
+        "icon": "https://logo.clearbit.com/wangdoc.com",
+        "url": "https://wangdoc.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1660971530635,
+        "title": "Dogfight360 – 羽翼城个人博客",
+        "icon": "https://logo.clearbit.com/www.dogfight360.com",
+        "url": "https://www.dogfight360.com/blog/"
+      },
+      {
+        "type": "link",
+        "addDate": 1661744395843,
+        "title": "Java充电社【公众号：Java充电社】",
+        "icon": "https://logo.clearbit.com/itsoku.com",
+        "url": "http://itsoku.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1662360131879,
+        "title": "Wordle - 萌娘百科 万物皆可萌的百科全书",
+        "icon": "https://logo.clearbit.com/zh.moegirl.org.cn",
+        "url": "https://zh.moegirl.org.cn/index.php?title=Wordle&mobileaction=toggle_view_desktop"
+      },
+      {
+        "type": "link",
+        "addDate": 1663846220886,
+        "title": "国家信息安全漏洞库",
+        "icon": "https://logo.clearbit.com/www.cnnvd.org.cn",
+        "url": "http://www.cnnvd.org.cn/home/loophole"
+      },
+      {
+        "type": "link",
+        "addDate": 1670552677385,
+        "title": "我枯了，你呢？ - 梗图生成器 - 神奇海螺",
+        "icon": "https://logo.clearbit.com/x.magiconch.com",
+        "url": "https://x.magiconch.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1692977761347,
+        "title": "Can You RUN It | Can I Run It | Can My PC Run It",
+        "icon": "https://logo.clearbit.com/www.systemrequirementslab.com",
+        "url": "https://www.systemrequirementslab.com/cyri"
+      },
+      {
+        "type": "link",
+        "addDate": 1693897279852,
+        "title": "Benham’s Top",
+        "icon": "https://logo.clearbit.com/michaelbach.de",
+        "url": "https://michaelbach.de/ot/col-Benham/index.html"
+      },
+      {
+        "type": "link",
+        "addDate": 1693984711369,
+        "title": "计算机教育中缺失的一课 · the missing semester of your cs education",
+        "icon": "https://logo.clearbit.com/missing-semester-cn.github.io",
+        "url": "https://missing-semester-cn.github.io/"
+      },
+      {
+        "type": "link",
+        "addDate": 1701945999858,
+        "title": "I18n Translation Search Engine| Free i18n Tools for App&Web",
+        "icon": "https://logo.clearbit.com/i18ns.com",
+        "url": "https://i18ns.com/zh/index.html"
+      }
+    ]
+  }
+]

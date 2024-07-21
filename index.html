@@ -345,14 +345,14 @@
       cardContent.className = 'flex flex-col overflow-hidden'; // Ensure the content is hidden if too long
 
       const cardTitle = document.createElement('h2');
-      cardTitle.className = 'text-sm font-semibold mb-1 truncate dark:text-gray-400';
+      cardTitle.className = 'text-sm font-medium mb-1 truncate dark:text-gray-400';
       cardTitle.innerText = title;
 
       // Clean URL by removing http(s) and trailing slash
       const cleanUrl = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
       const cardUrl = document.createElement('p');
-      cardUrl.className = 'text-xs text-gray-400 truncate';
+      cardUrl.className = 'text-xs text-gray-400 dark:text-gray-600 dark:hover:text-gray-400 truncate';
       cardUrl.innerText = cleanUrl; // Use cleaned URL
 
       cardContent.appendChild(cardTitle);

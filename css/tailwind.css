@@ -1617,6 +1617,10 @@ select {
   font-weight: 800;
 }
 
+.font-medium {
+  font-weight: 500;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -2205,6 +2209,11 @@ select {
 
 .dark\:ring-white\/10:is(.dark *) {
   --tw-ring-color: rgb(255 255 255 / 0.1);
+}
+
+.dark\:hover\:text-gray-400:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .dark\:hover\:ring-white\/20:hover:is(.dark *) {

@@ -1,381 +1,658 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark:pintree-bg-gray-900 bg-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pintree</title>
+    <meta
+      name="keywords"
+      content="Pintree, Bookmarks, Link Management, Export Bookmarks, Website Bookmarks"
+    />
+    <meta
+      name="description"
+      content="Pintree is a powerful tool that helps you manage and export your browser bookmarks, converting them into an aesthetically pleasing website that is easy to share and access."
+    />
+    <meta name="author" content="Pintree" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.pintree.io" />
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="60283522-e543-4dcb-bd47-e855f1e0a635"
+    ></script>
+    <script
+      defer
+      data-domain="pintree.io"
+      src="https://plausible.io/js/script.js"
+    ></script>
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "n75ecz0sud");
+    </script>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-P1JF3QTQ79"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-P1JF3QTQ79");
+    </script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pintree</title>
-  <meta name="keywords" content="Pintree, Bookmarks, Link Management, Export Bookmarks, Website Bookmarks">
-  <meta name="description"
-    content="Pintree is a powerful tool that helps you manage and export your browser bookmarks, converting them into an aesthetically pleasing website that is easy to share and access.">
-  <meta name="author" content="Pintree">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.pintree.io">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="60283522-e543-4dcb-bd47-e855f1e0a635"></script>
-  <script defer data-domain="pintree.io" src="https://plausible.io/js/script.js"></script>
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "n75ecz0sud");
-  </script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P1JF3QTQ79"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-P1JF3QTQ79');
-  </script>
+    <!-- Driver JS -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"
+    />
 
-  <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://www.pintree.io">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Pintree">
-  <meta property="og:description" content="Managing and Exporting your Bookmarks into a Website">
-  <meta property="og:image" content="https://app.pintree.io/assets/og.png">
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://www.pintree.io" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pintree" />
+    <meta
+      property="og:description"
+      content="Managing and Exporting your Bookmarks into a Website"
+    />
+    <meta property="og:image" content="https://app.pintree.io/assets/og.png" />
 
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="twitter:domain" content="Pintree.io">
-  <meta property="twitter:url" content="https://www.pintree.io">
-  <meta name="twitter:title" content="Pintree">
-  <meta name="twitter:description" content="Managing and Exporting your Bookmarks into a Website">
-  <meta name="twitter:image" content="https://app.pintree.io/assets/og.png">
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="Pintree.io" />
+    <meta property="twitter:url" content="https://www.pintree.io" />
+    <meta name="twitter:title" content="Pintree" />
+    <meta
+      name="twitter:description"
+      content="Managing and Exporting your Bookmarks into a Website"
+    />
+    <meta name="twitter:image" content="https://app.pintree.io/assets/og.png" />
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-  <link rel="mask-icon" href="assets/favicon/favicon-32x32.png" color="#0b0b0f">
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="mask-icon"
+      href="assets/favicon/favicon-32x32.png"
+      color="#0b0b0f"
+    />
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/tailwind.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/tailwind.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Structured Data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://www.pintree.io",
-    "name": "Pintree",
-    "description": "Managing and Exporting your Bookmarks into a Website",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.pintree.io/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-</head>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://www.pintree.io",
+        "name": "Pintree",
+        "description": "Managing and Exporting your Bookmarks into a Website",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.pintree.io/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  </head>
 
-<body class="h-full dark:pintree-bg-gray-900 bg-white">
-
-  <div>
-    <!-- Mobile Off-Canvas Menu -->
-    <div id="off-canvas-menu" class="relative z-50 lg:hidden hidden" role="dialog" aria-modal="true">
-      <div id="off-canvas-backdrop"
-        class="fixed inset-0 bg-gray-900/80 opacity-0 transition-opacity ease-linear duration-300"></div>
-      <div class="fixed inset-0 flex">
-        <div id="off-canvas-content"
-          class="relative mr-16 flex w-full max-w-xs flex-1 -translate-x-full transition ease-in-out duration-300 transform">
-          <!-- Close button for the off-canvas menu -->
-          <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-            <button id="close-sidebar-button" type="button" class="-m-2.5 p-2.5">
-              <span class="sr-only">Close sidebar</span>
-              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Off-canvas Sidebar content -->
-          <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:pintree-bg-gray-900 px-6 pb-4">
-            <div class="flex h-16 shrink-0 items-center">
-              <img class="pl-2 h-8 w-auto" src="assets/logo.svg" alt="Pintree">
-              <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
-            </div>
-            <div id="sidebar-2" class="flex flex-1 flex-col">
-              <!-- Sidebar content will be injected here -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Static Sidebar for Desktop -->
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-60 lg:flex-col">
+  <body class="h-full dark:pintree-bg-gray-900 bg-white">
+    <div>
+      <!-- Mobile Off-Canvas Menu -->
       <div
-        class="flex flex-col border-r border-gray-200 dark:pintree-border-gray-800 bg-white px-4 h-full font-semibold dark:pintree-bg-gray-900">
-        <div class="flex p-0 h-16 shrink-0 items-center">
-          <img class="pl-2 h-8 w-auto" src="assets/logo.svg" alt="Pintree">
-          <a href="" class="ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
-        </div>
-        <div class="flex flex-1 flex-col overflow-y-auto no-scrollbar p-1 cursor-pointer">
-          <div id="sidebar" class="flex flex-1 flex-col">
-            <ul id="navigation" class="space-y-1">
-              <!-- Navigation items will be inserted here -->
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Content Area -->
-    <div class="lg:pl-60 dark:pintree-bg-gray-900 flex flex-col min-h-screen">
-      <div
-        class="items-center justify-between sticky top-0 z-40 flex h-16 shrink-0 gap-x-4 border-b border-gray-200 dark:pintree-border-gray-800 bg-white dark:pintree-bg-gray-900 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-        <div class="h-full items-center flex flex-1 gap-x-4 self-stretch lg:gap-x-6 justify-between">
-          <div class="flex gap-x-4 justify-between">
-            <img class="pl-2 h-8 w-auto lg:hidden" src="assets/logo.svg" alt="Pintree">
-            <div class="hidden lg:block relative w-72 h-full items-center justify-between">
-              <button id="searchButton" class="absolute h-full text-gray-400 rounded">
-                <svg class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400" viewBox="0 0 20 20"
-                  fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd"
-                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                    clip-rule="evenodd"></path>
+        id="off-canvas-menu"
+        class="relative z-50 lg:hidden hidden"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          id="off-canvas-backdrop"
+          class="fixed inset-0 bg-gray-900/80 opacity-0 transition-opacity ease-linear duration-300"
+        ></div>
+        <div class="fixed inset-0 flex">
+          <div
+            id="off-canvas-content"
+            class="relative mr-16 flex w-full max-w-xs flex-1 -translate-x-full transition ease-in-out duration-300 transform"
+          >
+            <!-- Close button for the off-canvas menu -->
+            <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
+              <button
+                id="close-sidebar-button"
+                type="button"
+                class="-m-2.5 p-2.5"
+              >
+                <span class="sr-only">Close sidebar</span>
+                <svg
+                  class="h-6 w-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
-              <input id="searchInput" type="search"
-                class="text-sm text-gray-900 dark:text-gray-400 pl-8 h-full border-0 focus:outline-none focus:ring-0 dark:pintree-bg-gray-900"
-                placeholder="Search...">
-              <button id="clearSearchButton" class="text-sm text-gray-500 mr-4 rounded hidden">Clear</button>
             </div>
-          </div>
-          <a href="" class="lg:hidden ml-4 font-extrabold text-2xl dark:text-white">Pintree</a>
-          <div class="relative">
-            <button id="themeToggleButton" type="button" aria-label="Switch theme"
-              class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:pintree-bg-gray-900 dark:ring-white/10 dark:hover:ring-white/20">
-              <svg id="sunIcon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                aria-hidden="true"
-                class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600">
-                <path
-                  d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z">
-                </path>
-                <path
-                  d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061"
-                  fill="none"></path>
-              </svg>
-              <svg id="moonIcon" viewBox="0 0 24 24" aria-hidden="true"
-                class="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500">
-                <path
-                  d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
-                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </button>
+
+            <!-- Off-canvas Sidebar content -->
+            <div
+              class="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:pintree-bg-gray-900 px-6 pb-4"
+            >
+              <div class="flex h-16 shrink-0 items-center">
+                <img
+                  class="pl-2 h-8 w-auto"
+                  src="assets/logo.svg"
+                  alt="Pintree"
+                />
+                <a href="" class="ml-4 font-extrabold text-2xl dark:text-white"
+                  >Pintree</a
+                >
+              </div>
+              <div id="sidebar-2" class="flex flex-1 flex-col">
+                <!-- Sidebar content will be injected here -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Main content area -->
-      <main class="mt-4 dark:pintree-bg-gray-900 flex-grow">
-        <div id="loading-spinner" class="flex justify-center items-center h-full">
-          <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-400 h-6 w-6"></div>
-        </div>
-        <div id="breadcrumbs" class="mt-2 px-6 text-sm text-gray-400 flex justify-between items-center">
-          <div id="breadcrumbs-path" class="">
-            <!-- Breadcrumbs will be inserted here -->
+      <!-- Static Sidebar for Desktop -->
+      <div
+        class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-60 lg:flex-col"
+      >
+        <div
+          class="flex flex-col border-r border-gray-200 dark:pintree-border-gray-800 bg-white px-4 h-full font-semibold dark:pintree-bg-gray-900"
+        >
+          <div class="flex p-0 h-16 shrink-0 items-center">
+            <img class="pl-2 h-8 w-auto" src="assets/logo.svg" alt="Pintree" />
+            <a href="" class="ml-4 font-extrabold text-2xl dark:text-white"
+              >Pintree</a
+            >
+          </div>
+          <div
+            class="flex flex-1 flex-col overflow-y-auto no-scrollbar p-1 cursor-pointer"
+          >
+            <div id="sidebar" class="flex flex-1 flex-col">
+              <ul id="navigation" class="space-y-1">
+                <!-- Navigation items will be inserted here -->
+              </ul>
+            </div>
           </div>
         </div>
-        <div id="bookmarks" class="grid gap-6 p-6">
-          <!-- Bookmark cards will be inserted here -->
-        </div>
-      </main>
+      </div>
 
-      <!-- Footer -->
-      <footer class="bg-white w-full dark:pintree-bg-gray-900">
-        <div class="mx-auto px-6 py-6 md:flex md:items-center md:justify-between lg:px-8">
-          <div class="flex justify-center space-x-6 md:order-2">
-            <a href="https://x.com/pintree_io" target="_blank" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">X</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
-              </svg>
-            </a>
-            <a href="https://github.com/Pintree-io/pintree" target="_blank" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">GitHub</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                  clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-          <div class="mt-8 md:order-1 md:mt-0">
-            <p class="text-center text-xs leading-5 text-gray-500 dark:text-gray-400 flex justify-center items-center">
-              &copy; <span id="currentYear"></span>&nbsp;Built with
-              <a href="https://pintree.io" class="text-green-600 hover:text-green-500 flex items-center ml-1"
-                target="_blank">
-                <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg"
-                  class="inline-block mr-1">
-                  <g clip-path="url(#clip0_421_47774)">
-                    <path d="M4.27777 9.11133H6.6111V12.0002L5.44444 10.8783L4.27777 12.0002V9.11133Z" fill="#FCB11E" />
+      <!-- Main Content Area -->
+      <div class="lg:pl-60 dark:pintree-bg-gray-900 flex flex-col min-h-screen">
+        <div
+          class="items-center justify-between sticky top-0 z-40 flex h-16 shrink-0 gap-x-4 border-b border-gray-200 dark:pintree-border-gray-800 bg-white dark:pintree-bg-gray-900 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
+        >
+          <div
+            class="h-full items-center flex flex-1 gap-x-4 self-stretch lg:gap-x-6 justify-between"
+          >
+            <div class="flex gap-x-4 justify-between">
+              <img
+                class="pl-2 h-8 w-auto lg:hidden"
+                src="assets/logo.svg"
+                alt="Pintree"
+              />
+              <div
+                class="hidden lg:block relative w-72 h-full items-center justify-between"
+              >
+                <button
+                  id="searchButton"
+                  class="absolute h-full text-gray-400 rounded"
+                >
+                  <svg
+                    class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
                     <path
-                      d="M9.05557 5.72222L5.22223 0L1.3889 5.72222H2.68634L0.444458 9.11111H10L7.75813 5.72222H9.05557Z"
-                      fill="#2D9C6C" />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_421_47774">
-                      <rect width="9.55556" height="12" fill="white" transform="translate(0.444458)" />
-                    </clipPath>
-                  </defs>
+                      fill-rule="evenodd"
+                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <input
+                  id="searchInput"
+                  type="search"
+                  class="text-sm text-gray-900 dark:text-gray-400 pl-8 h-full border-0 focus:outline-none focus:ring-0 dark:pintree-bg-gray-900"
+                  placeholder="Search..."
+                />
+                <button
+                  id="clearSearchButton"
+                  class="text-sm text-gray-500 mr-4 rounded hidden"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+            <a
+              href=""
+              class="lg:hidden ml-4 font-extrabold text-2xl dark:text-white"
+              >Pintree</a
+            >
+            <div class="relative">
+              <button
+                id="themeToggleButton"
+                type="button"
+                aria-label="Switch theme"
+                class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:pintree-bg-gray-900 dark:ring-white/10 dark:hover:ring-white/20"
+              >
+                <svg
+                  id="sunIcon"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  class="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600"
+                >
+                  <path
+                    d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z"
+                  ></path>
+                  <path
+                    d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061"
+                    fill="none"
+                  ></path>
                 </svg>
-                Pintree
-              </a>
-            </p>
+                <svg
+                  id="moonIcon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500"
+                >
+                  <path
+                    d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </footer>
+
+        <!-- Main content area -->
+        <main class="mt-4 dark:pintree-bg-gray-900 flex-grow">
+          <div
+            id="loading-spinner"
+            class="flex justify-center items-center h-full"
+          >
+            <div
+              class="loader ease-linear rounded-full border-2 border-t-2 border-gray-400 h-6 w-6"
+            ></div>
+          </div>
+          <div
+            id="breadcrumbs"
+            class="mt-2 px-6 text-sm text-gray-400 flex justify-between items-center"
+          >
+            <div id="breadcrumbs-path" class="">
+              <!-- Breadcrumbs will be inserted here -->
+            </div>
+          </div>
+          <div id="bookmarks" class="grid gap-6 p-6">
+            <!-- Bookmark cards will be inserted here -->
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white w-full dark:pintree-bg-gray-900">
+          <div
+            class="mx-auto px-6 py-6 md:flex md:items-center md:justify-between lg:px-8"
+          >
+            <div class="flex justify-center space-x-6 md:order-2">
+              <a
+                href="https://x.com/pintree_io"
+                target="_blank"
+                class="text-gray-400 hover:text-gray-500"
+              >
+                <span class="sr-only">X</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/Pintree-io/pintree"
+                target="_blank"
+                class="text-gray-400 hover:text-gray-500"
+              >
+                <span class="sr-only">GitHub</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div class="mt-8 md:order-1 md:mt-0">
+              <p
+                class="text-center text-xs leading-5 text-gray-500 dark:text-gray-400 flex justify-center items-center"
+              >
+                &copy; <span id="currentYear"></span>&nbsp;Built with
+                <a
+                  href="https://pintree.io"
+                  class="text-green-600 hover:text-green-500 flex items-center ml-1"
+                  target="_blank"
+                >
+                  <svg
+                    width="10"
+                    height="12"
+                    viewBox="0 0 10 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="inline-block mr-1"
+                  >
+                    <g clip-path="url(#clip0_421_47774)">
+                      <path
+                        d="M4.27777 9.11133H6.6111V12.0002L5.44444 10.8783L4.27777 12.0002V9.11133Z"
+                        fill="#FCB11E"
+                      />
+                      <path
+                        d="M9.05557 5.72222L5.22223 0L1.3889 5.72222H2.68634L0.444458 9.11111H10L7.75813 5.72222H9.05557Z"
+                        fill="#2D9C6C"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_421_47774">
+                        <rect
+                          width="9.55556"
+                          height="12"
+                          fill="white"
+                          transform="translate(0.444458)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  Pintree
+                </a>
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
-  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Variables for sidebar elements
-      const openSidebarButton = document.getElementById('open-sidebar-button');
-      const closeSidebarButton = document.getElementById('close-sidebar-button');
-      const offCanvasMenu = document.getElementById('off-canvas-menu');
-      const offCanvasBackdrop = document.getElementById('off-canvas-backdrop');
-      const offCanvasContent = document.getElementById('off-canvas-content');
+    <script>
+      const isTourCompleted =
+        localStorage.getItem("pintree-tour") === "completed";
 
-      // Function to open the sidebar
-      const openSidebar = () => {
-        offCanvasMenu.classList.remove('hidden');
-        setTimeout(() => {
-          offCanvasBackdrop.classList.add('opacity-100');
-          offCanvasContent.classList.add('translate-x-0');
-        }, 10);
-      };
+      if (!isTourCompleted) {
+        const driver = window.driver.js.driver;
 
-      // Function to close the sidebar
-      const closeSidebar = () => {
-        offCanvasBackdrop.classList.remove('opacity-100');
-        offCanvasContent.classList.remove('translate-x-0');
-        setTimeout(() => {
-          offCanvasMenu.classList.add('hidden');
-        }, 300); // Match the duration of the transition
-      };
+        const driverObj = driver({
+          showProgress: true,
+          onDestroyStarted: () => {
+            localStorage.setItem("pintree-tour", "completed");
+            driverObj.destroy();
+          },
+          steps: [
+            {
+              element: "#navigation",
+              popover: {
+                title: "🧭 Navigation Sidebar",
+                description:
+                  "This sidebar allows you to navigate through the main sections of your awesome bookmarks!",
+                side: "left",
+                align: "start"
+              }
+            },
+            {
+              element: "#searchInput",
+              popover: {
+                title: "🔍 Search Bar",
+                description:
+                  "Use this search bar to find specific content within your bookmarks. Start typing to see suggestions and results.",
+                side: "left",
+                align: "start"
+              }
+            },
+            {
+              element: "#bookmarks",
+              popover: {
+                title: "📚 Bookmarks",
+                description:
+                  "This section displays your bookmarks in a visually appealing way. Click on any card to open the link in a new tab.",
+                side: "left",
+                align: "start"
+              }
+            },
+            {
+              popover: {
+                title: "Congratulations! 🎉",
+                description:
+                  "You have completed the tour of Pintree! Start exploring and creating your personalized navigation site. We hope you find it useful and feel free to contribute."
+              }
+            }
+          ]
+        });
 
-      // Event listeners for open and close buttons
-      openSidebarButton.addEventListener('click', openSidebar);
-      closeSidebarButton.addEventListener('click', closeSidebar);
-      offCanvasBackdrop.addEventListener('click', closeSidebar); // Close sidebar when clicking on the backdrop
-    });
+        driverObj.drive();
+      }
+    </script>
 
-    // Search functionality
-    function searchBookmarks(query) {
-      fetch('json/pintree.json')
-        .then(response => response.json())
-        .then(data => {
-          const results = searchInData(data, query.toLowerCase());
-          renderBookmarks(results, [{ title: 'Search Results', children: results }]);
-        })
-        .catch(error => console.error('Error searching bookmarks:', error));
-    }
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Variables for sidebar elements
+        const openSidebarButton = document.getElementById(
+          "open-sidebar-button"
+        );
+        const closeSidebarButton = document.getElementById(
+          "close-sidebar-button"
+        );
+        const offCanvasMenu = document.getElementById("off-canvas-menu");
+        const offCanvasBackdrop = document.getElementById(
+          "off-canvas-backdrop"
+        );
+        const offCanvasContent = document.getElementById("off-canvas-content");
 
-    function searchInData(data, query) {
-      let results = [];
-      data.forEach(item => {
-        if (item.title.toLowerCase().includes(query)) {
-          results.push(item);
-        }
-        if (item.children) {
-          const childResults = searchInData(item.children, query);
-          if (childResults.length > 0) {
-            results = results.concat(childResults);
-          }
-        }
+        // Function to open the sidebar
+        const openSidebar = () => {
+          offCanvasMenu.classList.remove("hidden");
+          setTimeout(() => {
+            offCanvasBackdrop.classList.add("opacity-100");
+            offCanvasContent.classList.add("translate-x-0");
+          }, 10);
+        };
+
+        // Function to close the sidebar
+        const closeSidebar = () => {
+          offCanvasBackdrop.classList.remove("opacity-100");
+          offCanvasContent.classList.remove("translate-x-0");
+          setTimeout(() => {
+            offCanvasMenu.classList.add("hidden");
+          }, 300); // Match the duration of the transition
+        };
+
+        // Event listeners for open and close buttons
+        openSidebarButton.addEventListener("click", openSidebar);
+        closeSidebarButton.addEventListener("click", closeSidebar);
+        offCanvasBackdrop.addEventListener("click", closeSidebar); // Close sidebar when clicking on the backdrop
       });
-      return results;
-    }
 
-    document.getElementById('searchButton').addEventListener('click', () => {
-      const query = document.getElementById('searchInput').value;
-      searchBookmarks(query);
-    });
+      // Search functionality
+      function searchBookmarks(query) {
+        fetch("json/pintree.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const results = searchInData(data, query.toLowerCase());
+            renderBookmarks(results, [
+              { title: "Search Results", children: results }
+            ]);
+          })
+          .catch((error) => console.error("Error searching bookmarks:", error));
+      }
 
-    // Clear search results and reset UI
-    function clearSearchResults() {
-      fetch('json/pintree.json')
-        .then(response => response.json())
-        .then(data => {
-          const secondLayer = data[0].children;
-          renderNavigation(secondLayer, document.getElementById('navigation'));
-          renderBookmarks(secondLayer, [{ title: 'Bookmark', children: secondLayer }]);
-          document.getElementById('searchInput').value = '';
-          document.getElementById('clearSearchButton').classList.add('hidden');
-        })
-        .catch(error => console.error('Error clearing search results:', error));
-    }
+      function searchInData(data, query) {
+        let results = [];
+        data.forEach((item) => {
+          if (item.title.toLowerCase().includes(query)) {
+            results.push(item);
+          }
+          if (item.children) {
+            const childResults = searchInData(item.children, query);
+            if (childResults.length > 0) {
+              results = results.concat(childResults);
+            }
+          }
+        });
+        return results;
+      }
 
-    document.getElementById('clearSearchButton').addEventListener('click', clearSearchResults);
+      document.getElementById("searchButton").addEventListener("click", () => {
+        const query = document.getElementById("searchInput").value;
+        searchBookmarks(query);
+      });
 
-    function searchBookmarks(query) {
-      fetch('json/pintree.json')
-        .then(response => response.json())
-        .then(data => {
-          const results = searchInData(data, query.toLowerCase());
-          renderBookmarks(results, [{ title: 'Search Results', children: results }]);
-          document.getElementById('clearSearchButton').classList.remove('hidden');
-        })
-        .catch(error => console.error('Error searching bookmarks:', error));
-    }
+      // Clear search results and reset UI
+      function clearSearchResults() {
+        fetch("json/pintree.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const secondLayer = data[0].children;
+            renderNavigation(
+              secondLayer,
+              document.getElementById("navigation")
+            );
+            renderBookmarks(secondLayer, [
+              { title: "Bookmark", children: secondLayer }
+            ]);
+            document.getElementById("searchInput").value = "";
+            document
+              .getElementById("clearSearchButton")
+              .classList.add("hidden");
+          })
+          .catch((error) =>
+            console.error("Error clearing search results:", error)
+          );
+      }
 
-    // Create bookmark card element
-    function createCard(title, url, icon) {
-      const card = document.createElement('div');
-      card.className = 'cursor-pointer flex items-center hover:shadow-sm transition-shadow p-4 bg-white shadow-sm ring-1 ring-gray-900/5 dark:pintree-ring-gray-800 rounded-lg hover:bg-gray-100 dark:pintree-bg-gray-900 dark:hover:pintree-bg-gray-800';
-      card.onclick = () => window.open(url, '_blank'); // Make the whole card clickable
+      document
+        .getElementById("clearSearchButton")
+        .addEventListener("click", clearSearchResults);
 
-      const cardIcon = document.createElement('img');
-      cardIcon.src = icon || 'assets/default-icon.svg'; // Use provided icon or default icon
-      cardIcon.alt = title;
-      cardIcon.className = 'w-8 h-8 mr-4 rounded-full flex-shrink-0 card-icon-bg'; // Smaller size and rounded
+      function searchBookmarks(query) {
+        fetch("json/pintree.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const results = searchInData(data, query.toLowerCase());
+            renderBookmarks(results, [
+              { title: "Search Results", children: results }
+            ]);
+            document
+              .getElementById("clearSearchButton")
+              .classList.remove("hidden");
+          })
+          .catch((error) => console.error("Error searching bookmarks:", error));
+      }
 
-      // Check if the image URL returns 404 and replace it with the default icon if it does
-      cardIcon.onerror = () => {
-        cardIcon.src = 'assets/default-icon.svg';
-      };
+      // Create bookmark card element
+      function createCard(title, url, icon) {
+        const card = document.createElement("div");
+        card.className =
+          "cursor-pointer flex items-center hover:shadow-sm transition-shadow p-4 bg-white shadow-sm ring-1 ring-gray-900/5 dark:pintree-ring-gray-800 rounded-lg hover:bg-gray-100 dark:pintree-bg-gray-900 dark:hover:pintree-bg-gray-800";
+        card.onclick = () => window.open(url, "_blank"); // Make the whole card clickable
 
-      const cardContent = document.createElement('div');
-      cardContent.className = 'flex flex-col overflow-hidden'; // Ensure the content is hidden if too long
+        const cardIcon = document.createElement("img");
+        cardIcon.src = icon || "assets/default-icon.svg"; // Use provided icon or default icon
+        cardIcon.alt = title;
+        cardIcon.className =
+          "w-8 h-8 mr-4 rounded-full flex-shrink-0 card-icon-bg"; // Smaller size and rounded
 
-      const cardTitle = document.createElement('h2');
-      cardTitle.className = 'text-sm font-semibold mb-1 truncate dark:text-gray-400';
-      cardTitle.innerText = title;
+        // Check if the image URL returns 404 and replace it with the default icon if it does
+        cardIcon.onerror = () => {
+          cardIcon.src = "assets/default-icon.svg";
+        };
 
-      // Clean URL by removing http(s) and trailing slash
-      const cleanUrl = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+        const cardContent = document.createElement("div");
+        cardContent.className = "flex flex-col overflow-hidden"; // Ensure the content is hidden if too long
 
-      const cardUrl = document.createElement('p');
-      cardUrl.className = 'text-xs text-gray-400 truncate';
-      cardUrl.innerText = cleanUrl; // Use cleaned URL
+        const cardTitle = document.createElement("h2");
+        cardTitle.className =
+          "text-sm font-semibold mb-1 truncate dark:text-gray-400";
+        cardTitle.innerText = title;
 
-      cardContent.appendChild(cardTitle);
-      cardContent.appendChild(cardUrl); // Add URL paragraph
+        // Clean URL by removing http(s) and trailing slash
+        const cleanUrl = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
-      card.appendChild(cardIcon);
-      card.appendChild(cardContent);
+        const cardUrl = document.createElement("p");
+        cardUrl.className = "text-xs text-gray-400 truncate";
+        cardUrl.innerText = cleanUrl; // Use cleaned URL
 
-      return card;
-    }
+        cardContent.appendChild(cardTitle);
+        cardContent.appendChild(cardUrl); // Add URL paragraph
 
-    // Create folder card element
-    function createFolderCard(title, children, path) {
-      const card = document.createElement('div');
-      card.className = 'folder-card text-gray rounded-lg cursor-pointer flex flex-col items-center';
-      card.onclick = () => {
-        const newPath = path.concat({ title, children });
-        renderBookmarks(children, newPath);
-        updateSidebarActiveState(newPath); // Update sidebar active state
-      };
+        card.appendChild(cardIcon);
+        card.appendChild(cardContent);
 
-      const cardIcon = document.createElement('div');
-      cardIcon.innerHTML = `
+        return card;
+      }
+
+      // Create folder card element
+      function createFolderCard(title, children, path) {
+        const card = document.createElement("div");
+        card.className =
+          "folder-card text-gray rounded-lg cursor-pointer flex flex-col items-center";
+        card.onclick = () => {
+          const newPath = path.concat({ title, children });
+          renderBookmarks(children, newPath);
+          updateSidebarActiveState(newPath); // Update sidebar active state
+        };
+
+        const cardIcon = document.createElement("div");
+        cardIcon.innerHTML = `
         <svg viewBox="0 0 100 80" class="folder__svg">
           <rect x="0" y="0" width="100" height="80" class="folder__back" />
           <rect x="15" y="8" width="70" height="60" class="paper-1" />
@@ -384,346 +661,420 @@
           <rect x="0" y="10" width="100" height="70" class="folder__front right" />
         </svg>
       `;
-      cardIcon.className = 'mb-2';
+        cardIcon.className = "mb-2";
 
-      const cardTitle = document.createElement('h2');
-      cardTitle.className = 'text-xs font-normal text-center w-full truncate dark:text-gray-400';
-      cardTitle.innerText = title;
+        const cardTitle = document.createElement("h2");
+        cardTitle.className =
+          "text-xs font-normal text-center w-full truncate dark:text-gray-400";
+        cardTitle.innerText = title;
 
-      card.appendChild(cardIcon);
-      card.appendChild(cardTitle);
+        card.appendChild(cardIcon);
+        card.appendChild(cardTitle);
 
-      return card;
-    }
+        return card;
+      }
 
-    // Render sidebar navigation
-    function renderNavigation(folders, container, isFirstRender = false, path = []) {
-      container.innerHTML = ''; // Clear previous content
-      folders.forEach((folder, index) => {
-        if (folder.type === 'folder') {
-          const navItem = document.createElement('li');
-          navItem.className = 'items-center group flex justify-between gap-x-3 rounded-md p-2 text-gray-700 dark:text-gray-400 hover:text-main-500 hover:bg-gray-50 dark:hover:pintree-bg-gray-800 bg-opacity-50';
+      // Render sidebar navigation
+      function renderNavigation(
+        folders,
+        container,
+        isFirstRender = false,
+        path = []
+      ) {
+        container.innerHTML = ""; // Clear previous content
+        folders.forEach((folder, index) => {
+          if (folder.type === "folder") {
+            const navItem = document.createElement("li");
+            navItem.className =
+              "items-center group flex justify-between gap-x-3 rounded-md p-2 text-gray-700 dark:text-gray-400 hover:text-main-500 hover:bg-gray-50 dark:hover:pintree-bg-gray-800 bg-opacity-50";
 
-          const navLinkContainer = document.createElement('div');
-          navLinkContainer.className = 'flex items-center space-x-2 truncate';
+            const navLinkContainer = document.createElement("div");
+            navLinkContainer.className = "flex items-center space-x-2 truncate";
 
-          const folderIcon = document.createElement('span');
-          folderIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>';
+            const folderIcon = document.createElement("span");
+            folderIcon.innerHTML =
+              '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7a2 2 0 012-2h4l2 2h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>';
 
-          const navLink = document.createElement('a');
-          navLink.className = 'flex text-sm leading-6 font-semibold dark:text-gray-400';
-          navLink.innerText = folder.title;
+            const navLink = document.createElement("a");
+            navLink.className =
+              "flex text-sm leading-6 font-semibold dark:text-gray-400";
+            navLink.innerText = folder.title;
 
-          navLinkContainer.appendChild(folderIcon);
-          navLinkContainer.appendChild(navLink);
+            navLinkContainer.appendChild(folderIcon);
+            navLinkContainer.appendChild(navLink);
 
-          const toggleIcon = document.createElement('span');
-          toggleIcon.className = 'ml-2 transform transition-transform';
-          toggleIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>';
+            const toggleIcon = document.createElement("span");
+            toggleIcon.className = "ml-2 transform transition-transform";
+            toggleIcon.innerHTML =
+              '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>';
 
-          navItem.appendChild(navLinkContainer);
-          if (folder.children && folder.children.length > 0) {
-            navItem.appendChild(toggleIcon);
-          }
-          container.appendChild(navItem);
-
-          if (folder.children && folder.children.length > 0) {
-            const subList = document.createElement('ul');
-            subList.className = 'ml-4 space-y-2 hidden';
-            renderNavigation(folder.children, subList, false, path.concat({ title: folder.title, children: folder.children }));
-            container.appendChild(subList);
-
-            if (isFirstRender && index === 0) {
-              // Expand the first item on initial render
-              subList.classList.remove('hidden');
-              toggleIcon.classList.add('rotate-90');
+            navItem.appendChild(navLinkContainer);
+            if (folder.children && folder.children.length > 0) {
+              navItem.appendChild(toggleIcon);
             }
+            container.appendChild(navItem);
 
-            navItem.onclick = (e) => {
-              e.stopPropagation();
-              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
-              navItem.classList.add('sidebar-active');
-              subList.classList.toggle('hidden');
-              if (subList.children.length > 0) {
-                toggleIcon.classList.toggle('rotate-90');
+            if (folder.children && folder.children.length > 0) {
+              const subList = document.createElement("ul");
+              subList.className = "ml-4 space-y-2 hidden";
+              renderNavigation(
+                folder.children,
+                subList,
+                false,
+                path.concat({ title: folder.title, children: folder.children })
+              );
+              container.appendChild(subList);
+
+              if (isFirstRender && index === 0) {
+                // Expand the first item on initial render
+                subList.classList.remove("hidden");
+                toggleIcon.classList.add("rotate-90");
               }
-              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
-            };
-          } else {
-            navItem.onclick = (e) => {
-              e.stopPropagation();
-              document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
-              navItem.classList.add('sidebar-active');
-              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
-            };
-          }
-        }
-      });
-    }
 
-    // Render breadcrumbs for navigation
-    function renderBreadcrumbs(path) {
-      const breadcrumbsPath = document.getElementById('breadcrumbs-path');
-      breadcrumbsPath.innerHTML = ''; // Clear previous breadcrumbs
-
-      path.forEach((item, index) => {
-        const breadcrumb = document.createElement('span');
-        breadcrumb.className = 'cursor-pointer hover:underline';
-        breadcrumb.innerText = item.title;
-        breadcrumb.onclick = () => {
-          // Render bookmarks for the selected breadcrumb
-          const newPath = path.slice(0, index + 1);
-          renderBookmarks(item.children, newPath);
-          updateSidebarActiveState(newPath); // Update sidebar active state
-          document.getElementById('clearSearchButton').classList.add('hidden'); // Hide clear button when navigating through breadcrumbs
-        };
-
-        breadcrumbsPath.appendChild(breadcrumb);
-
-        if (index < path.length - 1) {
-          const separator = document.createElement('span');
-          separator.innerText = ' > ';
-          breadcrumbsPath.appendChild(separator);
-        }
-      });
-    }
-
-    // Update the active state of sidebar items
-    function updateSidebarActiveState(path) {
-      document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
-
-      let currentNav = document.getElementById('navigation');
-
-      path.forEach((item, index) => {
-        const items = currentNav.querySelectorAll('li');
-        items.forEach(navItem => {
-          const navLink = navItem.querySelector('a');
-          if (navLink && navLink.innerText === item.title) {
-            if (index === path.length - 1) {
-              navItem.classList.add('sidebar-active');
+              navItem.onclick = (e) => {
+                e.stopPropagation();
+                document
+                  .querySelectorAll("#navigation .sidebar-active")
+                  .forEach((el) => el.classList.remove("sidebar-active"));
+                navItem.classList.add("sidebar-active");
+                subList.classList.toggle("hidden");
+                if (subList.children.length > 0) {
+                  toggleIcon.classList.toggle("rotate-90");
+                }
+                renderBookmarks(
+                  folder.children,
+                  path.concat({
+                    title: folder.title,
+                    children: folder.children
+                  })
+                );
+              };
+            } else {
+              navItem.onclick = (e) => {
+                e.stopPropagation();
+                document
+                  .querySelectorAll("#navigation .sidebar-active")
+                  .forEach((el) => el.classList.remove("sidebar-active"));
+                navItem.classList.add("sidebar-active");
+                renderBookmarks(
+                  folder.children,
+                  path.concat({
+                    title: folder.title,
+                    children: folder.children
+                  })
+                );
+              };
             }
+          }
+        });
+      }
 
-            if (index < path.length - 1) {
-              const subList = navItem.querySelector('ul');
-              if (subList) {
-                subList.classList.remove('hidden');
-                currentNav = subList;
+      // Render breadcrumbs for navigation
+      function renderBreadcrumbs(path) {
+        const breadcrumbsPath = document.getElementById("breadcrumbs-path");
+        breadcrumbsPath.innerHTML = ""; // Clear previous breadcrumbs
+
+        path.forEach((item, index) => {
+          const breadcrumb = document.createElement("span");
+          breadcrumb.className = "cursor-pointer hover:underline";
+          breadcrumb.innerText = item.title;
+          breadcrumb.onclick = () => {
+            // Render bookmarks for the selected breadcrumb
+            const newPath = path.slice(0, index + 1);
+            renderBookmarks(item.children, newPath);
+            updateSidebarActiveState(newPath); // Update sidebar active state
+            document
+              .getElementById("clearSearchButton")
+              .classList.add("hidden"); // Hide clear button when navigating through breadcrumbs
+          };
+
+          breadcrumbsPath.appendChild(breadcrumb);
+
+          if (index < path.length - 1) {
+            const separator = document.createElement("span");
+            separator.innerText = " > ";
+            breadcrumbsPath.appendChild(separator);
+          }
+        });
+      }
+
+      // Update the active state of sidebar items
+      function updateSidebarActiveState(path) {
+        document
+          .querySelectorAll("#navigation .sidebar-active")
+          .forEach((el) => el.classList.remove("sidebar-active"));
+
+        let currentNav = document.getElementById("navigation");
+
+        path.forEach((item, index) => {
+          const items = currentNav.querySelectorAll("li");
+          items.forEach((navItem) => {
+            const navLink = navItem.querySelector("a");
+            if (navLink && navLink.innerText === item.title) {
+              if (index === path.length - 1) {
+                navItem.classList.add("sidebar-active");
+              }
+
+              if (index < path.length - 1) {
+                const subList = navItem.querySelector("ul");
+                if (subList) {
+                  subList.classList.remove("hidden");
+                  currentNav = subList;
+                }
               }
             }
-          }
+          });
         });
-      });
-    }
-
-    // Show a message when no search results are found
-    function showNoResultsMessage() {
-      const container = document.getElementById('bookmarks');
-      container.innerHTML = ''; // Clear previous content
-
-      const messageContainer = document.createElement('div');
-      messageContainer.className = 'flex flex-col items-center justify-center h-full';
-
-      const icon = document.createElement('svg');
-      icon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-      icon.setAttribute('class', 'h-16 w-16 text-gray-500');
-      icon.setAttribute('fill', 'none');
-      icon.setAttribute('viewBox', '0 0 24 24');
-      icon.setAttribute('stroke', 'currentColor');
-      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />';
-
-      const title = document.createElement('h2');
-      title.className = 'text-gray-500 text-xl font-semibold mt-4';
-      title.innerText = 'Oops, Nothing to See Here!';
-
-      const message = document.createElement('p');
-      message.className = 'text-gray-500 mt-2';
-      message.innerText = 'Try another search or discover more cool stuff elsewhere!';
-
-      messageContainer.appendChild(icon);
-      messageContainer.appendChild(title);
-      messageContainer.appendChild(message);
-
-      container.appendChild(messageContainer);
-    }
-
-    // Render bookmarks
-    function renderBookmarks(data, path) {
-      const container = document.getElementById('bookmarks');
-      container.innerHTML = ''; // Clear previous content
-
-      // Render breadcrumbs
-      renderBreadcrumbs(path);
-
-      // Separate folders and links
-      const folders = data.filter(item => item.type === 'folder');
-      const links = data.filter(item => item.type === 'link').sort((a, b) => b.addDate - a.addDate);
-
-      if (folders.length === 0 && links.length === 0) {
-        showNoResultsMessage();
-        return;
       }
 
-      // Create folder section
-      if (folders.length > 0) {
-        const folderSection = document.createElement('div');
-        folderSection.className = 'grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6';
-        folders.forEach(folder => {
-          const card = createFolderCard(folder.title, folder.children, path);
-          folderSection.appendChild(card);
-        });
-        container.appendChild(folderSection);
+      // Show a message when no search results are found
+      function showNoResultsMessage() {
+        const container = document.getElementById("bookmarks");
+        container.innerHTML = ""; // Clear previous content
+
+        const messageContainer = document.createElement("div");
+        messageContainer.className =
+          "flex flex-col items-center justify-center h-full";
+
+        const icon = document.createElement("svg");
+        icon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        icon.setAttribute("class", "h-16 w-16 text-gray-500");
+        icon.setAttribute("fill", "none");
+        icon.setAttribute("viewBox", "0 0 24 24");
+        icon.setAttribute("stroke", "currentColor");
+        icon.innerHTML =
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />';
+
+        const title = document.createElement("h2");
+        title.className = "text-gray-500 text-xl font-semibold mt-4";
+        title.innerText = "Oops, Nothing to See Here!";
+
+        const message = document.createElement("p");
+        message.className = "text-gray-500 mt-2";
+        message.innerText =
+          "Try another search or discover more cool stuff elsewhere!";
+
+        messageContainer.appendChild(icon);
+        messageContainer.appendChild(title);
+        messageContainer.appendChild(message);
+
+        container.appendChild(messageContainer);
       }
 
-      // Add separator line if there are links
-      if (folders.length > 0 && links.length > 0) {
-        const separator = document.createElement('hr');
-        separator.className = 'my-1 border-t-1 border-gray-200 dark:pintree-border-gray-800';
-        container.appendChild(separator);
-      }
+      // Render bookmarks
+      function renderBookmarks(data, path) {
+        const container = document.getElementById("bookmarks");
+        container.innerHTML = ""; // Clear previous content
 
-      // Create link section
-      if (links.length > 0) {
-        const linkSection = document.createElement('div');
-        linkSection.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6';
-        links.forEach(link => {
-          const card = createCard(link.title, link.url, link.icon);
-          linkSection.appendChild(card);
-        });
-        container.appendChild(linkSection);
-      }
+        // Render breadcrumbs
+        renderBreadcrumbs(path);
 
-      // Update sidebar active state
-      updateSidebarActiveState(path);
-    }
+        // Separate folders and links
+        const folders = data.filter((item) => item.type === "folder");
+        const links = data
+          .filter((item) => item.type === "link")
+          .sort((a, b) => b.addDate - a.addDate);
 
-    // Fetch and render data
-    fetch('json/pintree.json')
-      .then(response => response.json())
-      .then(data => {
-        // Use the first layer of the data directly
-        const firstLayer = data;
-        // Render navigation using the first layer of data
-        renderNavigation(firstLayer, document.getElementById('navigation'), true);
-        // Render bookmarks using the first layer of data, starting from the Bookmark
-        renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
-
-        // Automatically select and show the first item
-        if (firstLayer.length > 0) {
-          const firstItem = firstLayer[0];
-          updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
-          renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
+        if (folders.length === 0 && links.length === 0) {
+          showNoResultsMessage();
+          return;
         }
-      })
-      .catch(error => console.error('Error loading bookmarks:', error));
 
-    // Search functionality on pressing Enter
-    document.getElementById('searchInput').addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        const query = event.target.value;
-        searchBookmarks(query);
+        // Create folder section
+        if (folders.length > 0) {
+          const folderSection = document.createElement("div");
+          folderSection.className =
+            "grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6";
+          folders.forEach((folder) => {
+            const card = createFolderCard(folder.title, folder.children, path);
+            folderSection.appendChild(card);
+          });
+          container.appendChild(folderSection);
+        }
+
+        // Add separator line if there are links
+        if (folders.length > 0 && links.length > 0) {
+          const separator = document.createElement("hr");
+          separator.className =
+            "my-1 border-t-1 border-gray-200 dark:pintree-border-gray-800";
+          container.appendChild(separator);
+        }
+
+        // Create link section
+        if (links.length > 0) {
+          const linkSection = document.createElement("div");
+          linkSection.className =
+            "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6";
+          links.forEach((link) => {
+            const card = createCard(link.title, link.url, link.icon);
+            linkSection.appendChild(card);
+          });
+          container.appendChild(linkSection);
+        }
+
+        // Update sidebar active state
+        updateSidebarActiveState(path);
       }
-    });
 
-    // Search functionality on button click
-    document.getElementById('searchButton').addEventListener('click', function () {
-      const query = document.getElementById('searchInput').value;
-      searchBookmarks(query);
-    });
-
-    // Theme toggle functionality
-    const themeToggleButton = document.getElementById('themeToggleButton');
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
-
-    // Apply dark theme
-    function applyDarkTheme() {
-      document.documentElement.classList.add('dark');
-      sunIcon.classList.add('hidden');
-      moonIcon.classList.remove('hidden');
-    }
-
-    // Apply light theme
-    function applyLightTheme() {
-      document.documentElement.classList.remove('dark');
-      sunIcon.classList.remove('hidden');
-      moonIcon.classList.add('hidden');
-    }
-
-    // Toggle theme between dark and light
-    function toggleTheme() {
-      if (document.documentElement.classList.contains('dark')) {
-        applyLightTheme();
-      } else {
-        applyDarkTheme();
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
       // Fetch and render data
-      fetch('json/pintree.json')
-        .then(response => response.json())
-        .then(data => {
-          // Hide loading spinner
-          document.getElementById('loading-spinner').style.display = 'none';
-
+      fetch("json/pintree.json")
+        .then((response) => response.json())
+        .then((data) => {
           // Use the first layer of the data directly
           const firstLayer = data;
           // Render navigation using the first layer of data
-          renderNavigation(firstLayer, document.getElementById('navigation'), true);
+          renderNavigation(
+            firstLayer,
+            document.getElementById("navigation"),
+            true
+          );
           // Render bookmarks using the first layer of data, starting from the Bookmark
-          renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
+          renderBookmarks(firstLayer, [
+            { title: "Bookmark", children: firstLayer }
+          ]);
 
           // Automatically select and show the first item
           if (firstLayer.length > 0) {
             const firstItem = firstLayer[0];
-            updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
-            renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
+            updateSidebarActiveState([
+              { title: firstItem.title, children: firstItem.children }
+            ]);
+            renderBookmarks(firstItem.children, [
+              { title: "Bookmark", children: firstLayer },
+              { title: firstItem.title, children: firstItem.children }
+            ]);
           }
         })
-        .catch(error => {
-          console.error('Error loading bookmarks:', error);
-          // Optionally hide the spinner and show an error message
-          document.getElementById('loading-spinner').style.display = 'none';
+        .catch((error) => console.error("Error loading bookmarks:", error));
+
+      // Search functionality on pressing Enter
+      document
+        .getElementById("searchInput")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            const query = event.target.value;
+            searchBookmarks(query);
+          }
         });
-    });
 
-    // Event listener for theme toggle button
-    themeToggleButton.addEventListener('click', toggleTheme);
+      // Search functionality on button click
+      document
+        .getElementById("searchButton")
+        .addEventListener("click", function () {
+          const query = document.getElementById("searchInput").value;
+          searchBookmarks(query);
+        });
 
-    // Automatically apply theme according to system theme settings
-    function applyColorTheme(theme) {
-      if (theme === 'dark') {
-        applyDarkTheme();
-      } else {
-        applyLightTheme();
+      // Theme toggle functionality
+      const themeToggleButton = document.getElementById("themeToggleButton");
+      const sunIcon = document.getElementById("sunIcon");
+      const moonIcon = document.getElementById("moonIcon");
+
+      // Apply dark theme
+      function applyDarkTheme() {
+        document.documentElement.classList.add("dark");
+        sunIcon.classList.add("hidden");
+        moonIcon.classList.remove("hidden");
       }
-    }
 
-    // Detect initial color theme
-    const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyColorTheme(prefersDarkTheme ? 'dark' : 'light');
+      // Apply light theme
+      function applyLightTheme() {
+        document.documentElement.classList.remove("dark");
+        sunIcon.classList.remove("hidden");
+        moonIcon.classList.add("hidden");
+      }
 
-    // Listen for changes in the color theme
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-      applyColorTheme(event.matches ? 'dark' : 'light');
-    });
+      // Toggle theme between dark and light
+      function toggleTheme() {
+        if (document.documentElement.classList.contains("dark")) {
+          applyLightTheme();
+        } else {
+          applyDarkTheme();
+        }
+      }
 
-    // Open mobile menu
-    document.getElementById('open-sidebar-button').addEventListener('click', function () {
-      var navigation = document.getElementById('navigation').cloneNode(true);
-      document.getElementById('sidebar-2').appendChild(navigation);
-    });
+      document.addEventListener("DOMContentLoaded", () => {
+        // Fetch and render data
+        fetch("json/pintree.json")
+          .then((response) => response.json())
+          .then((data) => {
+            // Hide loading spinner
+            document.getElementById("loading-spinner").style.display = "none";
 
-  </script>
+            // Use the first layer of the data directly
+            const firstLayer = data;
+            // Render navigation using the first layer of data
+            renderNavigation(
+              firstLayer,
+              document.getElementById("navigation"),
+              true
+            );
+            // Render bookmarks using the first layer of data, starting from the Bookmark
+            renderBookmarks(firstLayer, [
+              { title: "Bookmark", children: firstLayer }
+            ]);
 
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const yearElement = document.getElementById('currentYear');
-      const currentYear = new Date().getFullYear();
-      yearElement.textContent = currentYear;
-    });
-  </script>
+            // Automatically select and show the first item
+            if (firstLayer.length > 0) {
+              const firstItem = firstLayer[0];
+              updateSidebarActiveState([
+                { title: firstItem.title, children: firstItem.children }
+              ]);
+              renderBookmarks(firstItem.children, [
+                { title: "Bookmark", children: firstLayer },
+                { title: firstItem.title, children: firstItem.children }
+              ]);
+            }
+          })
+          .catch((error) => {
+            console.error("Error loading bookmarks:", error);
+            // Optionally hide the spinner and show an error message
+            document.getElementById("loading-spinner").style.display = "none";
+          });
+      });
 
-</body>
+      // Event listener for theme toggle button
+      themeToggleButton.addEventListener("click", toggleTheme);
 
+      // Automatically apply theme according to system theme settings
+      function applyColorTheme(theme) {
+        if (theme === "dark") {
+          applyDarkTheme();
+        } else {
+          applyLightTheme();
+        }
+      }
+
+      // Detect initial color theme
+      const prefersDarkTheme = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      applyColorTheme(prefersDarkTheme ? "dark" : "light");
+
+      // Listen for changes in the color theme
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          applyColorTheme(event.matches ? "dark" : "light");
+        });
+
+      // Open mobile menu
+      document
+        .getElementById("open-sidebar-button")
+        .addEventListener("click", function () {
+          var navigation = document
+            .getElementById("navigation")
+            .cloneNode(true);
+          document.getElementById("sidebar-2").appendChild(navigation);
+        });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const yearElement = document.getElementById("currentYear");
+        const currentYear = new Date().getFullYear();
+        yearElement.textContent = currentYear;
+      });
+    </script>
+  </body>
 </html>

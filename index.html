@@ -556,7 +556,8 @@
 
       // Separate folders and links
       const folders = data.filter(item => item.type === 'folder');
-      const links = data.filter(item => item.type === 'link').sort((a, b) => b.addDate - a.addDate);
+      // const links = data.filter(item => item.type === 'link').sort((a, b) => b.addDate - a.addDate);
+      const links = data.filter(item => item.type === 'link');
 
       if (folders.length === 0 && links.length === 0) {
         showNoResultsMessage();

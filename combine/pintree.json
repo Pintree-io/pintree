@@ -2,21 +2,7 @@
   {
     "type": "folder",
     "addDate": 1718526477999,
-    "title": "Rename By File Name",
-    "children": [
-      {
-        "type": "link",
-        "addDate": 1718526687700,
-        "title": "Google",
-        "icon": "https://logo.clearbit.com/www.google.com",
-        "url": "https://www.google.com/"
-      }
-    ]
-  },
-  {
-    "type": "folder",
-    "addDate": 1718526477999,
-    "title": "pintree",
+    "title": "Bookmarks Bar",
     "children": [
       {
         "type": "link",

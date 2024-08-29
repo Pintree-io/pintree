@@ -13,7 +13,6 @@
   <link rel="canonical" href="https://www.pintree.io">
   <script defer src="js/umami.js" data-website-id="60283522-e543-4dcb-bd47-e855f1e0a635"></script>
   <script defer data-domain="pintree.io" src="js/plausible.js"></script>
-  <script src="js/html2canvas.min.js"></script>
   <script type="text/javascript">
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -178,9 +177,7 @@
                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
-            <button id="更新网页快照" type="button">
-              更新网页快照
-            </button>
+            <button id="updateScreenShot" type="button" onclick="window.open('screenshot.html', '_blank')">更新网页快照</button>
           </div>
         </div>
       </div>
@@ -761,7 +758,6 @@
         return book.title
       }
     }
-
   </script>
 
   <script>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>更新网页快照</title>
+	<style>
+		/* 使用媒体查询来实现响应式设计 */
+		@media (min-width: 768px) {
+			.popup {
+				width: 80%;
+				/* 设置弹窗宽度为80% */
+				height: 80%;
+				/* 设置弹窗高度为80% */
+			}
+		}
+
+		@media (max-width: 767px) {
+			.popup {
+				width: 90%;
+				/* 设置弹窗宽度为90% */
+				height: 90%;
+				/* 设置弹窗高度为90% */
+			}
+		}
+
+		.overlay {
+			position: fixed;
+			/* 设置定位为固定定位 */
+			top: 0;
+			/* 距离顶部为0 */
+			left: 0;
+			/* 距离左侧为0 */
+			width: 100%;
+			/* 宽度为100% */
+			height: 100%;
+			/* 高度为100% */
+			background-color: rgba(0, 0, 0, 0.5);
+			/* 背景颜色为半透明黑色 */
+			z-index: 9998;
+			/* 设置层级 */
+			display: none;
+			/* 初始隐藏 */
+		}
+
+		.popup {
+			position: fixed;
+			/* 设置定位为固定定位 */
+			/* 使用 flexbox 布局来使弹窗居中 */
+			top: 0;
+			/* 距离顶部为0 */
+			left: 0;
+			/* 距离左侧为0 */
+			right: 0;
+			/* 距离右侧为0 */
+			bottom: 0;
+			/* 距离底部为0 */
+			margin: auto;
+			/* 居中 */
+			/* 添加一些样式来增加美观性和可读性 */
+			background-color: #fff;
+			/* 背景颜色为白色 */
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			/* 添加阴影效果 */
+			border-radius: 10px;
+			/* 设置圆角 */
+			z-index: 9999;
+			/* 设置层级 */
+			display: none;
+			/* 初始隐藏 */
+			/* 添加一个动画效果来增加活力和吸引力 */
+			animation: fadeIn 0.5s;
+			/* 使用fadeIn动画，时长0.5秒 */
+		}
+
+		/* 定义一个淡入的动画 */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				/* 从透明度0开始 */
+			}
+
+			to {
+				opacity: 1;
+				/* 渐变到透明度1 */
+			}
+		}
+
+		.close-button {
+			position: absolute;
+			/* 设置定位为绝对定位 */
+			top: 10px;
+			/* 距离顶部10像素 */
+			right: 10px;
+			/* 距离右侧10像素 */
+			width: 30px;
+			/* 宽度为30像素 */
+			height: 30px;
+			/* 高度为30像素 */
+			border: none;
+			/* 去除边框 */
+			background-color: transparent;
+			/* 背景透明 */
+			cursor: pointer;
+			/* 鼠标指针为手型 */
+		}
+
+		.close-button:hover {
+			transform: scale(1.1);
+			/* 鼠标悬停时放大1.1倍 */
+		}
+
+		.close-button:active {
+			transform: scale(0.9);
+			/* 鼠标点击时缩小0.9倍 */
+		}
+
+		.close-icon {
+			width: 100%;
+			/* 宽度100% */
+			height: 100%;
+			/* 高度100% */
+		}
+
+		.iframe-container {
+			width: 100%;
+			/* 宽度100% */
+			height: 100%;
+			/* 高度100% */
+			overflow: hidden;
+			/* 隐藏溢出内容 */
+		}
+
+		.iframe-content {
+			width: 100%;
+			/* 宽度100% */
+			height: 100%;
+			/* 高度100% */
+			border: none;
+			/* 去除边框 */
+		}
+
+		.close-icon {
+			width: 30px;
+			/* 宽度30像素 */
+			height: 30px;
+			/* 高度30像素 */
+			background-color: white;
+			/* 背景颜色为白色 */
+			border-radius: 50%;
+			/* 设置圆角 */
+			display: flex;
+			/* 使用flex布局 */
+			justify-content: center;
+			/* 水平居中 */
+			align-items: center;
+			/* 垂直居中 */
+		}
+
+		.close-icon::after {
+			content: "X";
+			/* 内容为X */
+		}
+
+		.button-open {
+			padding: 10px 20px;
+			/* 上下内边距10像素，左右内边距20像素 */
+			border: none;
+			/* 去除边框 */
+			background-color: #0078d4;
+			/* 背景颜色为蓝色 */
+			color: white;
+			/* 文字颜色为白色 */
+			font-size: 16px;
+			/* 字体大小为16像素 */
+			border-radius: 5px;
+			/* 设置圆角 */
+			cursor: pointer;
+			/* 鼠标指针为手型 */
+			position: absolute;
+			/* 设置定位为绝对定位 */
+			/* 使用 flexbox 布局来使按钮居中 */
+			top: 0;
+			/* 距离顶部为0 */
+			left: 0;
+			/* 距离左侧为0 */
+			right: 0;
+			/* 距离右侧为0 */
+			bottom: 0;
+			/* 距离底部为0 */
+			margin: auto;
+			/* 居中 */
+			width: 150px;
+			/* 按钮的宽度为150像素 */
+			height: 50px;
+			/* 按钮的高度为50像素 */
+		}
+	</style>
+  	<script src="js/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+	<button onclick="openPopup()" class='button-open'>打开弹窗</button>
+
+	<div class="overlay" id="overlay" onclick="closePopup()"></div>
+
+	<div class="popup" id="popup">
+		<button class="close-button" onclick="closePopup()">
+			<div class="close-icon"></div>
+		</button>
+
+		<div class="iframe-container">
+			<iframe class="iframe-content" id="popupContent" src="https://www.example.com" loading="lazy"
+				sandbox="allow-same-origin allow-scripts" referrerPolicy="no-referrer">
+			</iframe>
+		</div>
+	</div>
+
+	<script>
+		function openPopup(url) {
+			var overlay = document.getElementById("overlay");
+			var popup = document.getElementById("popup");
+			var popupContent = document.getElementById("popupContent");
+			popupContent.src = url; // 替换为您想要显示的弹窗内容的URL
+			overlay.style.display = "block"; // 显示遮罩层
+			popup.style.display = "block"; // 显示弹窗
+		}
+
+		function closePopup() {
+			var overlay = document.getElementById("overlay");
+			var popup = document.getElementById("popup");
+			overlay.style.display = "none"; // 隐藏遮罩层
+			popup.style.display = "none"; // 隐藏弹窗
+		}
+
+		// 使用 JavaScript 获取 URL 参数
+		function getQueryStringParameter(param) {
+			let queryString = window.location.search.substring(1);
+			let parameters = queryString.split("&");
+
+			for (let i = 0; i < parameters.length; i++) {
+				let pair = parameters[i].split("=");
+				if (pair[0] == param) {
+					return decodeURIComponent(pair[1]);
+				}
+			}
+
+			return null;
+		}
+
+		fetch('json/pintree.json')
+			.then(response => response.json())
+			.then(data => {
+				var urls = findKeysWithValue(data)
+				traverseArrayWithDelay(urls);
+			})
+			.catch(error => console.error('Error loading bookmarks:', error));
+
+		function findKeysWithValue(obj, foundValues = []) {
+			// 遍历对象的所有属性
+			for (const [key, value] of Object.entries(obj)) {
+				var d = {url:"",guid:""}
+				// 如果键匹配，则将值添加到结果数组中
+				if (key === "guid") {
+					d.guid = value;
+				}
+				if (key === "url") {
+					d.url = value;
+					foundValues.push(value);
+				}
+
+				// 如果值是一个对象，则递归查找
+				if (typeof value === 'object' && value !== null) {
+					findKeysWithValue(value, foundValues);
+				}
+			}
+
+			return foundValues;
+		}
+
+		async function traverseArrayWithDelay(array) {
+			for (const item of array) {
+				openPopup(folder.url)
+				await new Promise(resolve => setTimeout(resolve, 5000)); // 等待5秒
+				html2canvas(document.body).then(function(canvas) {
+					document.body.appendChild(canvas);
+				});
+			}
+		}
+ 
+
+	</script>
+
+</body>
+
+</html>

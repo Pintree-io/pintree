@@ -11,8 +11,8 @@
   <meta name="author" content="Pintree">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.pintree.io">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="60283522-e543-4dcb-bd47-e855f1e0a635"></script>
-  <script defer data-domain="pintree.io" src="https://plausible.io/js/script.js"></script>
+  <script defer src="js/umami.js" data-website-id="60283522-e543-4dcb-bd47-e855f1e0a635"></script>
+  <script defer data-domain="pintree.io" src="js/plausible.js"></script>
   <script type="text/javascript">
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -80,6 +80,17 @@
       <div class="fixed inset-0 flex">
         <div id="off-canvas-content"
           class="relative mr-16 flex w-full max-w-xs flex-1 -translate-x-full transition ease-in-out duration-300 transform">
+          <!-- Close button for the off-canvas menu -->
+          <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
+            <button id="open-sidebar-button" type="button" class="-m-2.5 p-2.5">
+              <span class="sr-only">Close sidebar</span>
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
           <!-- Close button for the off-canvas menu -->
           <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
             <button id="close-sidebar-button" type="button" class="-m-2.5 p-2.5">
@@ -166,6 +177,7 @@
                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
+            <button id="updateScreenShot" type="button" onclick="window.open('screenshot.html', '_blank')">更新网页快照</button>
           </div>
         </div>
       </div>
@@ -303,9 +315,10 @@
       fetch('json/pintree.json')
         .then(response => response.json())
         .then(data => {
-          const secondLayer = data[0].children;
-          renderNavigation(secondLayer, document.getElementById('navigation'));
-          renderBookmarks(secondLayer, [{ title: 'Bookmark', children: secondLayer }]);
+          const firstLayer = data.roots;
+          const secondLayer = data.roots.bookmark_bar;
+          renderNavigation(firstLayer, document.getElementById('navigation'));
+          renderBookmarks(secondLayer, [{ title: 'Bookmark', children: secondLayer.children }]);
           document.getElementById('searchInput').value = '';
           document.getElementById('clearSearchButton').classList.add('hidden');
         })
@@ -397,7 +410,15 @@
     }
 
     // Render sidebar navigation
-    function renderNavigation(folders, container, isFirstRender = false, path = []) {
+    function renderNavigation(firstLayer, container, isFirstRender = false, path = []) {
+      var folders = []
+      if (firstLayer.hasOwnProperty("bookmark_bar"))
+      {
+        folders = [firstLayer.bookmark_bar,firstLayer.other,firstLayer.synced]
+      }
+      else{
+        folders = firstLayer
+      }
       container.innerHTML = ''; // Clear previous content
       folders.forEach((folder, index) => {
         if (folder.type === 'folder') {
@@ -412,7 +433,14 @@
 
           const navLink = document.createElement('a');
           navLink.className = 'flex text-sm leading-6 font-semibold dark:text-gray-400';
-          navLink.innerText = folder.title;
+          if (firstLayer.hasOwnProperty("bookmark_bar"))
+          {
+            folders = [firstLayer.bookmark_bar,firstLayer.other,firstLayer.synced]
+          }
+          else{
+            folders = firstLayer
+          }
+          navLink.innerText = getBookmarkName(folder);
 
           navLinkContainer.appendChild(folderIcon);
           navLinkContainer.appendChild(navLink);
@@ -430,7 +458,7 @@
           if (folder.children && folder.children.length > 0) {
             const subList = document.createElement('ul');
             subList.className = 'ml-4 space-y-2 hidden';
-            renderNavigation(folder.children, subList, false, path.concat({ title: folder.title, children: folder.children }));
+            renderNavigation(folder.children, subList, false, path.concat({ title: getBookmarkName(folder), children: folder.children }));
             container.appendChild(subList);
 
             if (isFirstRender && index === 0) {
@@ -447,14 +475,14 @@
               if (subList.children.length > 0) {
                 toggleIcon.classList.toggle('rotate-90');
               }
-              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+              renderBookmarks(folder.children, path.concat({ title: getBookmarkName(folder), children: folder.children }));
             };
           } else {
             navItem.onclick = (e) => {
               e.stopPropagation();
               document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList.remove('sidebar-active'));
               navItem.classList.add('sidebar-active');
-              renderBookmarks(folder.children, path.concat({ title: folder.title, children: folder.children }));
+              renderBookmarks(folder.children, path.concat({ title: getBookmarkName(folder), children: folder.children }));
             };
           }
         }
@@ -469,7 +497,7 @@
       path.forEach((item, index) => {
         const breadcrumb = document.createElement('span');
         breadcrumb.className = 'cursor-pointer hover:underline';
-        breadcrumb.innerText = item.title;
+        breadcrumb.innerText = getBookmarkName(item);
         breadcrumb.onclick = () => {
           // Render bookmarks for the selected breadcrumb
           const newPath = path.slice(0, index + 1);
@@ -498,7 +526,7 @@
         const items = currentNav.querySelectorAll('li');
         items.forEach(navItem => {
           const navLink = navItem.querySelector('a');
-          if (navLink && navLink.innerText === item.title) {
+          if (navLink && navLink.innerText === getBookmarkName(item)) {
             if (index === path.length - 1) {
               navItem.classList.add('sidebar-active');
             }
@@ -557,7 +585,7 @@
       // Separate folders and links
       const folders = data.filter(item => item.type === 'folder');
       // const links = data.filter(item => item.type === 'link').sort((a, b) => b.addDate - a.addDate);
-      const links = data.filter(item => item.type === 'link');
+      const links = data.filter(item => item.type === 'url');
 
       if (folders.length === 0 && links.length === 0) {
         showNoResultsMessage();
@@ -569,7 +597,7 @@
         const folderSection = document.createElement('div');
         folderSection.className = 'grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6';
         folders.forEach(folder => {
-          const card = createFolderCard(folder.title, folder.children, path);
+          const card = createFolderCard(getBookmarkName(folder), folder.children, path);
           folderSection.appendChild(card);
         });
         container.appendChild(folderSection);
@@ -587,7 +615,7 @@
         const linkSection = document.createElement('div');
         linkSection.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6';
         links.forEach(link => {
-          const card = createCard(link.title, link.url, link.icon);
+          const card = createCard(getBookmarkName(link), link.url, link.icon);
           linkSection.appendChild(card);
         });
         container.appendChild(linkSection);
@@ -602,17 +630,19 @@
       .then(response => response.json())
       .then(data => {
         // Use the first layer of the data directly
-        const firstLayer = data;
+        const firstLayer = data.roots;
+        const secondLayer = data.roots.bookmark_bar;
+        // var folders = [firstLayer.bookmark_bar,firstLayer.other,firstLayer.synced]
         // Render navigation using the first layer of data
         renderNavigation(firstLayer, document.getElementById('navigation'), true);
         // Render bookmarks using the first layer of data, starting from the Bookmark
-        renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
+        renderBookmarks(secondLayer.children, [{ title: secondLayer.name, children: secondLayer.children }]);
 
         // Automatically select and show the first item
-        if (firstLayer.length > 0) {
-          const firstItem = firstLayer[0];
-          updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
-          renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
+        if (secondLayer.length > 0) {
+          const firstItem = secondLayer.children[0];
+          updateSidebarActiveState([{ title: getBookmarkName(firstItem), children: firstItem.children }]);
+          renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: secondLayer }, { title: getBookmarkName(firstItem), children: firstItem.children }]);
         }
       })
       .catch(error => console.error('Error loading bookmarks:', error));
@@ -668,17 +698,20 @@
           document.getElementById('loading-spinner').style.display = 'none';
 
           // Use the first layer of the data directly
-          const firstLayer = data;
+          const firstLayer = data.roots;
+          const secondLayer = data.roots.bookmark_bar;
+          // var folders = [firstLayer.bookmark_bar,firstLayer.other,firstLayer.synced]
           // Render navigation using the first layer of data
           renderNavigation(firstLayer, document.getElementById('navigation'), true);
           // Render bookmarks using the first layer of data, starting from the Bookmark
-          renderBookmarks(firstLayer, [{ title: 'Bookmark', children: firstLayer }]);
+          renderBookmarks(secondLayer.children, [{ title: getBookmarkName(secondLayer), children: secondLayer.children }]);
+
 
           // Automatically select and show the first item
           if (firstLayer.length > 0) {
             const firstItem = firstLayer[0];
-            updateSidebarActiveState([{ title: firstItem.title, children: firstItem.children }]);
-            renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: firstItem.title, children: firstItem.children }]);
+            updateSidebarActiveState([{ title: getBookmarkName(firstItem), children: firstItem.children }]);
+            renderBookmarks(firstItem.children, [{ title: 'Bookmark', children: firstLayer }, { title: getBookmarkName(firstItem), children: firstItem.children }]);
           }
         })
         .catch(error => {
@@ -715,6 +748,16 @@
       document.getElementById('sidebar-2').appendChild(navigation);
     });
 
+    function getBookmarkName(book)
+    {
+      if (book.hasOwnProperty("name"))
+      {
+        return book.name
+      }
+      else{
+        return book.title
+      }
+    }
   </script>
 
   <script>

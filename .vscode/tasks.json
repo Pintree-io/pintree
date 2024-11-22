@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build:css",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build:css",
+      "detail": "tailwindcss build ./css/styles.css -o ./css/tailwind.css"
+    },
+    {
+      "type": "npm",
+      "script": "start",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "npm: start",
+      "detail": "serve",
+      "dependsOn": ["npm: build:css"]
+    },
+    {
+      "type": "npm",
+      "script": "watch:css",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: watch:css",
+      "detail": "nodemon -e html,css,js -x \"npm run build:css\""
+    }
+  ]
+}

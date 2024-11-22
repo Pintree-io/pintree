@@ -6,7 +6,8 @@
   "scripts": {
     "build:css": "tailwindcss build ./css/styles.css -o ./css/tailwind.css",
     "watch:css": "nodemon -e html,css,js -x \"npm run build:css\"",
-    "dev": "concurrently \"npm run watch:css\""
+    "dev": "concurrently \"npm run watch:css\"",
+    "convert": "node utils/converter.js ./bookmarks.html ./json/pintree.json"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "theme-change": "^2.5.0"
   },
   "devDependencies": {
+    "cheerio": "^1.0.0",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.3"
   }

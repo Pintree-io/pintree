@@ -1174,10 +1174,6 @@ select {
   width: 1.5rem;
 }
 
-.w-72 {
-  width: 18rem;
-}
-
 .w-8 {
   width: 2rem;
 }
@@ -2312,6 +2308,10 @@ select {
 
   .lg\:w-60 {
     width: 15rem;
+  }
+
+  .lg\:grow {
+    flex-grow: 1;
   }
 
   .lg\:grid-cols-4 {

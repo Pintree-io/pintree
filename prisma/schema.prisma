@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 书签集合模型
+model Collection {
+  id          String      @id @default(cuid())      // 集合唯一标识符
+  name        String      @unique                // 添加唯一约束
+  slug        String?     @unique                // 添加唯一约束
+  description String?                              // 集合描述信息
+  icon        String?                              // 集合图标URL
+  isPublic    Boolean     @default(true)           // 是否公开可访问
+  password    String?                              // 私密集合的访问密码
+  sortOrder   Int         @default(0)              // 集合在列表中的排序位置
+  viewStyle   String      @default("list")         // 展示样式：列表/卡片
+  sortStyle   String      @default("alpha")        // 排序方式：字母/时间/手动
+  viewCount   Int         @default(0)              // 集合被访问次数
+  folders     Folder[]                            // 文件夹
+  bookmarks   Bookmark[]                          // 书签
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+// 文件夹模型
+model Folder {
+  id          String      @id @default(cuid())      // 文件夹唯一标识符
+  name        String                               // 文件夹名称
+  icon        String?                              // 文件夹图标URL
+  sortOrder   Int         @default(0)              // 排序位置
+  isPublic    Boolean     @default(true)           // 是否公开可访问
+  password    String?                              // 私密文件夹的访问密码
+  parentId    String?                              // 父文件夹ID，用于层级结构
+  parent      Folder?     @relation("FolderToFolder", fields: [parentId], references: [id])
+  children    Folder[]    @relation("FolderToFolder")
+  collectionId String     // 所属集合
+  collection  Collection  @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  bookmarks   Bookmark[]  // 书签
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+// 书签模型
+model Bookmark {
+  id          String      @id @default(cuid())
+  title       String                               
+  url         String                               
+  description String?                              
+  icon        String?                              
+  isFeatured  Boolean     @default(false)          
+  sortOrder   Int         @default(0)              
+  viewCount   Int         @default(0)              
+  collectionId String     
+  collection  Collection  @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  folderId    String?     
+  folder      Folder?     @relation(fields: [folderId], references: [id])
+  tags        Tag[]       
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+// 标签模型
+model Tag {
+  id        String      @id @default(cuid())        // 标签唯一标识符
+  name      String                                 // 标签名称
+  bookmarks Bookmark[]                            // 使用此标签的书签列表
+  createdAt DateTime    @default(now())            // 标签创建时间
+  updatedAt DateTime    @updatedAt                 // 标签最后更新时间
+
+  @@unique([name])
+}
+
+// 网站设置模型
+model SiteSetting {
+  id          String    @id @default(cuid())
+  key         String    @unique                    // 设置项键名
+  value       String    @db.Text                   // 设置项值，使用Text类型支持长文本
+  type        String    @default("string")         // 值类型：string, number, boolean, json
+  group       String    @default("basic")          // 设置分组：basic, seo, feature
+  description String?                              // 设置项描述
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([group])                                // 添加索引优化查询性能
+}
+
+// 访问日志模型
+model AccessLog {
+  id          String    @id @default(cuid())        // 访问日志唯一标识符
+  ip          String                               // 访问者IP地址
+  userAgent   String                               // 访问者浏览器信息
+  path        String                               // 访问的页面路径
+  createdAt   DateTime  @default(now())            // 访问时间
+}

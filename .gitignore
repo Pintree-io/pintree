@@ -1,0 +1,49 @@
+# 依赖
+/node_modules
+/.pnp
+.pnp.js
+
+# 测试覆盖率
+/coverage
+/json
+
+# next.js
+/.next/
+/out/
+
+# 生产环境构建文件
+/build
+
+# 其他
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 本地环境文件
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE配置
+.idea
+.vscode
+*.swp
+*.swo
+
+# Prisma
+/prisma/migrations/
+/prisma/*.db
+/prisma/*.db-journal
+
+# 操作系统文件
+Thumbs.db

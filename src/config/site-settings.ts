@@ -269,48 +269,6 @@ export const defaultSettings: SettingItem[] = [
     description: 'CTA按钮样式'
   },
   {
-    key: 'enableHeroBanner',
-    value: 'false',
-    type: 'boolean',
-    group: 'feature',
-    description: '启用Hero Banner'
-  },
-  {
-    key: 'heroBannerTitle',
-    value: '',
-    type: 'string',
-    group: 'feature',
-    description: 'Hero Banner标题'
-  },
-  {
-    key: 'heroBannerDescription',
-    value: '',
-    type: 'string',
-    group: 'feature',
-    description: 'Hero Banner描述'
-  },
-  {
-    key: 'heroBannerImage',
-    value: '',
-    type: 'string',
-    group: 'feature',
-    description: 'Hero Banner图片'
-  },
-  {
-    key: 'heroBannerButtonText',
-    value: '',
-    type: 'string',
-    group: 'feature',
-    description: 'Hero Banner按钮文字'
-  },
-  {
-    key: 'heroBannerButtonLink',
-    value: '',
-    type: 'string',
-    group: 'feature',
-    description: 'Hero Banner按钮链接'
-  },
-  {
     key: 'enableBanner',
     value: 'false',
     type: 'boolean',

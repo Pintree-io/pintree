@@ -9,7 +9,6 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Collection } from "@prisma/client";
 import { Footer } from "@/components/website/footer";
 import { TopBanner } from "@/components/website/top-banner";
-import { HeroBanner } from "@/components/website/hero-banner";
 import { CarouselSection } from "@/components/website/carousel-section";
 import { BackToTop } from "@/components/website/back-to-top";
 

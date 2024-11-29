@@ -151,48 +151,6 @@ const defaultSettings = [
       value: 'primary'
     },
     {
-      key: 'enableHeroBanner',
-      value: 'true',
-      type: 'boolean',
-      group: 'feature',
-      description: '启用 Hero Banner'
-    },
-    {
-      key: 'heroBannerTitle',
-      value: 'Organize and Share Your Bookmarks Effortlessly',
-      type: 'string',
-      group: 'feature',
-      description: 'Hero Banner 标题'
-    },
-    {
-      key: 'heroBannerDescription',
-      value: 'Create, manage and share personalized bookmark collections with Pintree',
-      type: 'string',
-      group: 'feature',
-      description: 'Hero Banner 描述'
-    },
-    {
-      key: 'heroBannerButtonText',
-      value: 'Pintree.io',
-      type: 'string',
-      group: 'feature',
-      description: 'Hero Banner 按钮文本'
-    },
-    {
-      key: 'heroBannerButtonLink',
-      value: 'https://pintree.io',
-      type: 'string',
-      group: 'feature',
-      description: 'Hero Banner 按钮链接'
-    },
-    {
-      key: 'heroBannerSponsorText',
-      value: 'Sponsored by',
-      type: 'string',
-      group: 'feature',
-      description: 'Hero Banner 赞助商文本'
-    },
-    {
       key: 'enableBanner',
       value: 'false'
     },

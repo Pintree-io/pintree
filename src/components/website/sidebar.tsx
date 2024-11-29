@@ -23,8 +23,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
-import { SidebarAdsCard } from "@/components/website/sidebar-ads-card";
-import { SidebarCtaButton } from "@/components/website/sidebar-cta-button";
 
 interface Collection {
   id: string;
@@ -60,14 +58,6 @@ export function WebsiteSidebar({
   const [folders, setFolders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const [sidebarAdsEnabled, setSidebarAdsEnabled] = useState(false);
-  const [sidebarAdsConfig, setSidebarAdsConfig] = useState({
-    title: "",
-    description: "",
-    imageUrl: "",
-    buttonText: "",
-    buttonUrl: ""
-  });
 
   // 获取书签集合列表
   useEffect(() => {
@@ -145,29 +135,6 @@ export function WebsiteSidebar({
       expandParentFolders(currentFolderId);
     }
   }, [currentFolderId, folders]);
-
-  // 添加新的 useEffect 来获取广告设置
-  useEffect(() => {
-    const fetchSidebarAdsSettings = async () => {
-      try {
-        const response = await fetch('/api/settings?group=feature');
-        const data = await response.json();
-        
-        setSidebarAdsEnabled(data.enableSidebarAds === 'true' || data.enableSidebarAds === true);
-        setSidebarAdsConfig({
-          title: data.sidebarAdsTitle || "",
-          description: data.sidebarAdsDescription || "",
-          imageUrl: data.sidebarAdsImageUrl || "",
-          buttonText: data.sidebarAdsButtonText || "",
-          buttonUrl: data.sidebarAdsButtonUrl || ""
-        });
-      } catch (error) {
-        console.error('获取广告设置失败:', error);
-      }
-    };
-
-    fetchSidebarAdsSettings();
-  }, []);
 
   const buildFolderTree = (folders: any[]): FolderNode[] => {
     const folderMap = new Map();
@@ -426,19 +393,6 @@ export function WebsiteSidebar({
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-
-      <div className="flex-shrink-0 bg-sidebar-background p-4 space-y-4">
-        {sidebarAdsEnabled && (
-          <SidebarAdsCard 
-            title={sidebarAdsConfig.title}
-            description={sidebarAdsConfig.description}
-            imageUrl={sidebarAdsConfig.imageUrl}
-            buttonText={sidebarAdsConfig.buttonText}
-            buttonUrl={sidebarAdsConfig.buttonUrl}
-          />
-        )}
-        <SidebarCtaButton />
-      </div>
     </Sidebar>
   );
 }

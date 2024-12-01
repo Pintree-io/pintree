@@ -142,17 +142,6 @@ interface FooterSettingsCardProps {
 }
 
 const FooterSettingsCard = ({ settings, handleChange }: FooterSettingsCardProps) => {
-  const socialLinks = [
-    { id: 'githubUrl', label: 'GitHub URL', placeholder: 'https://github.com/yourusername' },
-    { id: 'twitterUrl', label: 'Twitter URL', placeholder: 'https://twitter.com/yourusername' },
-    { id: 'discordUrl', label: 'Discord URL', placeholder: 'https://discord.gg/yourserver' },
-    { id: 'weixinUrl', label: '微信公众号链接', placeholder: '微信公众号链接' },
-    { id: 'weiboUrl', label: '微博主页链接', placeholder: 'https://weibo.com/yourpage' },
-    { id: 'bilibiliUrl', label: 'B站主页链接', placeholder: 'https://space.bilibili.com/yourpage' },
-    { id: 'zhihuUrl', label: '知乎主页链接', placeholder: 'https://zhihu.com/people/yourpage' },
-    { id: 'youtubeUrl', label: 'YouTube频道链接', placeholder: 'https://youtube.com/c/yourchannel' }
-  ];
-
   return (
     <Card className="border bg-white">
       <CardHeader className="border-b">
@@ -160,7 +149,6 @@ const FooterSettingsCard = ({ settings, handleChange }: FooterSettingsCardProps)
         <CardDescription>设置网站页脚信息</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4 p-6">
-        {/* 版权信息 */}
         <div className="grid gap-2">
           <Label htmlFor="copyrightText">版权信息</Label>
           <Input
@@ -171,59 +159,6 @@ const FooterSettingsCard = ({ settings, handleChange }: FooterSettingsCardProps)
             placeholder="© 2024 Your Company. All rights reserved."
           />
         </div>
-
-        {/* ICP备案信息 */}
-        <div className="grid gap-2">
-          <Label htmlFor="icp">ICP备案信息</Label>
-          <Input
-            id="icp"
-            name="icp"
-            value={settings.icp}
-            onChange={handleChange}
-            placeholder="京ICP备XXXXXXXX号"
-          />
-        </div>
-
-        {/* ICP备案链接 */}
-        <div className="grid gap-2">
-          <Label htmlFor="icpUrl">ICP备案链接</Label>
-          <Input
-            id="icpUrl"
-            name="icpUrl"
-            value={settings.icpUrl}
-            onChange={handleChange}
-            placeholder="https://beian.miit.gov.cn"
-          />
-        </div>
-
-        {/* 联系邮箱 */}
-        <div className="grid gap-2">
-          <Label htmlFor="contactEmail">联系邮箱</Label>
-          <Input
-            id="contactEmail"
-            name="contactEmail"
-            value={settings.contactEmail}
-            onChange={handleChange}
-            placeholder="contact@example.com"
-          />
-        </div>
-
-        {/* Powered by 显示设置 */}
-        {/* <div className="flex items-center space-x-2">
-          <Checkbox
-            id="poweredBy"
-            checked={settings.poweredBy === 'true'}
-            onCheckedChange={(checked) => {
-              handleChange({
-                target: {
-                  name: 'poweredBy',
-                  value: checked ? 'true' : 'false'
-                }
-              } as React.ChangeEvent<HTMLInputElement>);
-            }}
-          />
-          <Label htmlFor="poweredBy">显示 "Powered by Pintree"</Label>
-        </div> */}
       </CardContent>
     </Card>
   );
@@ -236,12 +171,6 @@ const SocialMediaCard = ({ settings, handleChange }: {
   const socialLinks = [
     { id: 'githubUrl', label: 'GitHub URL', placeholder: 'https://github.com/yourusername' },
     { id: 'twitterUrl', label: 'Twitter URL', placeholder: 'https://twitter.com/yourusername' },
-    { id: 'discordUrl', label: 'Discord URL', placeholder: 'https://discord.gg/yourserver' },
-    { id: 'youtubeUrl', label: 'YouTube频道链接', placeholder: 'https://youtube.com/c/yourchannel' },
-    { id: 'weixinUrl', label: '微信公众号链接', placeholder: '微信公众号链接' },
-    { id: 'weiboUrl', label: '微博主页链接', placeholder: 'https://weibo.com/yourpage' },
-    { id: 'bilibiliUrl', label: 'B站主页链接', placeholder: 'https://space.bilibili.com/yourpage' },
-    { id: 'zhihuUrl', label: '知乎主页链接', placeholder: 'https://zhihu.com/people/yourpage' },
   ];
 
   return (

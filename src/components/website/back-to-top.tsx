@@ -31,7 +31,7 @@ export function BackToTop() {
     <button
       onClick={scrollToTop}
       className={cn(
-        "fixed bottom-8 right-8 p-3 rounded-full bg-black/80 text-white",
+        "fixed bottom-16 right-8 p-3 rounded-full bg-black/80 text-white",
         "hover:bg-black transition-all duration-300",
         "shadow-lg hover:shadow-xl",
         "focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2",

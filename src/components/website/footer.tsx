@@ -14,41 +14,6 @@ export function Footer() {
       key: 'twitterUrl',
       icon: 'ri-twitter-x-fill',
       label: 'Twitter'
-    },
-    {
-      key: 'discordUrl',
-      icon: 'ri-discord-fill',
-      label: 'Discord'
-    },
-    {
-      key: 'weixinUrl',
-      icon: 'ri-wechat-fill',
-      label: '微信'
-    },
-    {
-      key: 'weiboUrl',
-      icon: 'ri-weibo-fill',
-      label: '微博'
-    },
-    {
-      key: 'bilibiliUrl',
-      icon: 'ri-bilibili-fill',
-      label: 'B站'
-    },
-    {
-      key: 'zhihuUrl',
-      icon: 'ri-zhihu-fill',
-      label: '知乎'
-    },
-    {
-      key: 'youtubeUrl',
-      icon: 'ri-youtube-fill',
-      label: 'YouTube'
-    },
-    {
-      key: 'contactEmail',
-      icon: 'ri-mail-fill',
-      label: 'Email'
     }
   ];
 

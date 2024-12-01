@@ -37,36 +37,8 @@ const defaultSettings = [
       value: 'https://github.com/Pintree-io/pintree'
     },
     {
-      key: 'discordUrl',
-      value: 'https://discord.gg/gJTrkHFg'
-    },
-    {
       key: 'twitterUrl',
       value: 'https://x.com/pintree_io'
-    },
-    {
-      key: 'youtubeUrl',
-      value: 'https://www.youtube.com/channel/UCMvuKFthQyn4eKgJwklOMrw'
-    },
-    {
-      key: 'linkedinUrl',
-      value: 'https://linkedin.com/company/pintree'
-    },
-    {
-      key: 'weixinUrl',
-      value: 'https://weixin.qq.com/pintree'
-    },
-    {
-      key: 'weiboUrl',
-      value: 'https://weibo.com/pintree'
-    },
-    {
-      key: 'bilibiliUrl',
-      value: 'https://dribbble.com/Pintree'
-    },
-    {
-      key: 'zhihuUrl',
-      value: 'https://zhihu.com/people/pintree'
     },
   
     // SEO设置

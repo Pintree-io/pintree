@@ -80,48 +80,6 @@ export const defaultSettings: SettingItem[] = [
     group: 'basic',
     description: 'Twitter链接'
   },
-  {
-    key: 'discordUrl',
-    value: '',
-    type: 'string',
-    group: 'basic',
-    description: 'Discord链接'
-  },
-  {
-    key: 'weixinUrl',
-    value: '',
-    type: 'string',
-    group: 'basic',
-    description: '微信公众号链接'
-  },
-  {
-    key: 'weiboUrl',
-    value: '',
-    type: 'string',
-    group: 'basic',
-    description: '微博主页链接'
-  },
-  {
-    key: 'bilibiliUrl',
-    value: '',
-    type: 'string',
-    group: 'basic',
-    description: 'B站主页链接'
-  },
-  {
-    key: 'zhihuUrl',
-    value: '',
-    type: 'string',
-    group: 'basic',
-    description: '知乎主页链接'
-  },
-  {
-    key: 'youtubeUrl',
-    value: '',
-    type: 'string',
-    group: 'basic',
-    description: 'YouTube频道链接'
-  },
 
   // SEO设置组
   {

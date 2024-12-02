@@ -58,6 +58,22 @@ export function WebsiteSidebar({
   const [folders, setFolders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [logoUrl, setLogoUrl] = useState('');
+
+  useEffect(() => {
+    const fetchLogo = async () => {
+      try {
+        const response = await fetch('/api/settings?key=logoUrl');
+        if (response.ok) {
+          const data = await response.json();
+          setLogoUrl(data.logoUrl);
+        }
+      } catch (error) {
+        console.error('获取 Logo 失败:', error);
+      }
+    };
+    fetchLogo();
+  }, []);
 
   // 获取书签集合列表
   useEffect(() => {
@@ -369,7 +385,7 @@ export function WebsiteSidebar({
             ) : (
               <SidebarMenuButton size="lg" asChild className="hover:bg-transparent rounded-none pr-0">
                 <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0 w-full">
-                  <Image src="/logo.png" alt="Pintree Logo" width={260} height={60} />
+                  <Image src={logoUrl || '/logo.png'} alt="Logo" width={260} height={60} />
                 </Link>
               </SidebarMenuButton>
             )}

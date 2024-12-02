@@ -13,37 +13,40 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 
 // 添加 Logo 上传组件
-const LogoUploader = () => {
+const LogoUploader = ({ settings }: { settings: { logoUrl: string } }) => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return;
     
-    const formData = new FormData();
-    formData.append('file', e.target.files[0]);
-    formData.append('type', 'logo');
+    const file = e.target.files[0];
+    const reader = new FileReader();
     
-    try {
-      const response = await fetch('/api/settings/upload', {
-        method: 'POST',
-        body: formData
-      });
+    reader.onloadend = async () => {
+      const base64String = reader.result as string;
       
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || '上传失败');
+      try {
+        const response = await fetch('/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            logoUrl: base64String
+          })
+        });
+        
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error || '上传失败');
+        }
+        
+        toast.success('Logo 更新成功');
+        // 强制刷新页面以更新 logo
+        window.location.reload();
+      } catch (error) {
+        console.error('上传失败:', error);
+        toast.error(error instanceof Error ? error.message : '上传失败');
       }
-      
-      // 强制刷新图片
-      const timestamp = new Date().getTime();
-      const images = document.querySelectorAll('img[src="/logo.png"]');
-      images.forEach(img => {
-        img.setAttribute('src', `/logo.png?t=${timestamp}`);
-      });
-      
-      toast.success('Logo 更新成功');
-    } catch (error) {
-      console.error('上传失败:', error);
-      toast.error(error instanceof Error ? error.message : '上传失败');
-    }
+    };
+    
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -51,7 +54,7 @@ const LogoUploader = () => {
       <div className="flex items-center gap-4">
         <div className="relative w-[260px] h-[60px] border rounded bg-white">
           <Image 
-            src="/logo.png" 
+            src={settings.logoUrl}
             alt="Current Logo" 
             fill
             className="object-contain p-2"
@@ -314,7 +317,7 @@ export default function BasicSettingsPage() {
                 <Card className="border bg-white">
                   <CardHeader className="border-b">
                     <CardTitle>基本信息</CardTitle>
-                    <CardDescription>设置网站的基本信息</CardDescription>
+                    <CardDescription>设置网站的基信息</CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-4 p-6">
                     <div className="grid gap-2">
@@ -330,7 +333,7 @@ export default function BasicSettingsPage() {
 
                     <div className="grid gap-2">
                       <Label>网站 Logo</Label>
-                      <LogoUploader />
+                      <LogoUploader settings={settings} />
                     </div>
                     
                     <div className="grid gap-2">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import Image from "next/image";
 
 interface FileUploaderProps {
-  type: 'logo' | 'favicon';
+  type: 'logo' | 'favicon' | 'sidebar-ads';
   title: string;
   description: string;
   previewWidth: number;
@@ -21,6 +21,26 @@ export function FileUploader({
   previewHeight 
 }: FileUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState('');
+
+  // 加载当前图片
+  useEffect(() => {
+    const loadCurrentImage = async () => {
+      try {
+        const response = await fetch(`/api/settings?key=sidebarAdsImageUrl`);
+        if (response.ok) {
+          const data = await response.json();
+          setPreviewUrl(data.sidebarAdsImageUrl);
+        }
+      } catch (error) {
+        console.error('加载图片失败:', error);
+      }
+    };
+
+    if (type === 'sidebar-ads') {
+      loadCurrentImage();
+    }
+  }, [type]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return;
@@ -41,12 +61,10 @@ export function FileUploader({
         throw new Error(data.error || '上传失败');
       }
       
-      // 强制刷新图片
-      const timestamp = new Date().getTime();
-      const images = document.querySelectorAll(`img[src="/${type === 'logo' ? 'logo.png' : 'favicon.ico'}"]`);
-      images.forEach(img => {
-        img.setAttribute('src', `/${type === 'logo' ? 'logo.png' : 'favicon.ico'}?t=${timestamp}`);
-      });
+      const result = await response.json();
+      if (result.url) {
+        setPreviewUrl(result.url);
+      }
       
       toast.success(`${title}更新成功`);
     } catch (error) {
@@ -58,26 +76,29 @@ export function FileUploader({
   };
 
   return (
-    <div className="space-y-4">
-      <Label>{title}</Label>
+    <div className="space-y-2">
       <div className="flex items-center gap-4">
-        <div className={`relative w-[${previewWidth}px] h-[${previewHeight}px] border rounded`}>
-          <Image 
-            src={`/${type === 'logo' ? 'logo.png' : 'favicon.ico'}`}
-            alt={`Current ${title}`}
-            fill
-            className="object-contain"
-          />
-        </div>
+        {previewUrl && (
+          <div className="relative" style={{ width: previewWidth, height: previewHeight }}>
+            <Image 
+              src={previewUrl}
+              alt={title || 'Preview'}
+              fill
+              className="object-cover rounded"
+            />
+          </div>
+        )}
         <Input
           type="file"
-          accept={type === 'logo' ? "image/png,image/jpeg" : "image/x-icon,image/png"}
+          accept="image/*"
           onChange={handleFileChange}
           disabled={isUploading}
-          className="max-w-[300px]"
+          className="max-w-[200px] bg-slate-100"
         />
       </div>
-      <p className="text-sm text-muted-foreground">{description}</p>
+      {description && (
+        <p className="text-sm text-muted-foreground">{description}</p>
+      )}
     </div>
   );
 } 

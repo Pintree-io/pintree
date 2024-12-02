@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -62,6 +62,22 @@ const menuItems = [
 export function AdminSidebar() {
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set(["/admin/settings"]));
+  const [logoUrl, setLogoUrl] = useState('');
+
+  useEffect(() => {
+    const fetchLogo = async () => {
+      try {
+        const response = await fetch('/api/settings?key=logoUrl');
+        if (response.ok) {
+          const data = await response.json();
+          setLogoUrl(data.logoUrl);
+        }
+      } catch (error) {
+        console.error('获取 Logo 失败:', error);
+      }
+    };
+    fetchLogo();
+  }, []);
 
   const toggleExpand = (href: string) => {
     setExpandedItems(prev => {
@@ -80,9 +96,9 @@ export function AdminSidebar() {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild className="hover:bg-transparent rounded-none pr-0">
-                <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0">
-                <Image src="/logo.png" alt="Pintree Logo" width={260} height={60} />
+            <SidebarMenuButton size="lg" asChild className="hover:bg-transparent rounded-none pr-0">
+              <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0">
+                <Image src={logoUrl || '/logo.png'} alt="Logo" width={260} height={60} />
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

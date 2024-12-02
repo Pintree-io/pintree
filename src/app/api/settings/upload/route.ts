@@ -17,7 +17,29 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(await file.arrayBuffer());
     
     if (type === 'logo') {
-      await writeFile(path.join(process.cwd(), 'public', 'logo.png'), buffer);
+      // 使用 sharp 压缩图片
+      const compressedBuffer = await sharp(buffer)
+        .resize(520, 120, { fit: 'inside' }) // 限制最大尺寸
+        .jpeg({ quality: 80 }) // 使用 JPEG 格式并压缩质量
+        .toBuffer();
+      
+      // 将压缩后的图片转换为 base64
+      const base64String = `data:image/jpeg;base64,${compressedBuffer.toString('base64')}`;
+      
+      // 更新数据库中的 logoUrl
+      await prisma.siteSetting.upsert({
+        where: { key: 'logoUrl' },
+        update: { value: base64String },
+        create: { 
+          key: 'logoUrl',
+          value: base64String
+        }
+      });
+
+      return Response.json({ 
+        success: true,
+        logoUrl: base64String
+      });
     } else if (type === 'favicon') {
       // 确保 favicon 目录存在
       const faviconDir = path.join(process.cwd(), 'public', 'favicon');
@@ -57,20 +79,22 @@ export async function POST(request: NextRequest) {
     } else if (type === 'og-image') {
       await writeFile(path.join(process.cwd(), 'public', 'og-image.png'), buffer);
     } else if (type === 'sidebar-ads') {
-      // 直接替换 spaces-preview.png 文件
-      const filePath = path.join(process.cwd(), 'public', 'assets', 'spaces-preview.png');
+      // 转换为 base64
+      const base64String = `data:${file.type};base64,${buffer.toString('base64')}`;
       
-      // 确保 assets 目录存在
-      await mkdir(path.dirname(filePath), { recursive: true });
-
-      // 使用 sharp 处理图片并保存
-      await sharp(buffer)
-        .resize(800, 600, { fit: 'cover' })
-        .toFile(filePath);
+      // 更新数据库
+      await prisma.siteSetting.upsert({
+        where: { key: 'sidebarAdsImageUrl' },
+        update: { value: base64String },
+        create: { 
+          key: 'sidebarAdsImageUrl',
+          value: base64String
+        }
+      });
 
       return Response.json({ 
         success: true,
-        url: '/assets/spaces-preview.png'
+        url: base64String
       });
     }
 

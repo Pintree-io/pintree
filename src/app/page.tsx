@@ -8,7 +8,7 @@ import { Header } from "@/components/website/header";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Footer } from "@/components/website/footer";
 import { TopBanner } from "@/components/website/top-banner";
-import { CarouselSection } from "@/components/website/carousel-section";
+
 import { GetStarted } from "@/components/website/get-started";
 import { BackToTop } from "@/components/website/back-to-top";
 
@@ -117,7 +117,6 @@ function SearchParamsComponent() {
                   currentFolderId={currentFolderId}
                   onBookmarkAdded={refreshData}
                 />
-                <CarouselSection />
                 <div className="flex-1 overflow-y-auto">
                   <BookmarkGrid 
                     key={`${selectedCollectionId}-${currentFolderId}`}

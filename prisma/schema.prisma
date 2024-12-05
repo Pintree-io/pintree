@@ -78,14 +78,16 @@ model Tag {
 model SiteSetting {
   id          String    @id @default(cuid())
   key         String    @unique                    // 设置项键名
-  value       String    @db.Text                   // 设置项值，使用Text类型支持长文本
+  value       String?    @db.Text                   // 设置项值，使用Text类型支持长文本
   type        String    @default("string")         // 值类型：string, number, boolean, json
   group       String    @default("basic")          // 设置分组：basic, seo, feature
   description String?                              // 设置项描述
+  images      SettingImage[]                       // 多对多关系
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
-  @@index([group])                                // 添加索引优化查询性能
+  @@index([key])  // 为 key 添加索引
+  @@index([group])  // 已有的索引
 }
 
 // 访问日志模型
@@ -95,4 +97,35 @@ model AccessLog {
   userAgent   String                               // 访问者浏览器信息
   path        String                               // 访问的页面路径
   createdAt   DateTime  @default(now())            // 访问时间
+}
+
+
+// 中间关联模型，支持排序和额外信息
+model SettingImage {
+  id            String      @id @default(cuid())
+  settingId     String
+  imageId       String
+  setting       SiteSetting @relation(fields: [settingId], references: [id])
+  image         Image       @relation(fields: [imageId], references: [id])
+
+  description   String?     // 图片在此设置中的额外描述
+
+  @@unique([settingId, imageId])
+}
+
+// 图片模型，直接在数据库中存储图片
+model Image {
+  id          String      @id @default(cuid())     // 图片唯一标识符
+  name        String                               // 图片原始文件名
+  data        Bytes                                // 图片二进制数据
+  mimeType    String                               // 图片MIME类型（如 image/jpeg, image/png）
+  type        String                               // 图片类型（如广告、头像、背景等）
+  description String?                              // 图片描述
+  size        Int                                  // 图片文件大小（字节）
+  width       Int?                                 // 图片宽度
+  height      Int?                                 // 图片高度
+  isPublic    Boolean     @default(true)           // 是否公开
+  settingImages SettingImage[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 }

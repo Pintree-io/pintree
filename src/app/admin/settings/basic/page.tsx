@@ -1,51 +1,45 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { AdminHeader } from "@/components/admin/header";
-import { FileUploader } from "@/components/settings/file-uploader";
+
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useSettingImages } from "@/hooks/useSettingImages";
+import { updateSettingImage } from "@/actions/update-setting-image";
+
+import { Skeleton } from "@/components/ui/skeleton";
 
 // 添加 Logo 上传组件
-const LogoUploader = ({ settings }: { settings: { logoUrl: string } }) => {
+const LogoUploader = () => {
+  const { images, isLoading, error } = useSettingImages("logoUrl");
+  const [currentLogoUrl, setCurrentLogoUrl] = useState("");
+
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return;
-    
+
     const file = e.target.files[0];
     const reader = new FileReader();
-    
-    reader.onloadend = async () => {
-      const base64String = reader.result as string;
-      
-      try {
-        const response = await fetch('/api/settings', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            logoUrl: base64String
-          })
-        });
-        
-        if (!response.ok) {
-          const data = await response.json();
-          throw new Error(data.error || '上传失败');
-        }
-        
-        toast.success('Logo 更新成功');
-        // 强制刷新页面以更新 logo
-        window.location.reload();
-      } catch (error) {
-        console.error('上传失败:', error);
-        toast.error(error instanceof Error ? error.message : '上传失败');
-      }
+
+    reader.onload = (event) => {
+      const base64 = event.target?.result as string;
+
+      // 立即展示预览
+      setCurrentLogoUrl(base64);
     };
-    
+
     reader.readAsDataURL(file);
   };
 
@@ -53,14 +47,21 @@ const LogoUploader = ({ settings }: { settings: { logoUrl: string } }) => {
     <div className="space-y-2">
       <div className="flex items-center gap-4">
         <div className="relative w-[260px] h-[60px] border rounded bg-white">
-          <Image 
-            src={settings.logoUrl}
-            alt="Current Logo" 
-            fill
-            className="object-contain p-2"
-          />
+          {isLoading ? (
+            <div className="w-full h-full flex items-center justify-center">
+              <Skeleton className="w-full h-full" />
+            </div>
+          ) : (
+            <Image
+              src={currentLogoUrl || images[0].url}
+              alt="Current Logo"
+              fill
+              className="object-contain p-2"
+            />
+          )}
         </div>
         <Input
+          id="logoUrl"
           type="file"
           accept="image/png,image/jpeg"
           onChange={handleFileChange}
@@ -75,52 +76,47 @@ const LogoUploader = ({ settings }: { settings: { logoUrl: string } }) => {
 };
 
 const FaviconUploader = () => {
-  const [currentFaviconUrl, setCurrentFaviconUrl] = useState('/favicon/favicon.ico');
-  
+  const { images, isLoading, error } = useSettingImages("faviconUrl");
+  const [currentFaviconUrl, setCurrentFaviconUrl] = useState("");
+
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return;
-    
-    const formData = new FormData();
-    formData.append('file', e.target.files[0]);
-    formData.append('type', 'favicon');
-    
-    try {
-      const response = await fetch('/api/settings/upload', {
-        method: 'POST',
-        body: formData
-      });
-      
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || '上传失败');
-      }
-      
-      toast.success('Favicon 更新成功');
-      // 强制刷新页面以更新 favicon
-      window.location.reload();
-      
-    } catch (error) {
-      console.error('上传失败:', error);
-      toast.error(error instanceof Error ? error.message : '上传失败');
-    }
+
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const base64 = event.target?.result as string;
+
+      // 立即展示预览
+      setCurrentFaviconUrl(base64);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-4">
-        {/* Favicon 预览 */}
-        <div className="relative w-[32px] h-[32px] border rounded bg-white">
-          <Image 
-            src={currentFaviconUrl}
-            alt="Current Favicon"
-            fill
-            className="object-contain p-1"
-          />
-        </div>
+        {isLoading ? (
+          <div className="relative w-[32px] h-[32px] border rounded bg-white">
+            <Skeleton className="w-full h-full" />
+          </div>
+        ) : (
+          <div className="relative w-[32px] h-[32px] border rounded bg-white">
+            <Image
+              src={currentFaviconUrl || images[0].url}
+              alt="Current Favicon"
+              fill
+              className="object-contain p-1"
+            />
+          </div>
+        )}
         <Input
+          id="faviconUrl"
           type="file"
-          onChange={handleFileChange}
           accept=".ico,.png"
+          onChange={handleFileChange}
           className="max-w-[200px] bg-slate-100"
         />
       </div>
@@ -152,6 +148,7 @@ const FooterSettingsCard = ({ settings, handleChange }: FooterSettingsCardProps)
         <CardDescription>设置网站页脚信息</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4 p-6">
+        {/* 版权信息 */}
         <div className="grid gap-2">
           <Label htmlFor="copyrightText">版权信息</Label>
           <Input
@@ -167,9 +164,12 @@ const FooterSettingsCard = ({ settings, handleChange }: FooterSettingsCardProps)
   );
 };
 
-const SocialMediaCard = ({ settings, handleChange }: { 
-  settings: any; 
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void; 
+const SocialMediaCard = ({
+  settings,
+  handleChange,
+}: {
+  settings: any;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
   const socialLinks = [
     { id: 'githubUrl', label: 'GitHub URL', placeholder: 'https://github.com/yourusername' },
@@ -189,7 +189,7 @@ const SocialMediaCard = ({ settings, handleChange }: {
             <Input
               id={id}
               name={id}
-              value={settings[id] || ''}
+              value={settings[id] || ""}
               onChange={handleChange}
               placeholder={placeholder}
             />
@@ -229,28 +229,31 @@ export default function BasicSettingsPage() {
     const loadSettings = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/api/settings?group=basic');
+        const response = await fetch("/api/settings?group=basic");
         if (!response.ok) {
           const errorData = await response.json();
-          console.error('加载设置失败:', errorData); // 调试日志
-          throw new Error(errorData.error || '加载设置失败');
+          console.error("加载设置失败:", errorData); // 调试日志
+          throw new Error(errorData.error || "加载设置失败");
         }
-        
+
         const data = await response.json();
-        console.log('加载的设置:', data); // 调试日志
-        
-        const sanitizedData = Object.keys(data).reduce((acc, key) => ({
-          ...acc,
-          [key]: data[key] ?? '' // 使用空字符串替代 undefined
-        }), {});
-        
-        setSettings(prev => ({
+        console.log("加载的设置:", data); // 调试日志
+
+        const sanitizedData = Object.keys(data).reduce(
+          (acc, key) => ({
+            ...acc,
+            [key]: data[key] ?? "", // 使用空字符串替代 undefined
+          }),
+          {}
+        );
+
+        setSettings((prev) => ({
           ...prev,
-          ...sanitizedData
+          ...sanitizedData,
         }));
       } catch (error) {
-        console.error('加载设置错误:', error);
-        toast.error(error instanceof Error ? error.message : '加载设置失败');
+        console.error("加载设置错误:", error);
+        toast.error(error instanceof Error ? error.message : "加载设置失败");
       } finally {
         setLoading(false);
       }
@@ -262,9 +265,9 @@ export default function BasicSettingsPage() {
   // 处理输入变化
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setSettings(prev => ({
+    setSettings((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -273,28 +276,60 @@ export default function BasicSettingsPage() {
     e.preventDefault();
     try {
       setLoading(true);
-      console.log('提交的设置:', settings); // 调试日志
+      console.log("提交的设置:", settings); // 调试日志
 
-      const response = await fetch('/api/settings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(settings),
-      });
+      // 使用 saveSettingPromises 并行处理图片上传和基本设置保存
+      const saveSettingPromises = [];
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('API错误响应:', errorData);
-        throw new Error(errorData.error || '保存失败');
+      const logoInput = document.getElementById('logoUrl') as HTMLInputElement;
+      const faviconInput = document.getElementById('faviconUrl') as HTMLInputElement;
+
+      if (logoInput && logoInput.files && logoInput.files.length > 0) {
+        const logoFile = logoInput.files[0];
+        const logoFormData = new FormData();
+        logoFormData.append('settingKey', 'logoUrl');
+        logoFormData.append('file', logoFile);
+        saveSettingPromises.push(
+          updateSettingImage(logoFormData)
+        );
       }
 
-      const result = await response.json();
-      console.log('保存成功:', result); // 调试日志
+      if (faviconInput && faviconInput.files && faviconInput.files.length > 0) {
+        const faviconFile = faviconInput.files[0];
+        const faviconFormData = new FormData();
+        faviconFormData.append('settingKey', 'faviconUrl');
+        faviconFormData.append('file', faviconFile);
+        saveSettingPromises.push(
+          updateSettingImage(faviconFormData)
+        );
+      }
+
+      // 添加基本设置保存到 saveSettingPromises
+      saveSettingPromises.push(
+        fetch("/api/settings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(settings),
+        }).then(async response => {
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error("API错误响应:", errorData);
+            throw new Error(errorData.error || "保存失败");
+          }
+          return response.json();
+        }).then(result => {
+          console.log("保存成功:", result); // 调试日志
+        })
+      );
+
+      // 并行处理所有操作
+      await Promise.all(saveSettingPromises);
 
       toast.success("设置已保存");
       // 保存成功后刷新页面以更新标题
       window.location.reload();
     } catch (error) {
-      console.error('保存设置失败:', error);
+      console.error("保存设置失败:", error);
       toast.error(error instanceof Error ? error.message : "保存设置失败");
     } finally {
       setLoading(false);
@@ -317,7 +352,7 @@ export default function BasicSettingsPage() {
                 <Card className="border bg-white">
                   <CardHeader className="border-b">
                     <CardTitle>基本信息</CardTitle>
-                    <CardDescription>设置网站的基信息</CardDescription>
+                    <CardDescription>设置网站的基本信息</CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-4 p-6">
                     <div className="grid gap-2">
@@ -333,9 +368,9 @@ export default function BasicSettingsPage() {
 
                     <div className="grid gap-2">
                       <Label>网站 Logo</Label>
-                      <LogoUploader settings={settings} />
+                      <LogoUploader />
                     </div>
-                    
+
                     <div className="grid gap-2">
                       <Label>网站图标</Label>
                       <FaviconUploader />
@@ -351,7 +386,9 @@ export default function BasicSettingsPage() {
                   </CardHeader>
                   <CardContent className="grid gap-4 p-6">
                     <div className="grid gap-2">
-                      <Label htmlFor="googleAnalyticsId">Google Analytics ID</Label>
+                      <Label htmlFor="googleAnalyticsId">
+                        Google Analytics ID
+                      </Label>
                       <Input
                         id="googleAnalyticsId"
                         name="googleAnalyticsId"
@@ -382,8 +419,14 @@ export default function BasicSettingsPage() {
                 页脚设置
               </p>
               <div className="space-y-2">
-                <FooterSettingsCard settings={settings} handleChange={handleChange} />
-                <SocialMediaCard settings={settings} handleChange={handleChange} />
+                <FooterSettingsCard
+                  settings={settings}
+                  handleChange={handleChange}
+                />
+                <SocialMediaCard
+                  settings={settings}
+                  handleChange={handleChange}
+                />
               </div>
             </div>
           </div>
@@ -397,4 +440,4 @@ export default function BasicSettingsPage() {
       </div>
     </div>
   );
-} 
+}

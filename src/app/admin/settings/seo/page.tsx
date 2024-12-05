@@ -1,19 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { toast, Toaster } from "sonner";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AdminHeader } from "@/components/admin/header";
 
 const defaultSettings = {
@@ -22,6 +15,7 @@ const defaultSettings = {
   keywords: "",
   siteUrl: "",
 };
+
 
 export default function SeoSettingsPage() {
   const [loading, setLoading] = useState(false);
@@ -60,18 +54,18 @@ export default function SeoSettingsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     // 验证网站 URL 格式
     try {
       if (settings.siteUrl) {
         // 去除首尾空格和多余斜杠
         const cleanUrl = settings.siteUrl.trim().replace(/\/+$/, '');
-
+        
         const url = new URL(cleanUrl);
         if (!url.protocol.startsWith('http')) {
           throw new Error('网站 URL 必须以 http:// 或 https:// 开头');
         }
-
+        
         // 验证域名格式
         const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
         if (!domainRegex.test(url.hostname)) {
@@ -90,19 +84,33 @@ export default function SeoSettingsPage() {
 
     try {
       setLoading(true);
-      const response = await fetch('/api/settings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...settings,
-          group: 'seo'
-        }),
-      });
+      const saveSettingPromises = [];
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || '保存失败');
-      }
+
+
+      // 添加基本设置保存到 saveSettingPromises
+      saveSettingPromises.push(
+        fetch("/api/settings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...settings,
+            group: 'seo'
+          }),
+        }).then(async response => {
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error("API错误响应:", errorData);
+            throw new Error(errorData.error || "保存失败");
+          }
+          return response.json();
+        }).then(result => {
+          console.log("保存成功:", result); // 调试日志
+        })
+      );
+
+      // 并行处理所有操作
+      await Promise.all(saveSettingPromises);
 
       toast.success("SEO设置已保存");
     } catch (error) {
@@ -187,6 +195,8 @@ export default function SeoSettingsPage() {
                     </CardContent>
                   </Card>
                 </div>
+
+
               </div>
             </div>
           </div>

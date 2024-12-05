@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import {
-  LayoutDashboard,
-  Library,
-  Bookmark,
+import { 
+  LayoutDashboard, 
+  Library, 
+  Bookmark, 
   Settings,
   LogOut,
   ChevronDown,
@@ -30,6 +30,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
+import { useSettingImages } from "@/hooks/useSettingImages";
+import { Skeleton } from "../ui/skeleton";
 
 const menuItems = [
   {
@@ -55,29 +57,13 @@ const menuItems = [
         href: "/admin/settings/seo",
         label: "SEO Settings",
       },
-    ],
+    ]
   },
 ];
 
 export function AdminSidebar() {
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set(["/admin/settings"]));
-  const [logoUrl, setLogoUrl] = useState('');
-
-  useEffect(() => {
-    const fetchLogo = async () => {
-      try {
-        const response = await fetch('/api/settings?key=logoUrl');
-        if (response.ok) {
-          const data = await response.json();
-          setLogoUrl(data.logoUrl);
-        }
-      } catch (error) {
-        console.error('获取 Logo 失败:', error);
-      }
-    };
-    fetchLogo();
-  }, []);
 
   const toggleExpand = (href: string) => {
     setExpandedItems(prev => {
@@ -91,20 +77,31 @@ export function AdminSidebar() {
     });
   };
 
+  const { images, isLoading, error } = useSettingImages('logoUrl');
+
   return (
     <Sidebar>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild className="hover:bg-transparent rounded-none pr-0">
-              <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0">
-                <Image src={logoUrl || '/logo.png'} alt="Logo" width={260} height={60} />
-              </Link>
-            </SidebarMenuButton>
+              <SidebarMenuButton size="lg" asChild className="hover:bg-transparent rounded-none pr-0">
+                <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0">
+                {isLoading ? (
+                  <Skeleton className="w-[260px] h-[60px]" />
+                ) : (
+                  <Image 
+                    src={images[0]?.url || "/logo.png"} 
+                    alt="Logo" 
+                    width={260} 
+                    height={60} 
+                  />
+                )}
+                </Link>
+              </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-
+      
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
@@ -126,7 +123,7 @@ export function AdminSidebar() {
                         <ChevronRight className="h-4 w-4" />
                       )}
                     </SidebarMenuButton>
-
+                    
                     {expandedItems.has(item.href) && (
                       <div className="pl-6 mt-1 space-y-1">
                         {item.subItems.map((subItem) => (

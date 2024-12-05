@@ -8,6 +8,7 @@
     "build": "prisma generate && prisma db push && next build",
     "start": "next start",
     "lint": "next lint",
+    "db:push": "dotenv -e .env.local -- prisma db push",
     "postinstall": "prisma generate"
   },
   "dependencies": {
@@ -39,10 +40,12 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "dotenv-cli": "^7.4.4",
     "embla-carousel-react": "^8.3.1",
     "lucide-react": "^0.453.0",
     "next": "14.2.15",
     "next-auth": "^4.24.10",
+    "p-limit": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.10",
@@ -51,7 +54,8 @@
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
-    "uploadthing": "^7.2.0"
+    "uploadthing": "^7.2.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -66,8 +70,5 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3"
-  },
-  "prisma": {
-    "seed": "node prisma/seed.mjs"
   }
 }

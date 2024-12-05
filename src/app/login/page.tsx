@@ -8,12 +8,13 @@ import { useRouter } from "next/navigation";
 import { Github, Twitter } from "lucide-react";
 import Image from "next/image";
 
+
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-
+  const [initializeDatabase, setInitializeDatabase] = useState(true);
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
@@ -45,6 +46,22 @@ export default function LoginPage() {
             setError("登录失败,请重试");
         }
       } else {
+        if (initializeDatabase) {
+          try {
+            const initResponse = await fetch("/api/settings/initSettings");
+            const result = await initResponse.json();
+            
+            if (result.status !== 'success') {
+              // 处理初始化失败的情况
+              setError(result.message || "数据库初始化失败");
+              return;
+            }
+          } catch (error) {
+            // 处理网络错误或解析错误
+            setError("数据库初始化失败");
+            return;
+          }
+        }
         router.push("/admin/collections");
         router.refresh();
       }
@@ -60,7 +77,7 @@ export default function LoginPage() {
       {/* 左侧品牌区域 */}
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-green-100 to-blue-100 p-12 text-black">
         <div className="max-w-xl mx-auto flex flex-col justify-center">
-          <Image
+          <Image 
             src="/logo.svg"
             alt="Pintree Logo"
             width={40}
@@ -81,7 +98,7 @@ export default function LoginPage() {
         <div className="max-w-md w-full space-y-8">
           {/* 移动端 Logo */}
           <div className="md:hidden text-center mb-8">
-            <Image
+            <Image 
               src="/logo.svg"
               alt="Pintree Logo"
               width={60}
@@ -115,8 +132,8 @@ export default function LoginPage() {
               />
             </div>
 
-            <div className="flex items-center justify-between">
-              <label className="flex items-center">
+            <div className="flex items-center gap-4">
+              {/* <label className="flex items-center">
                 <input
                   type="checkbox"
                   className="h-4 w-4 text-blue-600 rounded border-gray-300"
@@ -124,6 +141,15 @@ export default function LoginPage() {
                   onChange={(e) => setRememberMe(e.target.checked)}
                 />
                 <span className="ml-2 text-sm text-gray-600">Remember me</span>
+              </label> */}
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  className="h-4 w-4 text-blue-600 rounded border-gray-300"
+                  checked={initializeDatabase}
+                  onChange={(e) => setInitializeDatabase(e.target.checked)}
+                />
+                <span className="ml-2 text-sm text-gray-600">Initialize Database</span>
               </label>
             </div>
 

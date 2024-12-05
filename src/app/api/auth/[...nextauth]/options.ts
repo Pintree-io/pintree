@@ -13,8 +13,7 @@ declare module "next-auth" {
 }
 
 export const authOptions: NextAuthOptions = {
-    // 添加 secret 配置
-  secret: "q+TYbKfvPaD4/WHn9xWCk15Y/S49eQ5/V7qUPMv5xdY=",
+  secret: "QmJBzzN86SFfUw4MNRg6e3AngucQZhjMP/sOfvqeP6M=",
   providers: [
     CredentialsProvider({
       name: "邮箱密码",

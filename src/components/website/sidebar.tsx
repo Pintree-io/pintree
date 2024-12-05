@@ -10,19 +10,14 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { ChevronRight, Folder, FolderOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
+
+import { useSettingImages } from "@/hooks/useSettingImages";
 
 interface Collection {
   id: string;
@@ -58,22 +53,9 @@ export function WebsiteSidebar({
   const [folders, setFolders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const [logoUrl, setLogoUrl] = useState('');
 
-  useEffect(() => {
-    const fetchLogo = async () => {
-      try {
-        const response = await fetch('/api/settings?key=logoUrl');
-        if (response.ok) {
-          const data = await response.json();
-          setLogoUrl(data.logoUrl);
-        }
-      } catch (error) {
-        console.error('获取 Logo 失败:', error);
-      }
-    };
-    fetchLogo();
-  }, []);
+
+  const { images, isLoading, error } = useSettingImages('logoUrl');
 
   // 获取书签集合列表
   useEffect(() => {
@@ -385,7 +367,11 @@ export function WebsiteSidebar({
             ) : (
               <SidebarMenuButton size="lg" asChild className="hover:bg-transparent rounded-none pr-0">
                 <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0 w-full">
-                  <Image src={logoUrl || '/logo.png'} alt="Logo" width={260} height={60} />
+                  {isLoading ? (
+                    <Skeleton className="w-[260px] h-[60px]" />
+                  ) : (
+                    <Image src={images[0]?.url || "/logo.png"} alt="Logo" width={260} height={60} />
+                  )}
                 </Link>
               </SidebarMenuButton>
             )}

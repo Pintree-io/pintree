@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { defaultSettings } from '@/config/site-settings';
+import { defaultSettings } from "@/lib/defaultSettings";
 
 export const runtime = 'nodejs';
 
@@ -19,7 +19,7 @@ export async function GET(request: Request) {
     
     // 将设置转换为键值对格式
     const formattedSettings = settings.reduce((acc: Record<string, string>, setting) => {
-      acc[setting.key] = setting.value;
+      acc[setting.key] = setting.value || '';
       return acc;
     }, {});
 
@@ -41,7 +41,6 @@ export async function GET(request: Request) {
       enableSearch: true
     };
 
-    console.log('返回结果:', defaultValues.enableSearch);
 
     return NextResponse.json(result);
   } catch (error) {

@@ -37,7 +37,7 @@
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js
+- **Frontend&Backend**: Next.js
 - **Deployment**: Vercel
 - **Database**: PostgreSQL
 

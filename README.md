@@ -1,23 +1,53 @@
-## 🚀 快速部署步骤
+# Pintree
 
-### 1. 创建 Neon 数据库
-- [![Deploy with Neon](https://img.shields.io/badge/Deploy%20with-Neon-blue?logo=postgresql)](https://console.neon.tech/app/projects/new)
-- 免费注册/登录
-- 创建项目后，复制 `DATABASE_URL`
+<div align="center">
 
-### 2. 部署到 Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPintree-io%2Fpintree%2Ftree%2Fpintree-next&env=DATABASE_URL,ADMIN_EMAIL,ADMIN_PASSWORD&project-name=pintree_next&repository-name=pintree_next)
+[English](./README.md) | [简体中文](./README-zh.md)
 
-### 3. 粘贴 Neon 的 DATABASE_URL，设置管理员邮箱和密码
-- 填写完成后点击部署
+  <h3>Pintree - Turn Your Browser Bookmarks into a Directory Website</h3>
+  <p>Create and monetize your own directory website from browser bookmarks in minutes.</p>
+</div>
 
-### 4. 部署完成后配置额外环境变量
-- 进入 Vercel 项目设置
-- 添加两个新的环境变量：
-  1. `NEXT_PUBLIC_APP_URL`
-  2. `NEXTAUTH_URL`
-- 这两个变量的值都是你的 Vercel 应用域名
-  - 例如：`https://your-app-name.vercel.app`
-  - 直接复制 Vercel 生成的域名链接即可
+## 🔗 Links
 
-> 💡 提示：如遇到任何问题，请查看项目文档或在 GitHub Issues 中寻求帮助
+- [Pintree Official Website](https://pintree.io)
+- [Demo](https://demo.pintree.io)
+- [Documentation](https://docs.pintree.io)
+- [Changelog](https://docs.pintree.io/en/changelog)
+
+## ✨ Features
+
+### Basic Version (Free)
+- 📑 Unlimited Import/Export Bookmarks
+- 📁 Bookmark Management
+- 🎨 Basic Theme Customization
+- 🔍 Bookmark Search
+
+### [Professional Version (PRO)](https://www.pintree.io/#pricing)
+- 📑 All Basic Version Features
+- 📚 Multiple Collection Switching
+- 🔒 Private Collections
+- 📢 Multiple Ad Space Configuration
+- 🤖 AI Search
+- 🎯 Professional SEO Optimization
+- 📊 Detailed Access Statistics
+- 💻 Priority Technical Support
+- 🕒 Lifetime Access
+- 🔄 Free Lifetime Updates
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js
+- **Deployment**: Vercel
+- **Database**: PostgreSQL
+
+## 👥 Community
+
+- Twitter: [@pintree_io](https://twitter.com/pintree_io)
+- GitHub: [github.com/Pintree-io](https://github.com/Pintree-io)
+- Discord: [Join Community](https://discord.gg/gJTrkHFg)
+- Email: feedback@pintree.io
+
+## ❤️ Contributing
+
+We welcome Issues and Pull Requests to help improve this documentation.

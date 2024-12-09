@@ -1,0 +1,16 @@
+[
+  {
+    "type": "folder",
+    "addDate": 1718526477999,
+    "title": "Bookmarks Bar",
+    "children": [
+      {
+        "type": "link",
+        "addDate": 1718526687700,
+        "title": "Google",
+        "icon": "https://logo.clearbit.com/www.google.com",
+        "url": "https://www.google.com/"
+      }
+    ]
+  }
+]

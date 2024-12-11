@@ -193,16 +193,16 @@ export function WebsiteSidebar({
     });
 
     // 第四步：递归排序所有层级的文件夹
-    const sortFolders = (folders: FolderNode[]) => {
-      folders.sort((a, b) => a.name.localeCompare(b.name));
-      folders.forEach(folder => {
-        if (folder.children.length > 0) {
-          sortFolders(folder.children);
-        }
-      });
-    };
+    // const sortFolders = (folders: FolderNode[]) => {
+    //   folders.sort((a, b) => a.name.localeCompare(b.name));
+    //   folders.forEach(folder => {
+    //     if (folder.children.length > 0) {
+    //       sortFolders(folder.children);
+    //     }
+    //   });
+    // };
 
-    sortFolders(rootFolders);
+    // sortFolders(rootFolders);
 
     // 添加调试日志
     const logFolderStructure = (folders: FolderNode[], prefix = '') => {

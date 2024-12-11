@@ -17,9 +17,7 @@ export async function GET(
         collectionId: id,
         ...(all ? {} : { parentId: parentId || null }),
       },
-      orderBy: {
-        name: "asc",
-      },
+      orderBy: { sortOrder: 'asc' }
     });
 
     return NextResponse.json(folders);

@@ -12,7 +12,7 @@ import { SearchBar } from "@/components/search/SearchBar";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Folder as FolderIcon } from "lucide-react";
 
-
+// 定义组件所需的接口类型
 interface BookmarkGridProps {
   collectionId: string;
   currentFolderId: string | null;
@@ -22,12 +22,14 @@ interface BookmarkGridProps {
   pageSize?: number;
 }
 
+// 文件夹接口
 interface Folder {
   id: string;
   name: string;
   icon?: string;
 }
 
+// 书签接口
 interface Bookmark {
   id: string;
   title: string;
@@ -39,11 +41,13 @@ interface Bookmark {
   folder?: { name: string; slug: string; };
 }
 
+// 面包屑导航接口
 interface BreadcrumbItem {
   id: string;
   name: string;
 }
 
+// 子文件夹数据接口
 interface SubfolderData {
   id: string;
   name: string;
@@ -53,6 +57,7 @@ interface SubfolderData {
   bookmarkCount: number;
 }
 
+// 文件夹项目接口
 interface FolderItem {
   type: 'folder';
   id: string;
@@ -60,6 +65,7 @@ interface FolderItem {
   icon?: string;
 }
 
+// 书签项目接口
 interface BookmarkItem {
   type: 'bookmark';
   id: string;
@@ -70,7 +76,15 @@ interface BookmarkItem {
   isFeatured: boolean;
 }
 
-export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "根目录", collectionSlug, refreshTrigger = 0, pageSize = 100 }: BookmarkGridProps) {
+export function BookmarkGrid({ 
+  collectionId, 
+  currentFolderId, 
+  collectionName = "Root", 
+  collectionSlug, 
+  refreshTrigger = 0, 
+  pageSize = 100 
+}: BookmarkGridProps) {
+  // 状态管理
   const [currentBookmarks, setCurrentBookmarks] = useState<Bookmark[]>([]);
   const [subfolders, setSubfolders] = useState<SubfolderData[]>([]);
   const [loading, setLoading] = useState(false);
@@ -86,10 +100,12 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
   const [currentEngine, setCurrentEngine] = useState("Bookmarks");
   const [enableSearch, setEnableSearch] = useState(true);
 
-  const fetchData = async (folderId: string | null) => {
+  // 获取书签和文件夹数据的异步函数
+  const fetchBookmarkData = async (folderId: string | null) => {
     try {
       setLoading(true);
       
+      // 构建获取书签的 API 请求
       const response = await fetch(
         `/api/collections/${collectionId}/bookmarks?` +
         `includeSubfolders=true` +
@@ -105,7 +121,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
       setCurrentBookmarks(data.currentBookmarks || []);
       setSubfolders(data.subfolders || []);
 
-      // 获取面包屑
+      // 获取面包屑导航
       if (folderId) {
         const pathResponse = await fetch(`/api/collections/${collectionId}/folders/${folderId}/path`);
         if (pathResponse.ok) {
@@ -116,7 +132,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
         setBreadcrumbs([]);
       }
     } catch (error) {
-      console.error("获取数据失败:", error);
+      console.error("Get data failed:", error);
       setCurrentBookmarks([]);
       setSubfolders([]);
     } finally {
@@ -124,15 +140,16 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
     }
   };
 
-  // 监听路由参数和 refreshTrigger 变化
+  // 监听路由参数和刷新触发器变化
   useEffect(() => {
     if (collectionId) {
       console.log("Fetching data with:", { collectionId, currentFolderId });
-      fetchData(currentFolderId);
+      fetchBookmarkData(currentFolderId);
     }
-  }, [collectionId, currentFolderId, refreshTrigger]); // 确保 refreshTrigger 在依赖组中
+  }, [collectionId, currentFolderId, refreshTrigger]); 
 
-  const handleFolderClick = async (folderId: string | null) => {
+  // 处理文件夹点击事件
+  const handleFolderNavigation = async (folderId: string | null) => {
     if (!collectionSlug) return;
     
     // 立即更新面包屑状态
@@ -148,11 +165,11 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
     }
     
     // 立即获取新数据
-    await fetchData(folderId);
+    await fetchBookmarkData(folderId);
   };
 
-  // 修改搜索处理函数
-  const handleSearch = async (query: string, scope: 'all' | 'current', page: number = 1) => {
+  // 搜索处理函数
+  const performBookmarkSearch = async (query: string, scope: 'all' | 'current', page: number = 1) => {
     setInputValue(query);
     
     // 如果搜索内容为空，清除搜索状态
@@ -189,28 +206,29 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
     }
   };
 
-  // 添加分页处理函数
+  // 分页处理函数
   const handlePageChange = (newPage: number) => {
     if (inputValue) {
-      handleSearch(inputValue, searchScope, newPage);
+      performBookmarkSearch(inputValue, searchScope, newPage);
     }
   };
 
-  useEffect(() => {
-    console.log("Subfolders:", subfolders);
-    subfolders.forEach(subfolder => {
-      console.log(`Folder ${subfolder.name}:`, {
-        id: subfolder.id,
-        items: subfolder.items.length,
-        bookmarks: subfolder.items.filter(item => item.type === 'bookmark').length,
-        bookmarkCount: subfolder.bookmarkCount,
-        rawData: subfolder,
-        allProps: Object.keys(subfolder)
-      });
-    });
-  }, [subfolders]);
+  // 调试用的副作用钩子，记录子文件夹信息
+  // useEffect(() => {
+  //   console.log("Subfolders:", subfolders);
+  //   subfolders.forEach(subfolder => {
+  //     console.log(`Folder ${subfolder.name}:`, {
+  //       id: subfolder.id,
+  //       items: subfolder.items.length,
+  //       bookmarks: subfolder.items.filter(item => item.type === 'bookmark').length,
+  //       bookmarkCount: subfolder.bookmarkCount,
+  //       rawData: subfolder,
+  //       allProps: Object.keys(subfolder)
+  //     });
+  //   });
+  // }, [subfolders]);
 
-  // 添加获取搜索设置的 useEffect
+  // 加载搜索设置的副作用钩子
   useEffect(() => {
     const loadSearchSetting = async () => {
       try {
@@ -225,6 +243,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
     loadSearchSetting();
   }, []);
 
+  // 如果没有集合ID，显示加载状态
   if (!collectionId) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -233,6 +252,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
     );
   }
 
+  // 加载中状态的骨架屏
   if (loading) {
     return (
       <div className="px-6 space-y-6">
@@ -259,6 +279,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
     );
   }
 
+  // 渲染主组件
   return (
     <div className="px-6 space-y-6">
       {/* 搜索栏 - 添加条件渲染 */}
@@ -266,7 +287,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
         <div className="flex justify-center mt-4 mb-12">
           <SearchBar
             placeholder="Search bookmarks..."
-            onSearch={handleSearch}
+            onSearch={performBookmarkSearch}
             currentEngine={currentEngine}
             onEngineChange={setCurrentEngine}
             currentCollection={searchScope}
@@ -274,17 +295,14 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
           />
         </div>
       )}
-      {/* 添加轮播部分 - 仅在根目录且非搜索状态时显示
-      {!currentFolderId && !searchResults.length && !inputValue && (
-        <CarouselSection />
-      )} */}
-      {/* 面包屑导航 - 仅在非根目录且非索状态时显示 */}
+
+      {/* 面包屑导航 - 仅在非根目录且非搜索状态时显示 */}
       {currentFolderId && !searchResults.length && !inputValue && (
         <nav className="flex mb-4 items-center space-x-1">
           <Button
             variant="ghost" 
             size="sm"
-            onClick={() => handleFolderClick(null)}
+            onClick={() => handleFolderNavigation(null)}
             className={cn(
               "hover:bg-white px-0",
               !currentFolderId && "bg-white"
@@ -301,7 +319,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => handleFolderClick(item.id)}
+                    onClick={() => handleFolderNavigation(item.id)}
                     className={cn(
                       "hover:text-gray-500 hover:bg-white px-0",
                       currentFolderId === item.id && "text-gray-500 bg-white"
@@ -322,11 +340,11 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
       {/* 内容区域 */}
       {isSearching ? (
         <div className="space-y-6">
-          {/* 搜索加载状态显 */}
+          {/* 搜索加载状态显示 */}
         </div>
       ) : (
         <div className="space-y-12">
-          {/* 搜索结果显示 - 添加这个条件分支 */}
+          {/* 搜索结果显示 */}
           {searchResults.length > 0 ? (
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">Search results ({totalResults})</h2>
@@ -348,9 +366,9 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
               No related results found
             </div>
           ) : (
-            // 原有的文件夹和书签显示逻辑
+            // 原有的文件夹和书签显示逻辑，非搜索状态
             <>
-              {/* 当前文件夹的书签 */}
+              {/* 当前文件夹的书签，书签展示在文件夹前面 */}
               {currentBookmarks?.length > 0 && (
                 <div className="space-y-4">
                   {/* 只在有子文件夹时显示标题 */}
@@ -381,11 +399,11 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
                     <h3 className="text-lg font-semibold">
                       {subfolder.name}
                     </h3>
-                    {/* 当文件夹内的书签总数大于显示的书签数时显示 View all 按钮 */}
-                    {subfolder.bookmarkCount > 0 && (
+                    {/* 当文件夹内的项目总数大于显示的书签数时显示 View all 按钮 */}
+                    {subfolder.items.length > 50 && (
                       <Button
                         variant="ghost"
-                        onClick={() => handleFolderClick(subfolder.id)}
+                        onClick={() => handleFolderNavigation(subfolder.id)}
                         className="text-green-600 hover:text-green-600"
                       >
                         View all
@@ -395,13 +413,13 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-                    {subfolder.items.map((item) => (
+                    {subfolder.items.slice(0, 50).map((item) => (
                       item.type === 'folder' ? (
                         <FolderCard
                           key={item.id}
                           name={item.name}
                           icon={item.icon}
-                          onClick={() => handleFolderClick(item.id)}
+                          onClick={() => handleFolderNavigation(item.id)}
                         />
                       ) : (
                         <BookmarkCard
@@ -422,7 +440,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
         </div>
       )}
 
-      {/* 修改分页按钮部分 */}
+      {/* 分页按钮部分 */}
       {searchResults.length > 0 && (
         <div className="flex items-center justify-center mt-4">
           <Button

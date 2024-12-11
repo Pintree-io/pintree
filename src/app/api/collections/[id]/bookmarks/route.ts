@@ -15,8 +15,8 @@ export async function GET(
   try {
     const { searchParams } = new URL(request.url);
     const folderId = searchParams.get("folderId");
-    const sortField = searchParams.get("sortField") || "updatedAt";
-    const sortOrder = searchParams.get("sortOrder") || "desc";
+    const sortField = searchParams.get("sortField") || "sortOrder";
+    const sortOrder = searchParams.get("sortOrder") || "asc";
     const pageSize = parseInt(searchParams.get("pageSize") || "100");
 
     // 并行执行书签总数查询和当前书签查询
@@ -57,8 +57,8 @@ export async function GET(
           parentId: folderId || null
         },
         orderBy: {
-          name: 'asc'
-        }
+          [sortField]: sortOrder as 'asc' | 'desc',
+        },
       })).map(async (folder) => {
         // 并行获取文件夹内的书签、子文件夹和总书签数
         const [bookmarks, childFolders, bookmarkCount] = await Promise.all([
@@ -66,7 +66,7 @@ export async function GET(
             where: {
               folderId: folder.id
             },
-            take: pageSize,
+            ...(pageSize ? { take: pageSize } : {}),
             orderBy: {
               [sortField]: sortOrder as 'asc' | 'desc',
             }
@@ -76,8 +76,8 @@ export async function GET(
               parentId: folder.id
             },
             orderBy: {
-              name: 'asc'
-            }
+              [sortField]: sortOrder as 'asc' | 'desc',
+            },
           }),
           prisma.bookmark.count({
             where: {

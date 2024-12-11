@@ -25,7 +25,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export const generateMetadata = cache(async (
+export const generateMetadata = async (
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
@@ -134,7 +134,7 @@ export const generateMetadata = cache(async (
       },
     };
   }
-})
+}
 
 export default async function RootLayout({
   children,

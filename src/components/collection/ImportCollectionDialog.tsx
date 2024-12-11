@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-import { processImportData } from "@/lib/utils/import-collection";
+import { createFlattenBookmarks } from "@/lib/utils/import-extension-data";
 import { Upload } from "lucide-react"
 import { useDropzone } from "react-dropzone"
 import { Textarea } from "@/components/ui/textarea";
@@ -51,7 +51,18 @@ export function ImportCollectionDialog({
     accept: {
       'application/json': ['.json']
     },
-    maxFiles: 1
+    maxFiles: 1,
+    maxSize: 5 * 1024 * 1024, // 5MB limit
+    onError: (error) => {
+      console.log(error);
+      if (error instanceof Error && 'code' in error && error.code === 'file-too-large') {
+        toast({
+          variant: "destructive",
+          title: "File Too Large",
+          description: "Please select a JSON file smaller than 5MB",
+        });
+      }
+    }
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -70,34 +81,75 @@ export function ImportCollectionDialog({
     try {
       const fileContent = await formData.file.text();
       const jsonData = JSON.parse(fileContent);
-      const { folders, bookmarks } = await processImportData(jsonData);
 
-      const requestData = {
-        name: formData.name,
-        description: formData.description,
-        folders,
-        bookmarks
-      };
+      const flattenedBookmarks = createFlattenBookmarks(jsonData[0].children);
 
-      const response = await fetch("/api/collections/import", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestData),
-      });
+      // Batch import logic
+      const batchSize = 100; // Process 200 bookmarks per batch
+      const totalBookmarks = flattenedBookmarks.length;
+      let importedCollectionId = null;
+      let folderMap: { [key: string]: string }[] = [];
 
-      const data = await response.json();
+      const startTime = Date.now();
 
-      if (!response.ok) {
-        toast({
-          variant: "destructive",
-          title: "Import Failed",
-          description: data.error || "Failed to import collection"
+      for (let i = 0; i < totalBookmarks; i += batchSize) {
+        const batchStartTime = Date.now();
+        const batchBookmarks = flattenedBookmarks.slice(i, i + batchSize);
+
+        const requestData = {
+          name: formData.name,
+          description: formData.description,
+          bookmarks: batchBookmarks,
+          collectionId: importedCollectionId, // Append to the same collection in subsequent batches
+          folderMap: folderMap
+        };
+
+        const response: any = await fetch("/api/collections/import", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData),
         });
-        return;
+
+        const data: any = await response.json();
+        const batchEndTime = Date.now();
+        const batchDuration = (batchEndTime - batchStartTime) / 1000; // seconds
+        const remainingBatches = Math.ceil((totalBookmarks - i - batchSize) / batchSize);
+        const estimatedRemainingTime = batchDuration * remainingBatches;
+
+        console.log(`Batch ${Math.floor(i / batchSize) + 1} imported, ${remainingBatches} batches remaining`, data);
+        
+        // Show import progress toast with batch time and estimated remaining time
+        toast({
+          title: "Import Progress",
+          description: `Batch ${Math.floor(i / batchSize) + 1} imported (${batchDuration.toFixed(2)}s). 
+          Estimated remaining time: ${estimatedRemainingTime.toFixed(2)}s (${remainingBatches} batches)`,
+        });
+
+        
+        if (!response.ok) {
+          toast({
+            variant: "destructive",
+            title: "Import Failed",
+            description: data.message || "Failed to import collection"
+          });
+          return;
+        }
+
+        // Record the first batch's collection ID for subsequent batches
+        if (i === 0) {
+          importedCollectionId = data.collectionId;
+        }
+
+        if(data.insideFolderMap){
+          folderMap = [...data.insideFolderMap];
+        }
       }
 
+      const totalImportTime = (Date.now() - startTime) / 1000;
+
+      // Import completion handling
       onOpenChange(false);
       router.refresh();
       
@@ -110,14 +162,12 @@ export function ImportCollectionDialog({
 
       toast({
         title: "Import Successful",
-        description: `Successfully imported ${bookmarks.length} bookmarks and ${folders.length} folders`,
+        description: `Collection "${formData.name}" imported successfully in ${totalImportTime.toFixed(2)}s`,
       });
 
       if (onSuccess) {
         onSuccess();
       }
-
-      window.location.reload();
     } catch (error) {
       console.error("Failed to import bookmark collection:", error);
       toast({
@@ -166,7 +216,7 @@ export function ImportCollectionDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="file">Select JSON File</Label>
+            <Label htmlFor="file">Select JSON File (Max 5MB)</Label>
             <div
               {...getRootProps()}
               className={`

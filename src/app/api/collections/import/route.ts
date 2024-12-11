@@ -1,198 +1,142 @@
+import { NextRequest, NextResponse } from 'next/server';
+import pLimit from "p-limit";
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { Prisma } from "@prisma/client";
 
-interface ImportFolder {
-  name: string;
-  icon?: string;
-  addDate: string | number;
-  parentId?: string | null;
-}
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
 
-interface ImportBookmark {
+
+
+interface FlattenedBookmarkItem {
+  id: string;
+  type: 'folder' | 'link';
   title: string;
-  url: string;
+  parentId?: string;
+  sortOrder: number;
+  addDate?: number;
+  url?: string;
   icon?: string;
-  addDate: string | number;
-  folderId?: string | null;
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const { name, description, bookmarks, collectionId, folderMap } = await request.json();
 
-    if (!session) {
-      console.log("Unauthorized access");
+    // 预检查数据量
+    if (bookmarks.length > 1000) {
       return NextResponse.json(
-        { error: "Unauthorized access" },
-        { status: 401 }
-      );
-    }
-    // 检查是否已经存在任何集合
-    const existingCollections = await prisma.collection.findMany({
-      take: 1,
-    });
-
-    if (existingCollections.length > 0) {
-      console.log("已存在集合，不允许导入");
-      return NextResponse.json(
-        {
-          error:
-            "A collection already exists. Cannot import another collection.",
-        },
-        { status: 403 }
-      );
-    }
-
-    console.log("Start processing import request");
-    const body = await request.text();
-    console.log("Request body size:", body.length);
-
-    let data;
-    try {
-      data = JSON.parse(body);
-      console.log("JSON parsing successful, data structure:", {
-        hasName: !!data.name,
-        hasFolders: Array.isArray(data.folders),
-        hasBookmarks: Array.isArray(data.bookmarks),
-        foldersLength: data.folders?.length,
-        bookmarksLength: data.bookmarks?.length
-      });
-    } catch (e) {
-      console.error("JSON parsing failed:", e);
-      return NextResponse.json({ 
-          error: "Invalid JSON format",
-        details: e instanceof Error ? e.message : 'Unknown parsing error'
-      }, { status: 400 });
-    }
-
-    const { name, folders = [], bookmarks = [] } = data;
-
-    if (!name) {
-      console.log("Missing collection name");
-      return NextResponse.json({ 
-          error: "Collection name is required",
-        receivedData: { name, foldersCount: folders.length, bookmarksCount: bookmarks.length }
-      }, { status: 400 });
-    }
-
-    console.log("Import data overview:", {
-      name,
-      foldersCount: folders.length,
-      bookmarksCount: bookmarks.length
-    });
-
-    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-
-    // 检查名称和slug是否已存在
-    const existingCollection = await prisma.collection.findFirst({
-      where: {
-        OR: [
-          { name },
-          { slug }
-        ]
-      }
-    });
-
-    if (existingCollection) {
-      return NextResponse.json(
-        { error: "Collection name or slug already exists" },
+        { error: "数据量过大，请分批导入", maxItemsAllowed: 1000 },
         { status: 400 }
       );
     }
 
-    // 创建新集合
-    const collection = await prisma.collection.create({
-      data: {
-        name,
-        slug,
-        description: "",
-        icon: "",
-        isPublic: true,
-        viewStyle: "list",
-        sortStyle: "alpha",
-      },
-    });
+    let targetCollection;
+    let insideFolderMap: { [key: string]: string }[] = folderMap || [];
 
-    // 创建文件夹映射
-    const folderMap = new Map();
+    // 处理集合（新建或使用已存在的）
+    if (collectionId) {
+      targetCollection = await prisma.collection.findUnique({
+        where: { id: collectionId }
+      });
 
-    // 分批处理文件夹，每批25个
-    const FOLDER_BATCH_SIZE = 25;
-    for (let i = 0; i < folders.length; i += FOLDER_BATCH_SIZE) {
-      const batch = folders.slice(i, i + FOLDER_BATCH_SIZE);
-      console.log(`Processing folder batch ${Math.floor(i/FOLDER_BATCH_SIZE) + 1}/${Math.ceil(folders.length/FOLDER_BATCH_SIZE)}`);
+      if (!targetCollection) {
+        throw new Error("指定的集合不存在");
+      }
+    } else {
+      // 检查是否已存在同名集合
+      const existingCollection = await prisma.collection.findFirst({
+        where: { name: name }
+      });
 
-      await Promise.all(batch.map(async (folder: ImportFolder) => {
-          try {
-            const createdFolder = await prisma.folder.create({
-              data: {
-                name: folder.name,
-                icon: folder.icon || "",
-                isPublic: true,
-                sortOrder: 0,
-                collectionId: collection.id,
-              parentId: folder.parentId ? folderMap.get(folder.parentId) : null,
-                createdAt: new Date(folder.addDate),
-              },
-            });
-            folderMap.set(folder.name, createdFolder.id);
-          } catch (error) {
-          console.error('Failed to create folder:', error, folder);
-          }
-      }));
+      if (existingCollection) {
+        throw new Error("集合名称已存在");
+      }
+
+      // 创建新集合
+      targetCollection = await prisma.collection.create({
+        data: {
+          name: name,
+          description: description,
+        }
+      });
+
+      // 使用 collectionId 作为 slug 更新数据库
+      await prisma.collection.update({
+        where: { id: targetCollection.id },
+        data: { 
+          slug: targetCollection.id 
+        }
+      });
     }
 
-    // 分批处理书签，每批50个
-    const BOOKMARK_BATCH_SIZE = 50;
-    for (let i = 0; i < bookmarks.length; i += BOOKMARK_BATCH_SIZE) {
-      const batch = bookmarks.slice(i, i + BOOKMARK_BATCH_SIZE);
-      console.log(`Processing bookmark batch ${Math.floor(i/BOOKMARK_BATCH_SIZE) + 1}/${Math.ceil(bookmarks.length/BOOKMARK_BATCH_SIZE)}`);
+    // 逐个创建文件夹
+    const folderItems = bookmarks.filter((item: FlattenedBookmarkItem) => item.type === 'folder');
 
-      await Promise.all(batch.map(async (bookmark: ImportBookmark) => {
-          try {
-            await prisma.bookmark.create({
-              data: {
-                title: bookmark.title,
-                url: bookmark.url,
-                description: "",
-                icon: bookmark.icon || "",
-                isFeatured: false,
-                sortOrder: 0,
-                viewCount: 0,
-                collectionId: collection.id,
-              folderId: bookmark.folderId ? folderMap.get(bookmark.folderId) : null,
-                createdAt: new Date(bookmark.addDate),
-              },
-            });
-          } catch (error) {
-          console.error('Failed to create bookmark:', error, bookmark);
+    const limit = pLimit(10); // 限制并发数为10
+
+    // 并行创建文件夹
+    const folderPromises = folderItems.map((folder: FlattenedBookmarkItem) => limit(async () => {
+      // 检查是否已存在
+      const existingMapping = insideFolderMap.find(item => item.processId === folder.id);
+      if (!existingMapping) {
+        const parentId = folder.parentId 
+          ? insideFolderMap.find(item => item.processId === folder.parentId)?.dataBaseId 
+          : undefined;
+
+        const createdFolder = await prisma.folder.create({
+          data: {
+            name: folder.title,
+            collectionId: targetCollection.id,
+            parentId: parentId,
+            sortOrder: folder.sortOrder
           }
-      }));
-    }
+        });
+        
+        // 记录映射关系
+        insideFolderMap.push({
+          dataBaseId: createdFolder.id,
+          processId: folder.id
+        });
+      }
+    }));
 
-    console.log("Import completed:", {
-      collectionId: collection.id,
-      name: collection.name,
-      foldersProcessed: folderMap.size,
-      bookmarksProcessed: bookmarks.length
-    });
+    // 等待所有文件夹创建完成
+    await Promise.all(folderPromises);
 
-    return NextResponse.json({
-      message: "Import successful",
-      collection
-    });
+    // 并行创建书签
+    const bookmarkItems = bookmarks.filter((item: FlattenedBookmarkItem) => item.type === 'link');
+    const bookmarkPromises = bookmarkItems.map((bookmark: FlattenedBookmarkItem) => limit(async () => {
+      const folderId = bookmark.parentId 
+        ? insideFolderMap.find(item => item.processId === bookmark.parentId)?.dataBaseId 
+        : undefined;
+      
+      await prisma.bookmark.create({
+        data: {
+          title: bookmark.title,
+          url: bookmark.url || '',
+          icon: bookmark.icon,
+          collectionId: targetCollection.id,
+          folderId: folderId,
+          sortOrder: bookmark.sortOrder
+        }
+      });
+    }));
+
+    // 等待所有书签创建完成
+    await Promise.all(bookmarkPromises);
+
+    return NextResponse.json({ 
+      message: '导入成功', 
+      collectionId: targetCollection.id,
+      insideFolderMap: insideFolderMap,
+      itemsImported: bookmarks.length
+    }, { status: 200 });
+
   } catch (error) {
-    console.error("Import failed, detailed error:", error);
-    return NextResponse.json(
-      { 
-        error: `Import failed`,
-        details: error instanceof Error ? error.message : 'Unknown error',
-        stack: error instanceof Error ? error.stack : undefined
-      },
-      { status: 500 }
-    );
+    console.error('导入书签时发生错误:', error);
+    return NextResponse.json({ 
+      message: '导入失败', 
+      error: error instanceof Error ? error.message : '未知错误' 
+    }, { status: 500 });
   }
 }

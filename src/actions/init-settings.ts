@@ -20,7 +20,7 @@ export async function updateSettingsWithDefaults() {
     baseUrl = `https://${host}`;
   }
 
-  console.log(`当前基础 URL: ${baseUrl}`);
+  console.log(`Current base URL: ${baseUrl}`);
 
   try {
     // 使用并发处理
@@ -90,9 +90,9 @@ export async function updateSettingsWithDefaults() {
                         description: `Default ${imageData.name} for ${settingKey.key}`,
                       },
                     });
-                    console.log(`处理图片 ${imagePath} 成功`);
+                    console.log(`Processed image ${imagePath} successfully`);
                   } catch (error) {
-                    console.error(`处理图片 ${imagePath} 失败:`, error);
+                    console.error(`Failed to process image ${imagePath}:`, error);
                     throw error;
                   }
                 })
@@ -103,9 +103,9 @@ export async function updateSettingsWithDefaults() {
       })
     );
 
-    console.log("设置和图片更新完成");
+    console.log("Settings and images updated successfully");
   } catch (error) {
-    console.error("更新设置失败:", error);
+    console.error("Failed to update settings:", error);
     throw error;
   }
 }

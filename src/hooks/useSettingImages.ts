@@ -23,11 +23,11 @@ export const useSettingImages = (settingKey: string) => {
           setError(null);
         } else {
           setImagesData([]);
-          setError(result.error || '获取设置图片失败');
+          setError(result.error || 'Get setting images failed');
         }
       } catch (err) {
         setImagesData([]);
-        setError(err instanceof Error ? err.message : '获取设置图片失败');
+        setError(err instanceof Error ? err.message : 'Get setting images failed');
       } finally {
         setIsLoading(false);
       }

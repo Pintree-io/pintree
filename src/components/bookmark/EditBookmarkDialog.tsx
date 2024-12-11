@@ -119,8 +119,8 @@ export function EditBookmarkDialog({
       onOpenChange(false);
       onSuccess?.();
     } catch (error) {
-      console.error("更新书签失败:", error);
-      setError(error instanceof Error ? error.message : "更新书签失败");
+      console.error("Update bookmark failed:", error);
+      setError(error instanceof Error ? error.message : "Update bookmark failed");
     } finally {
       setLoading(false);
     }
@@ -137,12 +137,12 @@ export function EditBookmarkDialog({
 
   const handleGetInfo = async () => {
     if (!formData.url) {
-      setError("请输入 URL");
+      setError("Please enter a URL");
       return;
     }
 
     if (!isValidUrl(formData.url)) {
-      setError("请输入有效的 URL，例如 https://example.com");
+      setError("Please enter a valid URL, e.g. https://example.com");
       return;
     }
 
@@ -157,7 +157,7 @@ export function EditBookmarkDialog({
       const data: UrlInfo = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.error || "获取 URL 信息失败");
+        throw new Error(data.error || "Failed to get URL information");
       }
       
       setFormData(prev => ({
@@ -168,8 +168,8 @@ export function EditBookmarkDialog({
       }));
       setAvailableIcons(data.icons || []);
     } catch (error) {
-      console.error("获取 URL 信息失败:", error);
-      setError(error instanceof Error ? error.message : "获取 URL 信息失败");
+      console.error("Failed to get URL information:", error);
+      setError(error instanceof Error ? error.message : "Failed to get URL information");
     } finally {
       setLoading(false);
     }

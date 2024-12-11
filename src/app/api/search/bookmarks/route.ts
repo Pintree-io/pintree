@@ -97,9 +97,9 @@ export async function GET(request: Request) {
       totalPages: Math.ceil(total / pageSize)
     });
   } catch (error) {
-    console.error("搜索书签失败:", error);
+    console.error("Search bookmarks failed:", error);
     return NextResponse.json(
-      { error: "搜索书签失败" },
+      { error: "Search bookmarks failed" },
       { status: 500 }
     );
   }

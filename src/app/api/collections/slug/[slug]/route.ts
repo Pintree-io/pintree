@@ -17,16 +17,16 @@ export async function GET(
 
     if (!collection) {
       return NextResponse.json(
-        { error: "集合不存在" },
+        { error: "Collection not found" },
         { status: 404 }
       );
     }
 
     return NextResponse.json(collection);
   } catch (error) {
-    console.error("获取集合失败:", error);
+    console.error("Failed to get collection:", error);
     return NextResponse.json(
-      { error: "获取集合失败" },
+      { error: "Failed to get collection" },
       { status: 500 }
     );
   }

@@ -168,7 +168,7 @@ export default function CreateBookmarkDialogGlobal({
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "创建失败");
+        setError(data.error || "Create failed");
         return;
       }
 
@@ -188,8 +188,8 @@ export default function CreateBookmarkDialogGlobal({
         sortOrder: 0
       });
     } catch (error) {
-      console.error("创建书签失败:", error);
-      setError("创建书签失败，请重试");
+      console.error("Create bookmark failed:", error);
+      setError("Create bookmark failed, please try again");
     } finally {
       setLoading(false);
     }
@@ -426,7 +426,7 @@ export default function CreateBookmarkDialogGlobal({
                 </div>
                 {availableIcons.length > 0 && (
                   <div className="mt-2">
-                    <Label className="text-sm text-gray-500">选择图标</Label>
+                    <Label className="text-sm text-gray-500">Select an icon</Label>
                     <div className="grid grid-cols-6 gap-2 mt-1">
                       {availableIcons.map((iconUrl, index) => (
                         <button
@@ -472,12 +472,12 @@ export default function CreateBookmarkDialogGlobal({
                 e.preventDefault();
                 
                 if (!formData.url) {
-                  setError("请输入URL");
+                  setError("Please enter a URL");
                   return;
                 }
 
                 if (!isValidUrl(formData.url)) {
-                  setError("请输入有效的URL，例如 https://example.com");
+                  setError("Please enter a valid URL, e.g. https://example.com");
                   return;
                 }
 
@@ -493,7 +493,7 @@ export default function CreateBookmarkDialogGlobal({
                     const data: UrlInfo = await response.json();
                     
                     if (!response.ok) {
-                      throw new Error(data.error || "获取URL信息失败");
+                      throw new Error(data.error || "Failed to get URL information");
                     }
                     
                     setFormData(prev => ({
@@ -505,8 +505,8 @@ export default function CreateBookmarkDialogGlobal({
                     setAvailableIcons(data.icons || []);
                     setHasLoadedInfo(true);
                   } catch (error) {
-                    console.error("获取URL信息失败:", error);
-                    setError(error instanceof Error ? error.message : "获取URL信息失败");
+                    console.error("Failed to get URL information:", error);
+                    setError(error instanceof Error ? error.message : "Failed to get URL information");
                   } finally {
                     setLoading(false);
                   }
@@ -515,7 +515,7 @@ export default function CreateBookmarkDialogGlobal({
                 }
               }}
             >
-              {loading ? "获取中..." : (hasLoadedInfo ? "创建" : "获取信息")}
+              {loading ? "Getting..." : (hasLoadedInfo ? "Create" : "Get Info")}
             </Button>
           </div>
         </form>

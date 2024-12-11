@@ -11,16 +11,16 @@ export async function GET(request: NextRequest) {
     await updateSettingsWithDefaults();
     
     return NextResponse.json({ 
-      message: '设置初始化成功',
+      message: 'Settings initialized successfully',
       status: 'success' 
     }, { status: 200 });
   } catch (error) {
-    console.error('初始化设置失败:', error);
+    console.error('Settings initialization failed:', error);
     
     return NextResponse.json({ 
-      message: '设置初始化失败',
+      message: 'Settings initialization failed',
       status: 'error',
-      error: error instanceof Error ? error.message : '未知错误'
+      error: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 }

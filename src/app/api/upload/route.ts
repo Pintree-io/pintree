@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "未授权" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const formData = await request.formData();
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     const type = formData.get('type') as string; // logo 或 favicon
 
     if (!file) {
-      return NextResponse.json({ error: "未找到文件" }, { status: 400 });
+      return NextResponse.json({ error: "File not found" }, { status: 400 });
     }
 
     // 文件路径映射
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 
     const filePath = pathMap[type];
     if (!filePath) {
-      return NextResponse.json({ error: "无效的文件类型" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
 
     // 读取文件内容
@@ -43,8 +43,8 @@ export async function POST(request: Request) {
       path: filePath.replace('public', '') 
     });
   } catch (error) {
-    console.error('文件上传失败:', error);
-    return NextResponse.json({ error: "文件上传失败" }, { status: 500 });
+    console.error('File upload failed:', error);
+    return NextResponse.json({ error: "File upload failed" }, { status: 500 });
   }
 }
 

@@ -69,7 +69,7 @@ const LogoUploader = () => {
         />
       </div>
       <p className="text-sm text-muted-foreground">
-        建议尺寸: 520x120px，支持 PNG、JPG 格式
+        Recommended size: 520x120px, supports PNG, JPG format
       </p>
     </div>
   );
@@ -121,7 +121,7 @@ const FaviconUploader = () => {
         />
       </div>
       <p className="text-sm text-muted-foreground">
-        建议尺寸: 512x512px，支持 ICO、PNG 格式
+        Recommended size: 512x512px, supports ICO, PNG format
       </p>
     </div>
   );
@@ -144,13 +144,13 @@ const FooterSettingsCard = ({ settings, handleChange }: FooterSettingsCardProps)
   return (
     <Card className="border bg-white">
       <CardHeader className="border-b">
-        <CardTitle>页脚设置</CardTitle>
-        <CardDescription>设置网站页脚信息</CardDescription>
+        <CardTitle>Footer Settings</CardTitle>
+        <CardDescription>Set website footer information</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4 p-6">
         {/* 版权信息 */}
         <div className="grid gap-2">
-          <Label htmlFor="copyrightText">版权信息</Label>
+          <Label htmlFor="copyrightText">Copyright</Label>
           <Input
             id="copyrightText"
             name="copyrightText"
@@ -179,8 +179,8 @@ const SocialMediaCard = ({
   return (
     <Card className="border bg-white">
       <CardHeader className="border-b">
-        <CardTitle>社交媒体链接</CardTitle>
-        <CardDescription>设置网站页脚显示的社交媒体链接</CardDescription>
+        <CardTitle>Social Media Links</CardTitle>
+        <CardDescription>Set social media links displayed in the footer</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4 p-6">
         {socialLinks.map(({ id, label, placeholder }) => (
@@ -232,12 +232,12 @@ export default function BasicSettingsPage() {
         const response = await fetch("/api/settings?group=basic");
         if (!response.ok) {
           const errorData = await response.json();
-          console.error("加载设置失败:", errorData); // 调试日志
-          throw new Error(errorData.error || "加载设置失败");
+          console.error("Failed to load settings:", errorData); // 调试日志
+          throw new Error(errorData.error || "Failed to load settings");
         }
 
         const data = await response.json();
-        console.log("加载的设置:", data); // 调试日志
+        console.log("Loaded settings:", data); // 调试日志
 
         const sanitizedData = Object.keys(data).reduce(
           (acc, key) => ({
@@ -252,8 +252,8 @@ export default function BasicSettingsPage() {
           ...sanitizedData,
         }));
       } catch (error) {
-        console.error("加载设置错误:", error);
-        toast.error(error instanceof Error ? error.message : "加载设置失败");
+        console.error("Failed to load settings:", error);
+        toast.error(error instanceof Error ? error.message : "Failed to load settings");
       } finally {
         setLoading(false);
       }
@@ -276,7 +276,7 @@ export default function BasicSettingsPage() {
     e.preventDefault();
     try {
       setLoading(true);
-      console.log("提交的设置:", settings); // 调试日志
+      console.log("Submitted settings:", settings); // 调试日志
 
       // 使用 saveSettingPromises 并行处理图片上传和基本设置保存
       const saveSettingPromises = [];
@@ -313,24 +313,24 @@ export default function BasicSettingsPage() {
         }).then(async response => {
           if (!response.ok) {
             const errorData = await response.json();
-            console.error("API错误响应:", errorData);
-            throw new Error(errorData.error || "保存失败");
+            console.error("API error response:", errorData);
+            throw new Error(errorData.error || "Save failed");
           }
           return response.json();
         }).then(result => {
-          console.log("保存成功:", result); // 调试日志
+          console.log("Save success:", result); // 调试日志
         })
       );
 
       // 并行处理所有操作
       await Promise.all(saveSettingPromises);
 
-      toast.success("设置已保存");
+      toast.success("Settings saved");
       // 保存成功后刷新页面以更新标题
       window.location.reload();
     } catch (error) {
-      console.error("保存设置失败:", error);
-      toast.error(error instanceof Error ? error.message : "保存设置失败");
+      console.error("Failed to save settings:", error);
+      toast.error(error instanceof Error ? error.message : "Failed to save settings");
     } finally {
       setLoading(false);
     }
@@ -346,33 +346,33 @@ export default function BasicSettingsPage() {
             {/* 基本信息 */}
             <div className="space-y-4">
               <p className="text-sm text-muted-foreground font-normal">
-                基本信息
+                Basic Information
               </p>
               <div className="space-y-2">
                 <Card className="border bg-white">
                   <CardHeader className="border-b">
-                    <CardTitle>基本信息</CardTitle>
-                    <CardDescription>设置网站的基本信息</CardDescription>
+                    <CardTitle>Basic Information</CardTitle>
+                    <CardDescription>Set website basic information</CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-4 p-6">
                     <div className="grid gap-2">
-                      <Label htmlFor="websiteName">网站名称</Label>
+                      <Label htmlFor="websiteName">Website Name</Label>
                       <Input
                         id="websiteName"
                         name="websiteName"
                         value={settings.websiteName}
                         onChange={handleChange}
-                        placeholder="输入网站名称"
+                        placeholder="Enter website name"
                       />
                     </div>
 
                     <div className="grid gap-2">
-                      <Label>网站 Logo</Label>
+                      <Label>Website Logo</Label>
                       <LogoUploader />
                     </div>
 
                     <div className="grid gap-2">
-                      <Label>网站图标</Label>
+                      <Label>Website Icon</Label>
                       <FaviconUploader />
                     </div>
                   </CardContent>
@@ -381,8 +381,8 @@ export default function BasicSettingsPage() {
                 {/* 统计代码卡片 */}
                 <Card className="border bg-white">
                   <CardHeader className="border-b">
-                    <CardTitle>统计代码</CardTitle>
-                    <CardDescription>设置网站统计代码</CardDescription>
+                    <CardTitle>Statistics Code</CardTitle>
+                    <CardDescription>Set website statistics code</CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-4 p-6">
                     <div className="grid gap-2">
@@ -416,7 +416,7 @@ export default function BasicSettingsPage() {
             {/* 页脚设置 */}
             <div className="space-y-4">
               <p className="text-sm text-muted-foreground font-normal">
-                页脚设置
+                Footer Settings
               </p>
               <div className="space-y-2">
                 <FooterSettingsCard
@@ -433,7 +433,7 @@ export default function BasicSettingsPage() {
 
           <div className="flex justify-end">
             <Button type="submit" disabled={loading}>
-              {loading ? "保存中..." : "保存设置"}
+              {loading ? "Saving..." : "Save Settings"}
             </Button>
           </div>
         </form>

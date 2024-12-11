@@ -16,21 +16,21 @@ export const authOptions: NextAuthOptions = {
   secret: "QmJBzzN86SFfUw4MNRg6e3AngucQZhjMP/sOfvqeP6M=",
   providers: [
     CredentialsProvider({
-      name: "邮箱密码",
+      name: "Email Password",
       credentials: {
-        email: { label: "邮箱", type: "email" },
-        password: { label: "密码", type: "password" }
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("请输入邮箱和密码");
+          throw new Error("Please enter email and password");
         }
 
         const adminEmail = process.env.ADMIN_EMAIL;
         const adminPassword = process.env.ADMIN_PASSWORD;
 
         if (credentials.email !== adminEmail || credentials.password !== adminPassword) {
-          throw new Error("邮箱或密码错误");
+          throw new Error("Email or password is incorrect");
         }
 
         return {

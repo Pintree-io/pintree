@@ -10,7 +10,7 @@ export async function DELETE(
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "未授权" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     await prisma.bookmark.delete({
@@ -19,10 +19,10 @@ export async function DELETE(
       },
     });
 
-    return NextResponse.json({ message: "删除成功" });
+    return NextResponse.json({ message: "Delete success" });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "删除书签失败" }, { status: 500 });
+    return NextResponse.json({ error: "Delete bookmark failed" }, { status: 500 });
   }
 }
 
@@ -33,7 +33,7 @@ export async function PUT(
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "未授权" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const data = await request.json();
@@ -66,7 +66,7 @@ export async function PUT(
     return NextResponse.json(bookmark);
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "更新书签失败" }, { status: 500 });
+    return NextResponse.json({ error: "Update bookmark failed" }, { status: 500 });
   }
 }
 

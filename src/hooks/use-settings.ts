@@ -17,11 +17,11 @@ export function useSettings(group?: string) {
     try {
       setLoading(true);
       const response = await fetch(`/api/settings${group ? `?group=${group}` : ''}`);
-      if (!response.ok) throw new Error('加载设置失败');
+      if (!response.ok) throw new Error('Load settings failed');
       const data = await response.json();
       setSettings(data);
     } catch (error) {
-      toast.error('加载设置失败');
+      toast.error('Load settings failed');
       console.error(error);
     } finally {
       setLoading(false);
@@ -37,11 +37,11 @@ export function useSettings(group?: string) {
         body: JSON.stringify(newSettings),
       });
       
-      if (!response.ok) throw new Error('保存设置失败');
-      toast.success('设置已保存');
+      if (!response.ok) throw new Error('Save settings failed');
+      toast.success('Settings saved');
       await loadSettings(); // 重新加载设置
     } catch (error) {
-      toast.error('保存设置失败');
+      toast.error('Save settings failed');
       console.error(error);
     }
   };

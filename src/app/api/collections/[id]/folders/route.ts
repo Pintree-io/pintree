@@ -24,9 +24,9 @@ export async function GET(
 
     return NextResponse.json(folders);
   } catch (error) {
-    console.error("获取文件夹失败:", error);
+    console.error("Failed to get folders:", error);
     return NextResponse.json(
-      { error: "获取文件夹失败" },
+      { error: "Failed to get folders" },
       { status: 500 }
     );
   }

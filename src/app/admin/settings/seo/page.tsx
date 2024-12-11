@@ -27,7 +27,7 @@ export default function SeoSettingsPage() {
       try {
         const response = await fetch('/api/settings?group=seo');
         if (!response.ok) {
-          throw new Error('加载设置失败');
+          throw new Error('Failed to load settings');
         }
         const data = await response.json();
         setSettings(prev => ({
@@ -35,7 +35,7 @@ export default function SeoSettingsPage() {
           ...data
         }));
       } catch (error) {
-        toast.error("加载设置失败");
+        toast.error("Failed to load settings");
       } finally {
         setLoading(false);
       }
@@ -63,22 +63,22 @@ export default function SeoSettingsPage() {
         
         const url = new URL(cleanUrl);
         if (!url.protocol.startsWith('http')) {
-          throw new Error('网站 URL 必须以 http:// 或 https:// 开头');
+          throw new Error('Website URL must start with http:// or https://');
         }
         
         // 验证域名格式
         const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
         if (!domainRegex.test(url.hostname)) {
-          throw new Error('请输入有效的域名');
+          throw new Error('Please enter a valid domain');
         }
 
         // 更新为清理后的 URL
         settings.siteUrl = cleanUrl;
       } else {
-        throw new Error('请输入网站 URL');
+        throw new Error('Please enter website URL');
       }
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : '网站 URL 格式不正确');
+      toast.error(error instanceof Error ? error.message : 'Website URL format is incorrect');
       return;
     }
 
@@ -100,22 +100,22 @@ export default function SeoSettingsPage() {
         }).then(async response => {
           if (!response.ok) {
             const errorData = await response.json();
-            console.error("API错误响应:", errorData);
-            throw new Error(errorData.error || "保存失败");
+            console.error("API error response:", errorData);
+            throw new Error(errorData.error || "Save failed");
           }
           return response.json();
         }).then(result => {
-          console.log("保存成功:", result); // 调试日志
+          console.log("Save success:", result); // 调试日志
         })
       );
 
       // 并行处理所有操作
       await Promise.all(saveSettingPromises);
 
-      toast.success("SEO设置已保存");
+      toast.success("SEO settings saved");
     } catch (error) {
-      console.error('保存设置失败:', error);
-      toast.error(error instanceof Error ? error.message : "保存设置失败");
+      console.error('Failed to save settings:', error);
+      toast.error(error instanceof Error ? error.message : "Failed to save settings");
     } finally {
       setLoading(false);
     }
@@ -134,62 +134,62 @@ export default function SeoSettingsPage() {
               <div className="space-y-4">
                 {/* 基础 SEO */}
                 <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground font-normal">基础 SEO</p>
+                  <p className="text-sm text-muted-foreground font-normal">Basic SEO</p>
                   <Card className="border bg-white">
                     <CardContent className="grid gap-4 p-6">
                       <div className="grid gap-2">
                         <label htmlFor="siteUrl" className="font-medium">
-                          网站 URL
+                          Website URL
                         </label>
                         <Input
                           id="siteUrl"
                           name="siteUrl"
                           value={settings.siteUrl}
                           onChange={handleChange}
-                          placeholder="输入网站完整 URL"
+                          placeholder="Enter website full URL"
                         />
                         <p className="text-sm text-muted-foreground">
-                          例如: https://pintree.io
+                          For example: https://pintree.io
                         </p>
                       </div>
 
                       <div className="grid gap-2">
                         <label htmlFor="websiteName" className="font-medium">
-                          网站标题
+                          Website Title
                         </label>
                         <Input
                           id="websiteName"
                           name="websiteName"
                           value={settings.websiteName}
                           onChange={handleChange}
-                          placeholder="输入网站标题"
+                          placeholder="Enter website title"
                         />
                       </div>
 
                       <div className="grid gap-2">
                         <label htmlFor="description" className="font-medium">
-                          网站描述
+                          Website Description
                         </label>
                         <Textarea
                           id="description"
                           name="description"
                           value={settings.description}
                           onChange={handleChange}
-                          placeholder="输入网站描述"
+                          placeholder="Enter website description"
                           rows={3}
                         />
                       </div>
 
                       <div className="grid gap-2">
                         <label htmlFor="keywords" className="font-medium">
-                          关键词
+                          Keywords
                         </label>
                         <Input
                           id="keywords"
                           name="keywords"
                           value={settings.keywords}
                           onChange={handleChange}
-                          placeholder="输入关键词，用逗号分隔"
+                          placeholder="Enter keywords, separated by commas"
                         />
                       </div>
                     </CardContent>
@@ -203,7 +203,7 @@ export default function SeoSettingsPage() {
 
           <div className="flex justify-end">
             <Button type="submit" disabled={loading}>
-              {loading ? "保存中..." : "保存设置"}
+              {loading ? "Saving..." : "Save Settings"}
             </Button>
           </div>
         </form>

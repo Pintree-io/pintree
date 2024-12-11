@@ -18,7 +18,7 @@ export async function getSettingImages(settingKey: string) {
     // console.log('setting', setting);
 
     if (!setting) {
-      return { success: false, error: '未找到对应的设置项' };
+      return { success: false, error: 'Could not find the corresponding setting item' };
     }
 
     const imageIds = setting.images.map(img => img.imageId);
@@ -28,10 +28,10 @@ export async function getSettingImages(settingKey: string) {
       imageIds 
     };
   } catch (error) {
-    console.error('获取设置图片失败:', error);
+    console.error('Failed to get setting images:', error);
     return { 
       success: false, 
-      error: error instanceof Error ? error.message : '获取设置图片失败' 
+      error: error instanceof Error ? error.message : 'Failed to get setting images' 
     };
   }
 }

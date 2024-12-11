@@ -12,7 +12,7 @@ export async function GET(
     // 验证参数
     if (!id || !folderId) {
       return NextResponse.json(
-        { error: "缺少必要参数" },
+        { error: "Missing required parameters" },
         { status: 400 }
       );
     }
@@ -43,9 +43,9 @@ export async function GET(
 
     return NextResponse.json(path);
   } catch (error) {
-    console.error("获取文件夹路径失败:", error);
+    console.error("Failed to get folder path:", error);
     return NextResponse.json(
-      { error: "获取文件夹路径失败" },
+      { error: "Failed to get folder path" },
       { status: 500 }
     );
   }

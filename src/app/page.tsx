@@ -89,7 +89,7 @@ function SearchParamsComponent() {
         if (!response.ok) throw new Error('Failed to fetch');
         setRefreshTrigger(prev => prev + 1);
       } catch (error) {
-        console.error("刷新数据失败:", error);
+        console.error("Refresh data failed:", error);
       }
     }
   }, [selectedCollectionId, currentFolderId]);

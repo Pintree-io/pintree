@@ -92,7 +92,7 @@ const SearchEngineIcon = ({ engine }: { engine: string }) => {
 };
 
 export function SearchBar({ 
-  placeholder = "搜索书签...", 
+  placeholder = "Search bookmarks...", 
   onSearch, 
   currentEngine = "Bookmarks", 
   onEngineChange, 

@@ -6,7 +6,7 @@ import { revalidatePath } from 'next/cache';
 
 // 图片设置验证模式
 const SettingImageSchema = z.object({
-  settingKey: z.string().min(1, '设置键不能为空'),
+  settingKey: z.string().min(1, 'Setting key cannot be empty'),
   file: z.instanceof(File),
   imageId: z.string().optional()
 });
@@ -45,8 +45,8 @@ async function uploadImage(file: File, existingImageId?: string) {
   
       return image;
     } catch (error) {
-      console.error('图片上传失败:', error);
-      throw new Error(`图片 ${file.name} 上传失败`);
+      console.error('Failed to upload image:', error);
+      throw new Error(`Failed to upload image ${file.name}`);
     }
   }
 
@@ -56,7 +56,7 @@ export async function updateSettingImage(formData: FormData) {
   const file = formData.get('file') as File;
 
   if (!settingKey || !file) {
-    throw new Error('缺少必要参数');
+    throw new Error('Missing required parameters');
   }
 
   const setting = await prisma.siteSetting.findUnique({
@@ -69,13 +69,13 @@ export async function updateSettingImage(formData: FormData) {
   });
 
   if (!setting) {
-    throw new Error(`未找到对应的设置项: ${settingKey}`);
+    throw new Error(`Could not find the corresponding setting item: ${settingKey}`);
   }
 
   const existingImageId = imageId || setting.images[0]?.imageId;
 
   if (!existingImageId) {
-    throw new Error(`未找到对应的图片: ${settingKey}`);
+    throw new Error(`Could not find the corresponding image: ${settingKey}`);
   }
 
   // const validatedData = SettingImageSchema.parse({ 

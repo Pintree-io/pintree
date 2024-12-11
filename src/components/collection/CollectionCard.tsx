@@ -60,14 +60,14 @@ export function CollectionCard({ collection, onUpdate }: CollectionCardProps) {
         router.push('/admin/collections');
       }
     } catch (error) {
-      console.error("删除书签集合失败:", error);
+      console.error("Delete bookmark collection failed:", error);
     }
   };
 
   const handleExport = async () => {
     try {
       const response = await fetch(`/api/collections/${collection.id}/export`);
-      if (!response.ok) throw new Error('导出失败');
+      if (!response.ok) throw new Error('Export failed');
       
       const data = await response.json();
       
@@ -82,10 +82,10 @@ export function CollectionCard({ collection, onUpdate }: CollectionCardProps) {
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     } catch (error) {
-      console.error('导出失败:', error);
+      console.error('Export failed:', error);
       toast({
-        title: "导出失败",
-        description: "请稍后重试",
+        title: "Export failed",
+        description: "Please try again later",
         variant: "destructive",
       });
     }

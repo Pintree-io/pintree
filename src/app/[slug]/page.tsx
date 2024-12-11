@@ -31,7 +31,7 @@ export default function CollectionPage() {
           setCollectionName(collection.name);
         }
       } catch (error) {
-        console.error("获取集合失败:", error);
+        console.error("Failed to get collection:", error);
       }
     };
 
@@ -52,7 +52,7 @@ export default function CollectionPage() {
         const data = await response.json();
         setCollections(data);
       } catch (error) {
-        console.error("获取集合列表失败:", error);
+        console.error("Failed to get collection list:", error);
       }
     };
     fetchCollections();
@@ -91,7 +91,7 @@ export default function CollectionPage() {
         if (!response.ok) throw new Error('Failed to fetch');
         setRefreshTrigger(prev => prev + 1);
       } catch (error) {
-        console.error("刷新数据失败:", error);
+        console.error("Failed to refresh data:", error);
       }
     }
   }, [selectedCollectionId, currentFolderId]);

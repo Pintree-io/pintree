@@ -37,13 +37,13 @@ export default function LoginPage() {
             setError("Please enter email and password");
             break;
           case "User does not exist":
-            setError("用户不存在");
+            setError("User does not exist");
             break;
           case "Incorrect password":
-            setError("密码错误");
+            setError("Incorrect password");
             break;
           default:
-            setError("登录失败,请重试");
+            setError("Login failed, please try again");
         }
       } else {
         if (initializeDatabase) {
@@ -53,12 +53,12 @@ export default function LoginPage() {
             
             if (result.status !== 'success') {
               // 处理初始化失败的情况
-              setError(result.message || "数据库初始化失败");
+              setError(result.message || "Database initialization failed");
               return;
             }
           } catch (error) {
             // 处理网络错误或解析错误
-            setError("数据库初始化失败");
+            setError("Database initialization failed");
             return;
           }
         }
@@ -66,7 +66,7 @@ export default function LoginPage() {
         router.refresh();
       }
     } catch (error) {
-      setError("登录失败,请重试");
+      setError("Login failed, please try again");
     } finally {
       setLoading(false);
     }

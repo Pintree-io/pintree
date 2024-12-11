@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     const session = await getServerSession(authOptions);
 
     if (!session) {
-      console.log("未授权访问");
+      console.log("Unauthorized access");
       return NextResponse.json(
         { error: "Unauthorized access" },
         { status: 401 }
@@ -46,14 +46,14 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("开始处理导入请求");
+    console.log("Start processing import request");
     const body = await request.text();
-    console.log("请求体大小:", body.length);
+    console.log("Request body size:", body.length);
 
     let data;
     try {
       data = JSON.parse(body);
-      console.log("JSON解析成功，数据结构:", {
+      console.log("JSON parsing successful, data structure:", {
         hasName: !!data.name,
         hasFolders: Array.isArray(data.folders),
         hasBookmarks: Array.isArray(data.bookmarks),
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
         bookmarksLength: data.bookmarks?.length
       });
     } catch (e) {
-      console.error("JSON解析失败:", e);
+      console.error("JSON parsing failed:", e);
       return NextResponse.json({ 
           error: "Invalid JSON format",
         details: e instanceof Error ? e.message : 'Unknown parsing error'
@@ -71,14 +71,14 @@ export async function POST(request: Request) {
     const { name, folders = [], bookmarks = [] } = data;
 
     if (!name) {
-      console.log("缺少集合名称");
+      console.log("Missing collection name");
       return NextResponse.json({ 
           error: "Collection name is required",
         receivedData: { name, foldersCount: folders.length, bookmarksCount: bookmarks.length }
       }, { status: 400 });
     }
 
-    console.log("导入数据概览:", {
+    console.log("Import data overview:", {
       name,
       foldersCount: folders.length,
       bookmarksCount: bookmarks.length
@@ -123,7 +123,7 @@ export async function POST(request: Request) {
     const FOLDER_BATCH_SIZE = 25;
     for (let i = 0; i < folders.length; i += FOLDER_BATCH_SIZE) {
       const batch = folders.slice(i, i + FOLDER_BATCH_SIZE);
-      console.log(`处理文件夹批次 ${Math.floor(i/FOLDER_BATCH_SIZE) + 1}/${Math.ceil(folders.length/FOLDER_BATCH_SIZE)}`);
+      console.log(`Processing folder batch ${Math.floor(i/FOLDER_BATCH_SIZE) + 1}/${Math.ceil(folders.length/FOLDER_BATCH_SIZE)}`);
 
       await Promise.all(batch.map(async (folder: ImportFolder) => {
           try {
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
             });
             folderMap.set(folder.name, createdFolder.id);
           } catch (error) {
-          console.error('创建文件夹失败:', error, folder);
+          console.error('Failed to create folder:', error, folder);
           }
       }));
     }
@@ -149,7 +149,7 @@ export async function POST(request: Request) {
     const BOOKMARK_BATCH_SIZE = 50;
     for (let i = 0; i < bookmarks.length; i += BOOKMARK_BATCH_SIZE) {
       const batch = bookmarks.slice(i, i + BOOKMARK_BATCH_SIZE);
-      console.log(`处理书签批次 ${Math.floor(i/BOOKMARK_BATCH_SIZE) + 1}/${Math.ceil(bookmarks.length/BOOKMARK_BATCH_SIZE)}`);
+      console.log(`Processing bookmark batch ${Math.floor(i/BOOKMARK_BATCH_SIZE) + 1}/${Math.ceil(bookmarks.length/BOOKMARK_BATCH_SIZE)}`);
 
       await Promise.all(batch.map(async (bookmark: ImportBookmark) => {
           try {
@@ -168,12 +168,12 @@ export async function POST(request: Request) {
               },
             });
           } catch (error) {
-          console.error('创建书签失败:', error, bookmark);
+          console.error('Failed to create bookmark:', error, bookmark);
           }
       }));
     }
 
-    console.log("导入完成:", {
+    console.log("Import completed:", {
       collectionId: collection.id,
       name: collection.name,
       foldersProcessed: folderMap.size,
@@ -185,7 +185,7 @@ export async function POST(request: Request) {
       collection
     });
   } catch (error) {
-    console.error("导入失败，详细错误:", error);
+    console.error("Import failed, detailed error:", error);
     return NextResponse.json(
       { 
         error: `Import failed`,

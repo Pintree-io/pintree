@@ -10,7 +10,7 @@ export async function PATCH(
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "未授权" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { name, icon, isPublic, password, sortOrder } = await request.json();
@@ -18,7 +18,7 @@ export async function PATCH(
     // 验证必填字段
     if (!name) {
       return NextResponse.json(
-        { error: "名称为必填项" },
+        { error: "Name is required" },
         { status: 400 }
       );
     }
@@ -37,7 +37,7 @@ export async function PATCH(
     return NextResponse.json(folder);
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "更新文件夹失败" }, { status: 500 });
+    return NextResponse.json({ error: "Update folder failed" }, { status: 500 });
   }
 }
 
@@ -48,7 +48,7 @@ export async function DELETE(
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "未授权" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     await prisma.folder.delete({
@@ -58,6 +58,6 @@ export async function DELETE(
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "删除文件夹失败" }, { status: 500 });
+    return NextResponse.json({ error: "Delete folder failed" }, { status: 500 });
   }
 }

@@ -83,9 +83,9 @@ export async function GET(
     });
 
   } catch (error) {
-    console.error("获取内容失败:", error);
+    console.error("Failed to get content:", error);
     return NextResponse.json(
-      { error: "获取内容失败", details: error instanceof Error ? error.message : "Unknown error" },
+      { error: "Failed to get content", details: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

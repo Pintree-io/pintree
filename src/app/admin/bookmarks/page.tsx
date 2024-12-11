@@ -207,7 +207,7 @@ export default function BookmarksPage() {
       setBookmarks(bookmarksData);
       setFolders(foldersData);
     } catch (error) {
-      setError("导航到文件夹失败");
+      setError("Failed to navigate to folder");
       console.error(error);
     } finally {
       setIsNavigating(false);
@@ -273,7 +273,7 @@ export default function BookmarksPage() {
           fetchFolders(selectedCollectionId)
         ]);
       } catch (error) {
-        console.error("刷新数据失败:", error);
+        console.error("Failed to refresh data:", error);
       }
     }
   };

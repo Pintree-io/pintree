@@ -218,7 +218,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
         const data = await response.json();
         setEnableSearch(data.enableSearch === 'true' || data.enableSearch === true);
       } catch (error) {
-        console.error('加载搜索设置失败:', error);
+        console.error('Load search settings failed:', error);
       }
     };
     
@@ -265,7 +265,7 @@ export function BookmarkGrid({ collectionId, currentFolderId, collectionName = "
       {enableSearch && (
         <div className="flex justify-center mt-4 mb-12">
           <SearchBar
-            placeholder="搜索书签..."
+            placeholder="Search bookmarks..."
             onSearch={handleSearch}
             currentEngine={currentEngine}
             onEngineChange={setCurrentEngine}

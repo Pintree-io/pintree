@@ -38,7 +38,7 @@ export function BackToTop() {
         "z-50 backdrop-blur-sm",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none",
       )}
-      aria-label="返回顶部"
+      aria-label="Back to top"
     >
       <ArrowUp className="w-5 h-5" />
     </button>

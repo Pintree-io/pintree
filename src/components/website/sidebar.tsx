@@ -216,7 +216,7 @@ export function WebsiteSidebar({
     
     // 在开发环境下输出文件夹结构
     if (process.env.NODE_ENV === 'development') {
-      console.log('文件夹结构:');
+      console.log('Folder structure:');
       logFolderStructure(rootFolders);
     }
 

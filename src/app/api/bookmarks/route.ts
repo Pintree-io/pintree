@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "未授权" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { searchParams } = new URL(request.url);
@@ -57,7 +57,7 @@ export async function GET(request: Request) {
 
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "获取书签失败" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to get bookmarks" }, { status: 500 });
   }
 }
 
@@ -65,7 +65,7 @@ export async function POST(request: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "未授权" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { title, url, description, icon, collectionId, folderId, tags, isFeatured, sortOrder } = await request.json();
@@ -73,7 +73,7 @@ export async function POST(request: Request) {
     // 验证必填字段
     if (!title || !url || !collectionId) {
       return NextResponse.json(
-        { error: "标题、URL和所属集合为必填项" },
+        { error: "Title, URL and collection are required" },
         { status: 400 }
       );
     }
@@ -101,7 +101,7 @@ export async function POST(request: Request) {
 
       if (!folder) {
         return NextResponse.json(
-          { error: "所选文件夹不存在或不属于该集合" },
+          { error: "Selected folder does not exist or does not belong to this collection" },
           { status: 400 }
         );
       }
@@ -128,9 +128,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json(bookmark);
   } catch (error) {
-    console.error("创建书签失败:", error);
+    console.error("Failed to create bookmark:", error);
     return NextResponse.json(
-      { error: "创建书签失败，请检查所有字段是否正确" },
+      { error: "Failed to create bookmark, please check all fields are correct" },
       { status: 500 }
     );
   }

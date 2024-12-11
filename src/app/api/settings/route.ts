@@ -44,10 +44,10 @@ export async function GET(request: Request) {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error('获取设置失败:', error);
+    console.error('Failed to get settings:', error);
     return NextResponse.json({ 
-      error: '获取设置失败',
-      details: error instanceof Error ? error.message : '未知错误'
+      error: 'Failed to get settings',
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 }
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      return NextResponse.json({ error: "请先登录" }, { status: 401 });
+      return NextResponse.json({ error: "Please login" }, { status: 401 });
     }
 
     const data = await request.json();
@@ -81,21 +81,21 @@ export async function POST(request: Request) {
       // console.log('更新结果:', results);
 
       return NextResponse.json({ 
-        message: '设置已保存',
+        message: 'Settings saved',
         results 
       });
     } catch (dbError) {
-      console.error('数据库操作失败:', dbError);
+      console.error('Database operation failed:', dbError);
       return NextResponse.json({ 
-        error: '数据库操作失败',
-        details: dbError instanceof Error ? dbError.message : '未知错误'
+        error: 'Database operation failed',
+        details: dbError instanceof Error ? dbError.message : 'Unknown error'
       }, { status: 500 });
     }
   } catch (error) {
-    console.error('API错误:', error);
+    console.error('API error:', error);
     return NextResponse.json({ 
-      error: '保存设置失败',
-      details: error instanceof Error ? error.message : '未知错误'
+      error: 'Failed to save settings',
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
   }
 }

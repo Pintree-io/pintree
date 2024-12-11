@@ -43,7 +43,7 @@ export function BookmarkList({ collectionId }: BookmarkListProps) {
       const data = await response.json();
       setBookmarks(data);
     } catch (error) {
-      console.error("获取书签失败:", error);
+      console.error("Fetch bookmarks failed:", error);
     } finally {
       setLoading(false);
     }
@@ -52,7 +52,7 @@ export function BookmarkList({ collectionId }: BookmarkListProps) {
   if (!collectionId) {
     return (
       <div className="text-center text-gray-500 py-4">
-        请选择一个书签集合
+        Please select a bookmark collection
       </div>
     );
   }
@@ -70,7 +70,7 @@ export function BookmarkList({ collectionId }: BookmarkListProps) {
   if (bookmarks.length === 0) {
     return (
       <div className="text-center text-gray-500 py-4">
-        暂无书签
+        No bookmarks yet
       </div>
     );
   }

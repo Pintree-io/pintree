@@ -37,7 +37,7 @@ export function CollectionList({ onCollectionsChange }: { onCollectionsChange: (
     try {
       const response = await fetch("/api/collections");
       if (!response.ok) {
-        throw new Error("获取数据失败");
+        throw new Error("Failed to fetch data");
       }
       const data = await response.json();
 
@@ -48,11 +48,11 @@ export function CollectionList({ onCollectionsChange }: { onCollectionsChange: (
       } else if (data.error) {
         setError(data.error);
       } else {
-        setError("返回数据格式错误");
+        setError("Returned data format error");
       }
     } catch (error) {
-      console.error("获取书签集合失败:", error);
-      setError(error instanceof Error ? error.message : "未知错误");
+      console.error("Fetch bookmark collections failed:", error);
+      setError(error instanceof Error ? error.message : "Unknown error");
     } finally {
       setLoading(false);
     }

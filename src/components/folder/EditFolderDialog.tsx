@@ -104,14 +104,14 @@ export function EditFolderDialog({
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || `更新失败: ${response.status}`);
+        throw new Error(errorData.message || `Update folder failed: ${response.status}`);
       }
 
       onOpenChange(false);
       onSuccess?.();
     } catch (error) {
-      console.error("更新文件夹失败:", error);
-      alert(error instanceof Error ? error.message : "更新文件夹失败");
+      console.error("Update folder failed:", error);
+      alert(error instanceof Error ? error.message : "Update folder failed");
     } finally {
       setLoading(false);
     }

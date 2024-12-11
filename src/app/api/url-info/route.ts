@@ -117,13 +117,13 @@ export async function POST(request: Request) {
     const { url } = await request.json();
 
     if (!url) {
-      return NextResponse.json({ error: "请输入URL" }, { status: 400 });
+      return NextResponse.json({ error: "Please enter a URL" }, { status: 400 });
     }
 
     try {
       new URL(url);
     } catch {
-      return NextResponse.json({ error: "无效的URL格式" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid URL format" }, { status: 400 });
     }
 
     const domain = new URL(url).hostname;
@@ -189,7 +189,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error in URL info API:", error);
     return NextResponse.json(
-      { error: "获取URL信息失败，请检查URL是否正确" },
+      { error: "Failed to get URL information, please check if the URL is correct" },
       { status: 500 }
     );
   }

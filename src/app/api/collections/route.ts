@@ -9,6 +9,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const publicOnly = searchParams.get('publicOnly') === 'true';
     
+    // Retrieve collections list, optionally filtering for public collections
     const collections = await prisma.collection.findMany({
       where: publicOnly ? {
         isPublic: true
@@ -18,8 +19,22 @@ export async function GET(request: Request) {
       }
     });
 
+    // Return data structure:
+    // An array of collection objects with the following properties:
+    // {
+    //   id: string,           // Unique identifier of the collection
+    //   name: string,         // Name of the collection
+    //   description?: string, // Optional description of the collection
+    //   icon?: string,        // Optional icon for the collection
+    //   isPublic: boolean,    // Indicates if the collection is publicly visible
+    //   viewStyle: string,    // Display style of the collection
+    //   sortStyle: string,    // Sorting method for items in the collection
+    //   sortOrder: number,    // Numerical order for sorting collections
+    //   slug: string,         // URL-friendly name of the collection
+    //   totalBookmarks: number // Total number of bookmarks in the collection
+    // }
     const collectionsWithBookmarkCount = await Promise.all(
-      collections?.map(async (collection) => {
+      collections.map(async (collection) => {
         const folders = await prisma.folder.findMany({
           where: {
             collectionId: collection.id

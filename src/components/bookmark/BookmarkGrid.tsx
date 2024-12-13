@@ -6,11 +6,10 @@ import { FolderCard } from "./FolderCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from 'next/navigation';
 import { cn } from "@/lib/utils";
 import { SearchBar } from "@/components/search/SearchBar";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Folder as FolderIcon } from "lucide-react";
+import {  useSearchParams, useRouter, usePathname } from "next/navigation";
+
 
 // 定义组件所需的接口类型
 interface BookmarkGridProps {
@@ -84,12 +83,15 @@ export function BookmarkGrid({
   refreshTrigger = 0, 
   pageSize = 100 
 }: BookmarkGridProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   // 状态管理
   const [currentBookmarks, setCurrentBookmarks] = useState<Bookmark[]>([]);
   const [subfolders, setSubfolders] = useState<SubfolderData[]>([]);
   const [loading, setLoading] = useState(false);
   const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[]>([]);
-  const router = useRouter();
   const [searchResults, setSearchResults] = useState<Bookmark[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [searchScope, setSearchScope] = useState<'all' | 'current'>('all');
@@ -99,6 +101,13 @@ export function BookmarkGrid({
   const [totalResults, setTotalResults] = useState(0);
   const [currentEngine, setCurrentEngine] = useState("Bookmarks");
   const [enableSearch, setEnableSearch] = useState(true);
+
+  const routeToFolderInCollection = (collectionSlug: string, folderId?: string) => {
+    const currentSearchParams = new URLSearchParams(searchParams.toString());
+    collectionSlug ? currentSearchParams.set("collection", collectionSlug) : currentSearchParams.delete("collection");
+    folderId ? currentSearchParams.set("folderId", folderId) : currentSearchParams.delete("folderId");
+    router.push(`${pathname}?${currentSearchParams.toString()}`, { scroll: false });
+  }
 
   // 获取书签和文件夹数据的异步函数
   const fetchBookmarkData = async (folderId: string | null) => {
@@ -159,9 +168,9 @@ export function BookmarkGrid({
     
     // 更新路由
     if (folderId === null) {
-      router.push(`/${collectionSlug}`, { scroll: false });
+      routeToFolderInCollection(collectionSlug);
     } else {
-      router.push(`/${collectionSlug}?folderId=${folderId}`, { scroll: false });
+      routeToFolderInCollection(collectionSlug, folderId);
     }
     
     // 立即获取新数据

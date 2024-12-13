@@ -8,7 +8,8 @@ import { Plus, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import CreateBookmarkDialogGlobal from "@/components/bookmark/CreateBookmarkDialogGlobal";
-import { useRouter } from "next/navigation";
+import {  useSearchParams, useRouter, usePathname } from "next/navigation";
+
 
 interface Collection {
   id: string;
@@ -31,9 +32,11 @@ export function Header({
   onBookmarkAdded,
   onCollectionChange 
 }: HeaderProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { data: session } = useSession();
   const [dialogOpen, setDialogOpen] = useState(false);
-  const router = useRouter();
 
   const handleSuccess = async (newBookmarkFolderId?: string) => {
     setDialogOpen(false);
@@ -50,9 +53,9 @@ export function Header({
     const targetFolderId = newBookmarkFolderId || currentFolderId;
     
     if (targetFolderId && targetFolderId !== currentFolderId) {
-      const url = new URL(window.location.href);
-      url.searchParams.set('folderId', targetFolderId);
-      router.push(url.toString());
+      const currentSearchParams = new URLSearchParams(searchParams.toString());
+      currentSearchParams.set('folderId', targetFolderId);
+      router.push(`${pathname}?${currentSearchParams.toString()}`);
     }
   };
 

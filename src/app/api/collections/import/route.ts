@@ -21,29 +21,27 @@ export async function POST(request: NextRequest) {
     const { name, description, bookmarks, collectionId, folderMap } =
       await request.json();
 
+    // Prevent import if any collection already exists
+    const existingCollections = await prisma.collection.findMany();
+
+    if (existingCollections.length > 0) {
+      throw new Error("Cannot import: collections already exist");
+    }
+
     let targetCollection;
     let insideFolderMap: { [key: string]: string }[] = folderMap || [];
 
-    // 处理集合（新建或使用已存在的）
+    // Handle collection (create new or use existing)
     if (collectionId) {
       targetCollection = await prisma.collection.findUnique({
         where: { id: collectionId },
       });
 
       if (!targetCollection) {
-        throw new Error("指定的集合不存在");
+        throw new Error("Specified collection does not exist");
       }
     } else {
-      // 检查是否已存在同名集合
-      const existingCollection = await prisma.collection.findFirst({
-        where: { name: name },
-      });
-
-      if (existingCollection) {
-        throw new Error("集合名称已存在");
-      }
-
-      // 创建新集合
+      // Create new collection
       targetCollection = await prisma.collection.create({
         data: {
           name: name,
@@ -51,7 +49,7 @@ export async function POST(request: NextRequest) {
         },
       });
 
-      // 使用 collectionId 作为 slug 更新数据库
+      // Use collectionId as slug to update database
       await prisma.collection.update({
         where: { id: targetCollection.id },
         data: {
@@ -60,12 +58,12 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // 逐个创建文件夹，并确保父文件夹已创建
+    // Create folders individually and ensure parent folders are created
     const folderItems = bookmarks.filter(
       (item: FlattenedBookmarkItem) => item.type === "folder"
     );
-    const limit = pLimit(10); // 限制并发数为10
-    // 按深度对文件夹分组
+    const limit = pLimit(10); // Limit concurrency to 10
+    // Group folders by depth
     const foldersByDepth = folderItems.reduce(
       (
         acc: Record<number, FlattenedBookmarkItem[]>,
@@ -81,7 +79,7 @@ export async function POST(request: NextRequest) {
       {} as Record<number, FlattenedBookmarkItem[]>
     );
 
-    // 按深度顺序处理，同深度的文件夹并发创建
+    // Process by depth order, create folders at the same depth concurrently
     const depths = Object.keys(foldersByDepth)
       .map(Number)
       .sort((a, b) => a - b);
@@ -119,7 +117,7 @@ export async function POST(request: NextRequest) {
       await Promise.all(promises);
     }
 
-    // 并行创建书签
+    // Create bookmarks in parallel
     const bookmarkItems = bookmarks.filter(
       (item: FlattenedBookmarkItem) => item.type === "link"
     );
@@ -145,12 +143,12 @@ export async function POST(request: NextRequest) {
         })
     );
 
-    // 等待所有书签创建完成
+    // Wait for all bookmarks to be created
     await Promise.all(bookmarkPromises);
 
     return NextResponse.json(
       {
-        message: "导入成功",
+        message: "Import successful",
         collectionId: targetCollection.id,
         insideFolderMap: insideFolderMap,
         itemsImported: bookmarks.length,
@@ -158,11 +156,11 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("导入书签时发生错误:", error);
+    console.error("Error importing bookmarks:", error);
     return NextResponse.json(
       {
-        message: "导入失败",
-        error: error instanceof Error ? error.message : "未知错误",
+        message: "Import failed",
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 }
     );

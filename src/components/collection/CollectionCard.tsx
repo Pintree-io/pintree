@@ -81,6 +81,11 @@ export function CollectionCard({ collection, onUpdate }: CollectionCardProps) {
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
+
+      toast({
+        title: "Export Success",
+        description: "Your bookmark collection has been exported successfully",
+      });
     } catch (error) {
       console.error('Export failed:', error);
       toast({

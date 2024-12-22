@@ -54,6 +54,8 @@ interface Folder {
   icon?: string;
   createdAt: string;
   updatedAt: string;
+  sortOrder: number;
+  parentId: string | null;
 }
 
 interface BookmarkDataTableProps {
@@ -116,6 +118,9 @@ export function BookmarkDataTable({
       id: folder.id,
       type: "folder" as const,
       title: folder.name,
+      name: folder.name,
+      sortOrder: folder.sortOrder,
+      parentId: folder.parentId,
       icon: folder.icon,
       createdAt: folder.createdAt,
       updatedAt: folder.updatedAt,

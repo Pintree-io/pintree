@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { AdminHeader } from "@/components/admin/header";
 
 const defaultSettings = {
-  websiteName: "",
+  // websiteName: "",
   description: "",
   keywords: "",
   siteUrl: "",
@@ -153,7 +153,7 @@ export default function SeoSettingsPage() {
                         </p>
                       </div>
 
-                      <div className="grid gap-2">
+                      {/* <div className="grid gap-2">
                         <label htmlFor="websiteName" className="font-medium">
                           Website Title
                         </label>
@@ -164,7 +164,7 @@ export default function SeoSettingsPage() {
                           onChange={handleChange}
                           placeholder="Enter website title"
                         />
-                      </div>
+                      </div> */}
 
                       <div className="grid gap-2">
                         <label htmlFor="description" className="font-medium">

@@ -1,12 +1,13 @@
-export const dynamic = 'force-dynamic';
-
 import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { defaultSettings } from "@/lib/defaultSettings";
+
 
 export const runtime = 'nodejs';
+// 增加超时时间到最大值
+export const maxDuration = 60; // Vercel Hobby 允许的最大时间是 60 秒
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
   try {
@@ -14,8 +15,10 @@ export async function GET(request: Request) {
     const group = searchParams.get('group');
     
     // 获取所有设置
-    const settings = await prisma.siteSetting.findMany();
-    // console.log('数据库中的设置:', settings);
+    const settings = group 
+      ? await prisma.siteSetting.findMany({ where: { group } })
+      : await prisma.siteSetting.findMany();
+
     
     // 将设置转换为键值对格式
     const formattedSettings = settings.reduce((acc: Record<string, string>, setting) => {
@@ -23,20 +26,9 @@ export async function GET(request: Request) {
       return acc;
     }, {});
 
-    // 从 defaultSettings 获取默认值
-    const defaultValues = defaultSettings.reduce((acc, setting) => {
-      if (!group || setting.group === group) {
-        acc[setting.key] = setting.value;
-      }
-      return acc;
-    }, {} as Record<string, string>);
-
-    // console.log('默认值:', defaultValues);
-    // console.log('数据库值:', formattedSettings);
 
     // 合并默认值和数据库值
     const result = {
-      ...defaultValues,
       ...formattedSettings,
       enableSearch: true
     };

@@ -43,27 +43,7 @@ export const defaultSettings: SettingItem[] = [
     group: "basic",
     description: "联系邮箱"
   },
-  {
-    key: "icp",
-    value: "",
-    type: "string",
-    group: "basic",
-    description: "ICP备案信息"
-  },
-  {
-    key: "icpUrl",
-    value: "",
-    type: "string",
-    group: "basic",
-    description: "ICP备案链接"
-  },
-  {
-    key: "poweredBy",
-    value: "true",
-    type: "boolean",
-    group: "basic",
-    description: "显示 Powered by Pintree"
-  },
+
 
   // 社交媒体链接
   {
@@ -374,15 +354,8 @@ export const defaultSettings: SettingItem[] = [
     description: "轮播图片"
   },
   {
-    key: "carouselImageLinks",
-    value: JSON.stringify([
-      "https://pintree.io",
-      "https://pintree.io",
-      "https://pintree.io",
-      "https://pintree.io",
-      "https://pintree.io",
-      "https://pintree.io"
-    ]),
+    key: "carouselImageHyperlinks",
+    value: "https://pintree.io|https://pintree.io|https://pintree.io|https://pintree.io|https://pintree.io|https://pintree.io",
     type: "json",
     group: "feature",
     description: "轮播图片跳转链接"

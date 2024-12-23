@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-
+import { revalidatePath } from 'next/cache'
 
 export const runtime = 'nodejs';
 // 增加超时时间到最大值
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
       });
 
       const results = await prisma.$transaction(updates);
-      // console.log('更新结果:', results);
+      revalidatePath('/', 'layout');
 
       return NextResponse.json({ 
         message: 'Settings saved',

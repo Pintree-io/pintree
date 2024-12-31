@@ -28,23 +28,7 @@ export function useSettings(group?: string) {
     }
   };
 
-  // 保存设置
-  const saveSettings = async (newSettings: Record<string, any>) => {
-    try {
-      const response = await fetch('/api/settings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newSettings),
-      });
-      
-      if (!response.ok) throw new Error('Save settings failed');
-      toast.success('Settings saved');
-      await loadSettings(); // 重新加载设置
-    } catch (error) {
-      toast.error('Save settings failed');
-      console.error(error);
-    }
-  };
+
 
   useEffect(() => {
     loadSettings();
@@ -53,7 +37,6 @@ export function useSettings(group?: string) {
   return {
     settings,
     loading,
-    saveSettings,
     loadSettings
   };
 } 

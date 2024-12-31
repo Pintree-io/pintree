@@ -356,7 +356,7 @@ export function WebsiteSidebar({
               >
                 <Link
                   href="/"
-                  className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0 w-full"
+                  className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0 w-full h-[60px]"
                 >
                   {isLoading ? (
                     <Skeleton className="w-[260px] h-[60px]" />
@@ -366,6 +366,9 @@ export function WebsiteSidebar({
                       alt="Logo"
                       width={260}
                       height={60}
+                      style={{
+                        objectFit: "contain",
+                      }}
                     />
                   )}
                 </Link>

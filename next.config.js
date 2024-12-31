@@ -23,6 +23,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     unoptimized: true,
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 export default nextConfig;

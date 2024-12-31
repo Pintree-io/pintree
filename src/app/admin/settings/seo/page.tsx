@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AdminHeader } from "@/components/admin/header";
-
+import { revalidateData } from "@/actions/revalidate-data";
 const defaultSettings = {
   // websiteName: "",
   description: "",
@@ -111,6 +111,8 @@ export default function SeoSettingsPage() {
 
       // 并行处理所有操作
       await Promise.all(saveSettingPromises);
+
+      revalidateData();
 
       toast.success("SEO settings saved");
     } catch (error) {

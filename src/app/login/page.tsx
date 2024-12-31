@@ -7,6 +7,7 @@ import { Button } from "@/components/common/Button";
 import { useRouter } from "next/navigation";
 import { Github, Twitter } from "lucide-react";
 import Image from "next/image";
+import { revalidateData } from "@/actions/revalidate-data";
 
 
 export default function LoginPage() {
@@ -48,7 +49,9 @@ export default function LoginPage() {
       } else {
         if (initializeDatabase) {
           try {
-            const initResponse = await fetch("/api/settings/initSettings");
+            const initResponse = await fetch("/api/settings/initSettings",{
+              cache: "no-store",
+            });
             const result = await initResponse.json();
             
             if (result.status !== 'success') {
@@ -56,6 +59,7 @@ export default function LoginPage() {
               setError(result.message || "Database initialization failed");
               return;
             }
+            revalidateData();
           } catch (error) {
             // 处理网络错误或解析错误
             setError("Database initialization failed");

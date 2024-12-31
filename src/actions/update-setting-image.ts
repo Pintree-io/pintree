@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { z } from 'zod';
-import { revalidatePath } from 'next/cache';
+
 
 // 图片设置验证模式
 const SettingImageSchema = z.object({
@@ -86,8 +86,7 @@ export async function updateSettingImage(formData: FormData) {
 
   const uploadedImage = await uploadImage(file, existingImageId);
 
-  // 清除所有缓存
-  revalidatePath('/', 'layout');
+
 
   return { 
     settingKey,

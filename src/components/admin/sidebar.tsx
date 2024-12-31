@@ -85,7 +85,7 @@ export function AdminSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild className="hover:bg-transparent rounded-none pr-0">
-                <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0">
+                <Link href="/" className="pl-0 flex items-center gap-2 justify-start rounded-none pr-0 h-[60px]">
                 {isLoading ? (
                   <Skeleton className="w-[260px] h-[60px]" />
                 ) : (
@@ -94,6 +94,9 @@ export function AdminSidebar() {
                     alt="Logo" 
                     width={260} 
                     height={60} 
+                    style={{
+                      objectFit: "contain",
+                    }}
                   />
                 )}
                 </Link>

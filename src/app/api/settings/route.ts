@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { revalidatePath } from 'next/cache'
+
 
 export const runtime = 'nodejs';
 // 增加超时时间到最大值
@@ -55,26 +55,29 @@ export async function POST(request: Request) {
     // console.log('接收到的数据:', data);
 
     try {
-      // 只保存 key 和 value
-      const updates = Object.entries(data).map(([key, value]) => {
-        return prisma.siteSetting.upsert({
-          where: { key },
-          create: {
-            key,
-            value: String(value)
-          },
-          update: {
-            value: String(value)
-          }
-        });
-      });
+      const updatedSettings = [];
 
-      const results = await prisma.$transaction(updates);
-      revalidatePath('/', 'layout');
+      for (const [key, value] of Object.entries(data)) {
+        const existingSetting = await prisma.siteSetting.findUnique({
+          where: { key }
+        });
+      
+        if (existingSetting) {
+          const updated = await prisma.siteSetting.update({
+            where: { key },
+            data: {
+              value: String(value)
+            }
+          });
+          updatedSettings.push(updated);
+        }
+      }
+
+
 
       return NextResponse.json({ 
         message: 'Settings saved',
-        results 
+        results: updatedSettings
       });
     } catch (dbError) {
       console.error('Database operation failed:', dbError);

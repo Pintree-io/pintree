@@ -32,6 +32,8 @@ import {
 } from "@/components/ui/tabs"
 import { useRouter } from "next/navigation";
 
+import { revalidateData } from "@/actions/revalidate-data";
+
 
 
 export default function BasicSettingsPage() {
@@ -196,8 +198,7 @@ export default function BasicSettingsPage() {
   
       toast.success(`Settings saved`);
 
-      // 刷新页面
-      router.refresh();
+      revalidateData();
     } catch (error) {
       console.error("Save settings failed:", error);
       toast.error(error instanceof Error ? error.message : "Save settings failed");

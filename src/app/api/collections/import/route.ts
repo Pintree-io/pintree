@@ -22,10 +22,10 @@ export async function POST(request: NextRequest) {
       await request.json();
 
     // Prevent import if any other collection already exists
-    const existingCollections = await prisma.collection.findMany();
+    const existingCollectionsCount = await prisma.collection.count();
 
-    if(existingCollections.length && existingCollections[0].id !== collectionId) {
-      throw new Error("Cannot import: collections already exist");
+    if (existingCollectionsCount > 0 && !collectionId) {
+      throw new Error("Cannot create new collection: collections already exist");
     }
 
     let targetCollection;

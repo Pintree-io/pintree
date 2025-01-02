@@ -21,10 +21,10 @@ export async function POST(request: NextRequest) {
     const { name, description, bookmarks, collectionId, folderMap } =
       await request.json();
 
-    // Prevent import if any collection already exists
+    // Prevent import if any other collection already exists
     const existingCollections = await prisma.collection.findMany();
 
-    if (existingCollections.length > 0) {
+    if(existingCollections.length && existingCollections[0].id !== collectionId) {
       throw new Error("Cannot import: collections already exist");
     }
 

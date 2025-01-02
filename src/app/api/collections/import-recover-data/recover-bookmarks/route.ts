@@ -12,6 +12,14 @@ export async function POST(
   try {
     // Parse imported data
     const { bookmarks, collectionId, folderMap } = await request.json();
+    
+    // Prevent import if any other collection already exists
+    const existingCollections = await prisma.collection.findMany();
+
+    if(existingCollections.length && existingCollections[0].id !== collectionId) {
+      throw new Error("Cannot import: collections already exist");
+    }
+    
 
     // Set concurrency limit, for example, process 5 bookmarks simultaneously
     const limit = pLimit(10);

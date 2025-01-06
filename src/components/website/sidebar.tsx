@@ -135,6 +135,12 @@ export function WebsiteSidebar({
 
       expandParentFolders(currentFolderId);
     }
+
+    // if currentFolderId is not set, and there is only one root folder, expand it
+    const rootFolders = folders.filter(folder => !folder.parentId);
+    if(!currentFolderId && rootFolders.length === 1) {
+      setExpandedFolders(new Set([rootFolders[0].id]));
+    }
   }, [currentFolderId, folders]);
 
   const buildFolderTree = (folders: any[]): FolderNode[] => {

@@ -8,6 +8,7 @@ import { Toaster as SonnerToaster } from "sonner";
 import { defaultSettings } from "@/lib/defaultSettings";
 import { cache } from 'react'
 import type { Metadata, ResolvingMetadata } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 async function checkSiteSettingTableExists() {
   const result: any = await prisma.$queryRaw`
@@ -145,38 +146,37 @@ export default async function RootLayout({
     googleAnalyticsId: "",
     clarityId: "",
   };
-  const tableExists = await checkSiteSettingTableExists();
-  if (tableExists) {
-    // 获取统计代码ID
-    const analytics = await prisma.siteSetting.findMany({
-      where: {
-        key: {
-          in: ["googleAnalyticsId", "clarityId"],
-        },
-      },
-    });
 
-    if(analytics.length > 0) {
-      analyticsMap = analytics.reduce((acc, setting) => {
-        acc[setting.key] = setting.value || "";
-        return acc;
-      }, {} as Record<string, string>);
+  if (process.env.NODE_ENV === "production") {
+    const tableExists = await checkSiteSettingTableExists();
+    if (tableExists) {
+      // 获取统计代码ID
+      const analytics = await prisma.siteSetting.findMany({
+        where: {
+          key: {
+            in: ["googleAnalyticsId", "clarityId"],
+          },
+        },
+      });
+
+      if (analytics.length > 0) {
+        analyticsMap = analytics.reduce((acc, setting) => {
+          acc[setting.key] = setting.value || "";
+          return acc;
+        }, {} as Record<string, string>);
+      }
     }
   }
 
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <head>
-        <Analytics
-          googleAnalyticsId={analyticsMap.googleAnalyticsId}
-          clarityId={analyticsMap.clarityId}
-        />
-      </head>
       <body suppressHydrationWarning>
         <SessionProvider>{children}</SessionProvider>
         <Toaster />
         <SonnerToaster />
       </body>
+      <Analytics clarityId={analyticsMap.clarityId} />
+      {!!analyticsMap.googleAnalyticsId && <GoogleAnalytics gaId={analyticsMap.googleAnalyticsId} />}
     </html>
   );
 }
